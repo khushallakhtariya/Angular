@@ -17,14 +17,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./contact/contact.component').then((m) => m.ContactComponent),
   },
-  // { path: 'admin', loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent) },
+  
   {
     path: 'help-me',
     loadComponent: () =>
       import('./help-me/help-me.component').then((m) => m.HelpMeComponent),
   },
   {
-    path: 'no-page',
+    path: '**',
     loadComponent: () =>
       import('./no-page/no-page.component').then((m) => m.NoPageComponent),
   },

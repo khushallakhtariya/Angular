@@ -21,6 +21,7 @@ import { NoPageComponent } from "./no-page/no-page.component";
     HelpMeComponent,
     FooterComponent,
     NoPageComponent,
+  
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
@@ -28,3 +29,5 @@ import { NoPageComponent } from "./no-page/no-page.component";
 export class AppComponent {
   title = "practice-app";
 }
+
+
