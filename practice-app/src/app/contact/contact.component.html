@@ -1,0 +1,143 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name: <span class="required">*</span></label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      aria-label="Name"
+      [class.is-invalid]="name?.invalid && name?.touched"
+      placeholder="Enter your name"
+      required
+    />
+    <div *ngIf="name?.invalid && name?.touched" class="error" role="alert">
+      {{ getErrorMessage(name) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email: <span class="required">*</span></label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      aria-label="Email"
+      [class.is-invalid]="email?.invalid && email?.touched"
+      placeholder="Enter your email"
+      required
+    />
+    <div *ngIf="email?.invalid && email?.touched" class="error" role="alert">
+      {{ getErrorMessage(email) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number:</label>
+    <input
+      id="phone"
+      type="tel"
+      formControlName="phone"
+      aria-label="Phone Number"
+      [class.is-invalid]="phone?.invalid && phone?.touched"
+      placeholder="Enter your phone number"
+      pattern="^\+?[1-9]\d{1,14}$"
+    />
+    <div *ngIf="phone?.invalid && phone?.touched" class="error" role="alert">
+      {{ getErrorMessage(phone) }}
+    </div>
+  </div>
+
+  <!-- <div class="form-group">
+    <label for="subject">Subject: <span class="required">*</span></label>
+    <input
+      id="subject"
+      type="text"
+      formControlName="subject"
+      aria-label="Subject"
+      [class.is-invalid]="subject?.invalid && subject?.touched"
+      placeholder="Enter subject"
+      required
+    />
+    <div
+      *ngIf="subject?.invalid && subject?.touched"
+      class="error"
+      role="alert"
+    >
+      {{ getErrorMessage(subject) }}
+    </div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="enquiryType">Enquiry Type:</label>
+    <select
+      id="enquiryType"
+      formControlName="enquiryType"
+      aria-label="Enquiry Type"
+      [class.is-invalid]="enquiryType?.invalid && enquiryType?.touched"
+    >
+      <option value="" disabled selected>Select an enquiry type</option>
+      <option value="test_drive">Test Drive</option>
+      <option value="appointment">Book Appointment</option>
+      <option value="service">Service Inquiry</option>
+      <option value="feedback">Feedback</option>
+      <option value="others">Others</option>
+    </select>
+    <div
+      *ngIf="enquiryType?.invalid && enquiryType?.touched"
+      class="error"
+      role="alert"
+    >
+      {{ getErrorMessage(enquiryType) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message: <span class="required">*</span></label>
+    <textarea
+      id="message"
+      formControlName="message"
+      aria-label="Message"
+      [class.is-invalid]="message?.invalid && message?.touched"
+      placeholder="Enter your message"
+      required
+    ></textarea>
+    <div
+      *ngIf="message?.invalid && message?.touched"
+      class="error"
+      role="alert"
+    >
+      {{ getErrorMessage(message) }}
+    </div>
+    <small class="char-counter"
+      >{{ message?.value?.length || 0 }}/500 characters</small
+    >
+  </div>
+
+  <!-- <button
+    type="submit"
+    [disabled]="contactForm.invalid || isSubmitting"
+    [class.loading]="isSubmitting"
+  >
+    <span *ngIf="!isSubmitting">Submit</span>
+    <span *ngIf="isSubmitting" class="spinner"></span>
+  </button> -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <!-- your input fields here -->
+
+    <div class="button-container">
+      <button
+        class="border-el-btn"
+        type="button"
+        [disabled]="contactForm.invalid || isSubmitting"
+        [class.loading]="isSubmitting"
+        (click)="onSubmit()"
+      >
+        {{ isSubmitting ? "Sending..." : "Submit" }}
+        <span class="b1"></span>
+        <span class="b2"></span>
+        <span class="b3"></span>
+        <span class="b4"></span>
+      </button>
+    </div>
+  </form>
+</form>

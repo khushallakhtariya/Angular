@@ -1,0 +1,13 @@
+/* Footer copyright styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .footer-bottom p {
+    font-size: 1rem;
+    color: #aaa;
+  }
+  

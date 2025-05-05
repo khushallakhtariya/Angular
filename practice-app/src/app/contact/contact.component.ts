@@ -1,0 +1,123 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-contact',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatSnackBarModule],
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
+})
+export class ContactComponent implements OnInit {
+  contactForm: FormGroup;
+  isSubmitting = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute
+  ) {
+    this.contactForm = this.fb.group({
+      name: ['', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+        Validators.pattern(/^[a-zA-Z\s]*$/)
+      ]],
+      email: ['', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+      ]],
+      phone: ['', [
+        Validators.pattern(/^\+?[1-9]\d{1,14}$/)
+      ]],
+      subject: ['', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(100)
+      ]],
+      enquiryType: ['', [Validators.required]],
+      message: ['', [
+        Validators.required,
+        Validators.maxLength(500)
+      ]]
+    });
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params['name']) {
+        this.contactForm.patchValue({
+          name: decodeURIComponent(params['name']),
+          email: params['email'] ? decodeURIComponent(params['email']) : '',
+          message: params['message'] ? decodeURIComponent(params['message']) : '',
+          subject: params['subject'] ? decodeURIComponent(params['subject']) : '',
+          phone: params['phone'] ? decodeURIComponent(params['phone']) : '',
+          enquiryType: params['enquiryType'] || ''
+        });
+      }
+    });
+  }
+
+  // Getter methods for easier access in template
+  get name() { return this.contactForm.get('name'); }
+  get email() { return this.contactForm.get('email'); }
+  get phone() { return this.contactForm.get('phone'); }
+  get subject() { return this.contactForm.get('subject'); }
+  get enquiryType() { return this.contactForm.get('enquiryType'); }
+  get message() { return this.contactForm.get('message'); }
+
+  // Error message logic
+  getErrorMessage(control: any): string {
+// sourcery skip: use-braces
+    if (control.hasError('required')) return 'This field is required';
+    if (control.hasError('email')) return 'Please enter a valid email address';
+    if (control.hasError('pattern')) {
+      if (control === this.phone) return 'Please enter a valid phone number';
+      return 'Invalid format';
+    }
+    if (control.hasError('minlength')) {
+      return `Minimum length is ${control.errors?.['minlength'].requiredLength} characters`;
+    }
+    if (control.hasError('maxlength')) {
+      return `Maximum length is ${control.errors?.['maxlength'].requiredLength} characters`;
+    }
+    return '';
+  }
+
+  // Form submission
+  onSubmit() {
+    if (this.contactForm.invalid) {
+      // Show error toast if form is invalid
+      this.snackBar.open('Please fill in all required fields correctly.', 'Close', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
+      });
+      return;
+    }
+
+    this.isSubmitting = true;
+
+    // Simulate successful form submission
+    console.log('Form Submitted:', this.contactForm.value);
+
+    // Show success toast
+    this.snackBar.open('Your message has been sent successfully!', 'Close', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+
+    // Reset the form after successful submission
+    this.contactForm.reset();
+    this.isSubmitting = false;
+  }
+
+  // Reset form
+  resetForm() {
+    this.contactForm.reset();
+  }
+}
