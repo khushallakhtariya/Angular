@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -35,11 +35,7 @@ export class ContactComponent implements OnInit {
       phone: ['', [
         Validators.pattern(/^\+?[1-9]\d{1,14}$/)
       ]],
-      subject: ['', [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(100)
-      ]],
+      // subject field removed from form group since it is not used in the template
       enquiryType: ['', [Validators.required]],
       message: ['', [
         Validators.required,
@@ -55,7 +51,7 @@ export class ContactComponent implements OnInit {
           name: decodeURIComponent(params['name']),
           email: params['email'] ? decodeURIComponent(params['email']) : '',
           message: params['message'] ? decodeURIComponent(params['message']) : '',
-          subject: params['subject'] ? decodeURIComponent(params['subject']) : '',
+          // subject is skipped
           phone: params['phone'] ? decodeURIComponent(params['phone']) : '',
           enquiryType: params['enquiryType'] || ''
         });
@@ -63,21 +59,23 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  // Getter methods for easier access in template
+  // Getters
   get name() { return this.contactForm.get('name'); }
   get email() { return this.contactForm.get('email'); }
   get phone() { return this.contactForm.get('phone'); }
-  get subject() { return this.contactForm.get('subject'); }
   get enquiryType() { return this.contactForm.get('enquiryType'); }
   get message() { return this.contactForm.get('message'); }
 
-  // Error message logic
-  getErrorMessage(control: any): string {
-// sourcery skip: use-braces
+  // Error message handler
+  getErrorMessage(control: AbstractControl | null): string {
+    if (!control) return '';
+
     if (control.hasError('required')) return 'This field is required';
     if (control.hasError('email')) return 'Please enter a valid email address';
     if (control.hasError('pattern')) {
       if (control === this.phone) return 'Please enter a valid phone number';
+      if (control === this.name) return 'Name can only contain letters and spaces';
+      if (control === this.email) return 'Email format is invalid';
       return 'Invalid format';
     }
     if (control.hasError('minlength')) {
@@ -89,10 +87,8 @@ export class ContactComponent implements OnInit {
     return '';
   }
 
-  // Form submission
   onSubmit() {
     if (this.contactForm.invalid) {
-      // Show error toast if form is invalid
       this.snackBar.open('Please fill in all required fields correctly.', 'Close', {
         duration: 3000,
         panelClass: ['error-snackbar']
@@ -102,21 +98,20 @@ export class ContactComponent implements OnInit {
 
     this.isSubmitting = true;
 
-    // Simulate successful form submission
-    console.log('Form Submitted:', this.contactForm.value);
+    // Simulated form submission delay
+    setTimeout(() => {
+      console.log('Form Submitted:', this.contactForm.value);
 
-    // Show success toast
-    this.snackBar.open('Your message has been sent successfully!', 'Close', {
-      duration: 3000,
-      panelClass: ['success-snackbar']
-    });
+      this.snackBar.open('Your message has been sent successfully!', 'Close', {
+        duration: 3000,
+        panelClass: ['success-snackbar']
+      });
 
-    // Reset the form after successful submission
-    this.contactForm.reset();
-    this.isSubmitting = false;
+      this.contactForm.reset();
+      this.isSubmitting = false;
+    }, 1000);
   }
 
-  // Reset form
   resetForm() {
     this.contactForm.reset();
   }

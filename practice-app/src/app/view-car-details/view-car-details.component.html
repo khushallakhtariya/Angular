@@ -1,14 +1,17 @@
+<!-- Tab Buttons as Navigation Links -->
 <div class="car-details-container">
-  <button
+  <a
     class="tab-button"
     *ngFor="let tab of tabs"
-    (click)="selectTab(tab)"
+    href="javascript:void(0)"
     [ngClass]="{ active: selectedTab === tab }"
+    (click)="selectTab(tab)"
   >
     {{ tab }}
-  </button>
-</div>
+  </a>
+</div>  
 
+<!-- Car Detail Section -->
 <ng-container *ngFor="let car of cars">
   <div *ngIf="car.code === carCode" class="car-card">
     <div class="car-content">
@@ -16,10 +19,28 @@
       <div class="car-details">
         <h2>{{ car.name }} ({{ car.year }})</h2>
         <p class="price">{{ car.price }}</p>
-        <p>{{ car.description }}</p>
         <p class="rating">⭐ {{ car.rating }} / 5</p>
-        <button class="btn-1"  (click)="showPlan(car.name)">Get Info</button>
+        <p class="description">{{ car.description }}</p>
+        
+        <button class="btn-1" (click)="showPlan(car.name)">Get Info</button>
       </div>
+    </div>
+
+    <!-- Scrollable Tab Sections -->
+    <div *ngFor="let tab of tabs" [id]="getTabId(tab)" class="tab-section">
+      <h3>{{ tab }}</h3>
+      <p>
+        <!-- Display real or placeholder content -->
+        <ng-container [ngSwitch]="tab">
+          <ng-container *ngSwitchCase="'Overview'">{{ car.description }}</ng-container>
+          <ng-container *ngSwitchCase="'Variant'">Variant details for {{ car.name }} will go here.</ng-container>
+          <ng-container *ngSwitchCase="'Offers'">Current offers for {{ car.name }} will go here.</ng-container>
+          <ng-container *ngSwitchCase="'Similar Cars'">Similar cars to {{ car.name }} will be shown here.</ng-container>
+          <ng-container *ngSwitchCase="'Colors'">Available colors for {{ car.name }}.</ng-container>
+          <ng-container *ngSwitchCase="'Mileage'">Mileage information for {{ car.name }}.</ng-container>
+          <ng-container *ngSwitchCase="'User Review'">User reviews for {{ car.name }}.</ng-container>
+        </ng-container>
+      </p>
     </div>
   </div>
 </ng-container>

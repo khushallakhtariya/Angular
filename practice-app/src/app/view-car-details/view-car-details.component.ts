@@ -1,8 +1,7 @@
-// src/app/view-car-details/view-car-details.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common'; // ✅ Import Location
 
 @Component({
   selector: 'app-view-car-details',
@@ -11,9 +10,56 @@ import { CommonModule } from '@angular/common';
   templateUrl: './view-car-details.component.html',
   styleUrls: ['./view-car-details.component.css'],
 })
-export class ViewCarDetailsComponent implements OnInit {  
+export class ViewCarDetailsComponent implements OnInit {
   carCode: string | null = null;
- 
+  selectedTab = 'Overview';
+
+  tabs = ['Overview', 'Variant', 'Offers', 'Similar Cars', 'Colors', 'Mileage', 'User Review'];
+
+  getTabId(tab: string): string {
+    return tab.replace(/\s+/g, '');
+  }
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location // ✅ Inject Location
+  ) {}
+
+  ngOnInit(): void {
+    this.carCode = this.route.snapshot.paramMap.get('code');
+
+    const tabFromUrl = this.route.snapshot.paramMap.get('tabId');
+    if (tabFromUrl) {
+      const matchedTab = this.tabs.find(tab => this.getTabId(tab) === tabFromUrl);
+      if (matchedTab) {
+        this.selectedTab = matchedTab;
+
+        // Scroll to the section on load
+        setTimeout(() => {
+          const el = document.getElementById(tabFromUrl);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+    const tabId = this.getTabId(tab);
+
+    // ✅ Update the URL without reloading the component
+    this.location.replaceState(`/view-car-details/${this.carCode}/${tabId}`);
+
+    // ✅ Scroll to the section
+    const el = document.getElementById(tabId);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  showPlan(carName: string) {
+    this.router.navigate(['/get-info', carName]);
+  }
+
   cars = [
     {
       code: 'code-1',
@@ -39,7 +85,7 @@ export class ViewCarDetailsComponent implements OnInit {
     },
     {
       code: 'code-3',
-      name: 'Porsche Cayenne',
+      name: 'Porsche Cayenn e',
       year: 2021,
       price: 'Rs. 1.42 - 2.00 Crore',
       description:
@@ -71,25 +117,4 @@ export class ViewCarDetailsComponent implements OnInit {
         'https://imgd.aeplcdn.com/664x374/n/cw/ec/165641/panamera-exterior-right-front-three-quarter.jpeg?isig=0&q=80',
     },
   ];
-
-  tabs = ['Overview', 'Variant', 'Offers', 'Similar Cars', 'Colors', 'Mileage', 'User Review'];
-selectedTab = 'Overview';
-
-
-  constructor(private route: ActivatedRoute, private router: Router) {}
-
-  ngOnInit(): void {
-    this.carCode = this.route.snapshot.paramMap.get('code');
-    const name = this.route.snapshot.paramMap.get('carName');
-  }
-
-  selectTab(tab: string) {
-    this.selectedTab = tab;
-    // Add logic here to change the content based on selected tab
-  }
-  showPlan(carName: string) {
-    // alert(`You have selected the ${carName} plan.`);
-    this.router.navigate(['/get-info', carName]);
-  }
-  
 }

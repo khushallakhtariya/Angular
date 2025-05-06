@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
+import { ViewCarDetailsComponent } from "./view-car-details/view-car-details.component";
 
 export const routes: Routes = [
   {
@@ -33,7 +34,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./get-info/get-info.component').then((m) => m.InfoComponent),
   },
-
+  {
+    path: 'view-car-details',
+    component: ViewCarDetailsComponent,
+  },
 
   {
     path: '**',

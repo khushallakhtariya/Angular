@@ -47,26 +47,6 @@
     </div>
   </div>
 
-  <!-- <div class="form-group">
-    <label for="subject">Subject: <span class="required">*</span></label>
-    <input
-      id="subject"
-      type="text"
-      formControlName="subject"
-      aria-label="Subject"
-      [class.is-invalid]="subject?.invalid && subject?.touched"
-      placeholder="Enter subject"
-      required
-    />
-    <div
-      *ngIf="subject?.invalid && subject?.touched"
-      class="error"
-      role="alert"
-    >
-      {{ getErrorMessage(subject) }}
-    </div>
-  </div> -->
-
   <div class="form-group">
     <label for="enquiryType">Enquiry Type:</label>
     <select
@@ -75,18 +55,14 @@
       aria-label="Enquiry Type"
       [class.is-invalid]="enquiryType?.invalid && enquiryType?.touched"
     >
-      <option value="" disabled selected>Select an enquiry type</option>
+      <option value="" disabled>Select an enquiry type</option>
       <option value="test_drive">Test Drive</option>
       <option value="appointment">Book Appointment</option>
       <option value="service">Service Inquiry</option>
       <option value="feedback">Feedback</option>
       <option value="others">Others</option>
     </select>
-    <div
-      *ngIf="enquiryType?.invalid && enquiryType?.touched"
-      class="error"
-      role="alert"
-    >
+    <div *ngIf="enquiryType?.invalid && enquiryType?.touched" class="error" role="alert">
       {{ getErrorMessage(enquiryType) }}
     </div>
   </div>
@@ -101,43 +77,26 @@
       placeholder="Enter your message"
       required
     ></textarea>
-    <div
-      *ngIf="message?.invalid && message?.touched"
-      class="error"
-      role="alert"
-    >
+    <div *ngIf="message?.invalid && message?.touched" class="error" role="alert">
       {{ getErrorMessage(message) }}
     </div>
-    <small class="char-counter"
-      >{{ message?.value?.length || 0 }}/500 characters</small
-    >
+    <small class="char-counter">
+      {{ message?.value?.length || 0 }}/500 characters
+    </small>
   </div>
 
-  <!-- <button
-    type="submit"
-    [disabled]="contactForm.invalid || isSubmitting"
-    [class.loading]="isSubmitting"
-  >
-    <span *ngIf="!isSubmitting">Submit</span>
-    <span *ngIf="isSubmitting" class="spinner"></span>
-  </button> -->
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <!-- your input fields here -->
-
-    <div class="button-container">
-      <button
-        class="border-el-btn"
-        type="button"
-        [disabled]="contactForm.invalid || isSubmitting"
-        [class.loading]="isSubmitting"
-        (click)="onSubmit()"
-      >
-        {{ isSubmitting ? "Sending..." : "Submit" }}
-        <span class="b1"></span>
-        <span class="b2"></span>
-        <span class="b3"></span>
-        <span class="b4"></span>
-      </button>
-    </div>
-  </form>
+  <div class="button-container">
+    <button
+      class="border-el-btn"
+      type="submit"
+      [disabled]="contactForm.invalid || isSubmitting"
+      [class.loading]="isSubmitting"
+    >
+      {{ isSubmitting ? "Sending..." : "Submit" }}
+      <span class="b1"></span>
+      <span class="b2"></span>
+      <span class="b3"></span>
+      <span class="b4"></span>
+    </button>
+  </div>
 </form>
