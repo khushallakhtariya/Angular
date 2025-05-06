@@ -1,0 +1,25 @@
+<div class="car-details-container">
+  <button
+    class="tab-button"
+    *ngFor="let tab of tabs"
+    (click)="selectTab(tab)"
+    [ngClass]="{ active: selectedTab === tab }"
+  >
+    {{ tab }}
+  </button>
+</div>
+
+<ng-container *ngFor="let car of cars">
+  <div *ngIf="car.code === carCode" class="car-card">
+    <div class="car-content">
+      <img [src]="car.image" [alt]="car.name" class="car-image" />
+      <div class="car-details">
+        <h2>{{ car.name }} ({{ car.year }})</h2>
+        <p class="price">{{ car.price }}</p>
+        <p>{{ car.description }}</p>
+        <p class="rating">⭐ {{ car.rating }} / 5</p>
+        <button class="btn-1"  (click)="showPlan(car.name)">Get Info</button>
+      </div>
+    </div>
+  </div>
+</ng-container>

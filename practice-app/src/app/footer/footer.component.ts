@@ -2,10 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+  pincode: string = '';
 
+  onSubmit() {
+    console.log('Entered Pincode:', this.pincode);
+    alert(`Pincode submitted: ${this.pincode}`);
+  }
 }

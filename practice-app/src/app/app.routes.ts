@@ -1,12 +1,17 @@
 import { Routes } from "@angular/router";
+import { HomeComponent } from "./home/home.component";
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'home',
-    loadComponent: () =>
-      import('./home/home.component').then((m) => m.HomeComponent),
+    path: '',
+    component: HomeComponent
   },
+  {
+    path: 'car/:code/details',
+    loadComponent: () =>
+      import('./view-car-details/view-car-details.component').then((m) => m.ViewCarDetailsComponent),
+  },
+
   {
     path: 'about',
     loadComponent: () =>
@@ -23,6 +28,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./help-me/help-me.component').then((m) => m.HelpMeComponent),
   },
+  {
+    path: 'get-info/:carName',
+    loadComponent: () =>
+      import('./get-info/get-info.component').then((m) => m.InfoComponent),
+  },
+
+
   {
     path: '**',
     loadComponent: () =>

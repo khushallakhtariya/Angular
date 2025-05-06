@@ -7,6 +7,9 @@ import { ContactComponent } from "./contact/contact.component";
 import { HelpMeComponent } from "./help-me/help-me.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NoPageComponent } from "./no-page/no-page.component";
+import { InfoComponent } from "./get-info/get-info.component";
+
+
 
 @Component({
   selector: "app-root",
@@ -21,6 +24,9 @@ import { NoPageComponent } from "./no-page/no-page.component";
     HelpMeComponent,
     FooterComponent,
     NoPageComponent,
+    InfoComponent
+
+  
   
   ],
   templateUrl: "./app.component.html",
