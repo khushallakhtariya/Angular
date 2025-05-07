@@ -73,58 +73,73 @@ export class ViewCarDetailsComponent implements OnInit {
       name: 'Porsche 911',
       year: 2021,
       price: 'Rs. 1.99 - 4.26 Crore',
+      engine: '2981 - 3996 cc',
+      fuel: 'Petrol',
+      transmission: 'Automatic',
+      mileage: '9.0 - 11.1 kmpl',
       description:
         'The price of Porsche 911, a 2-seater Coupe & Convertible, ranges from Rs. 1.99 - 4.26 Crore. It is available in 8 variants, with engine options ranging from 2981 to 3996 cc and a choice of 1 transmission: Automatic. 911 comes with 7 airbags and is available in 15 colours.',
       rating: 4.8,
-      image:
-        'https://imgd.aeplcdn.com/664x374/n/cw/ec/39232/911-exterior-right-front-three-quarter-154382.jpeg?isig=0&wm=1&q=80',
+      image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/39232/911-exterior-right-front-three-quarter-154382.jpeg?isig=0&wm=1&q=80',
     },
     {
       code: 'car-2',
       name: 'Porsche Macan',
       year: 2021,
       price: 'Rs. 96.05 Lakh',
+      engine: '1984 cc',
+      fuel: 'Petrol',
+      transmission: 'Automatic',
+      mileage: '11.24 kmpl',
       description:
         'The price of Porsche Macan, a 5 seater Full-Size SUV, starts from of Rs. 96.05 Lakh. It is available in 1 variant, with an engine of 1984 cc and a choice of 1 transmission: Automatic. Macan has an NCAP rating of 5 stars and comes with 8 airbags. Porsche Macan is available in 9 colours.',
       rating: 4.8,
-      image:
-        'https://imgd.aeplcdn.com/664x374/n/cw/ec/99421/macan-exterior-right-front-three-quarter-9.jpeg?isig=0&q=80',
+      image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/99421/macan-exterior-right-front-three-quarter-9.jpeg?isig=0&q=80',
     },
     {
       code: 'car-3',
       name: 'Porsche Cayenne',
       year: 2021,
       price: 'Rs. 1.42 - 2.00 Crore',
+      engine: '2995 - 3996 cc',
+      fuel: 'Petrol',
+      transmission: 'Automatic',
+      mileage: '9.8 - 11.23 kmpl',
       description:
         'The price of Porsche Cayenne, a 5 seater Full-Size SUV, ranges from Rs. 1.42 - 2.00 Crore. It is available in 2 variants, with engine options ranging from 2995 to 3996 cc and a choice of 1 transmission: Automatic. Cayenne has an NCAP rating of 5 stars and comes with 9 airbags.',
       rating: 4.8,
-      image:
-        'https://imgd.aeplcdn.com/664x374/n/cw/ec/32951/cayenne-exterior-right-front-three-quarter-2.jpeg?isig=0&wm=1&q=80',
+      image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/32951/cayenne-exterior-right-front-three-quarter-2.jpeg?isig=0&wm=1&q=80',
     },
     {
       code: 'car-4',
       name: 'Porsche Taycan',
       year: 2021,
       price: 'Rs. 1.67 - 2.54 Crore',
+      engine: 'Fully Electric',
+      fuel: 'Electric',
+      transmission: 'Automatic',
+      mileage: '312 - 484 km (range)',
       description:
         "The Taycan is Porsche's first electric car. It packs a huge battery with enormous power output and can hit 100kmph in just 2.6 seconds. It is both practical and exhilarating to drive.",
       rating: 4.8,
-      image:
-        'https://imgd.aeplcdn.com/664x374/n/cw/ec/45063/taycan-exterior-right-front-three-quarter-5.jpeg?isig=0&q=80',
+      image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/45063/taycan-exterior-right-front-three-quarter-5.jpeg?isig=0&q=80',
     },
     {
       code: 'car-5',
       name: 'Porsche Panamera',
       year: 2021,
       price: 'Rs. 1.70 - 2.34 Crore',
+      engine: '2894 - 3996 cc',
+      fuel: 'Petrol',
+      transmission: 'Automatic',
+      mileage: '10.75 - 11.9 kmpl',
       description:
         'The price of Porsche Panamera, a 4 seater Sedan, ranges from Rs. 1.70 - 2.34 Crore. It is available in 2 variants, with engine options ranging from 2894 to 3996 cc and a choice of 1 transmission: Automatic. Panamera comes with 10 airbags.',
       rating: 4.8,
-      image:
-        'https://imgd.aeplcdn.com/664x374/n/cw/ec/165641/panamera-exterior-right-front-three-quarter.jpeg?isig=0&q=80',
+      image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/165641/panamera-exterior-right-front-three-quarter.jpeg?isig=0&q=80',
     },
   ];
-
+  
 
 
 
@@ -254,7 +269,30 @@ export class ViewCarDetailsComponent implements OnInit {
       img: 'https://imgd.aeplcdn.com/664x374/cw/ec/39232/Porsche-992-911-Right-Front-Three-Quarter-154380.jpg?wm=0&q=80 ',
     },
   ];
-
+  getStarsArray(rating: number): number[] {
+    return [1, 2, 3, 4, 5];
+  }
   
-  
+  reviews = [
+    {     
+      name: 'John Doe',
+      review: 'The Porsche 911 is an absolute masterpiece. The performance is exhilarating, and the design is stunning. I love every moment behind the wheel!',
+      rating: 5,
+    },
+    {
+      name: 'Jane Smith',
+      review: 'I recently purchased the Porsche Macan, and it has exceeded my expectations. The handling is precise, and the interior is luxurious. Highly recommend!',
+      rating: 4,
+    },
+    {
+      name: 'Michael Johnson',
+      review: 'The Porsche Cayenne is a perfect blend of performance and practicality. It handles like a sports car while providing ample space for my family.',
+      rating: 4.5,
+    },
+    {
+      name: 'Emily Davis',
+      review: 'I had the chance to drive the Porsche Taycan, and it blew me away. The acceleration is mind-boggling, and the technology is top-notch. A true electric sports car!',
+      rating: 5,
+    }
+  ];
 }

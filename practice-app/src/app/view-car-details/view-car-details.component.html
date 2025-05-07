@@ -1,15 +1,3 @@
-<div class="car-details-container">
-  <a
-    class="tab-button"
-    *ngFor="let tab of tabs"
-    href="javascript:void(0)"
-    [ngClass]="{ active: selectedTab === tab }"
-    (click)="selectTab(tab)"
-  >
-    {{ tab }}
-  </a>
-</div>  
-<!-- Car Detail Section -->
 <ng-container *ngFor="let car of cars">
   <div *ngIf="car.code === carCode" class="car-card">
     <div class="car-content">
@@ -28,8 +16,8 @@
     <div *ngFor="let tab of tabs" [id]="getTabId(tab)" class="tab-section-content">
       <h3>{{ tab }}</h3>
       <p>
-        <!-- Display real or placeholder content -->
         <ng-container [ngSwitch]="tab">
+          <!-- Variant Tab Content -->
           <ng-container *ngSwitchCase="'Variant'">
             <div class="row">
               <div class="col-md-4 mb-4" *ngFor="let v of variant">
@@ -46,38 +34,33 @@
                     </ul>
                   </div>
                   <div class="save-button">
-                    <button> Save me!
-                    </button>
-                </div>
+                    <button> Save me! </button>
+                  </div>
                 </div>
               </div>
             </div>
           </ng-container>
-  
 
-
-
+          <!-- Offers Tab Content -->
           <ng-container *ngSwitchCase="'Offers'">
             <section class="offer-section">
               <h2>Current Offers for {{ car.name }}</h2>
-          
               <div class="offer-card">
                 <h3>Limited Time Discount</h3>
                 <p>Enjoy a 10% discount on the base price when you book by May 31st.</p>
               </div>
-          
               <div class="offer-card">
                 <h3>Zero Down Payment</h3>
                 <p>Finance your {{ car.name }} with no upfront cost, subject to credit approval.</p>
               </div>
-          
               <div class="offer-card">
                 <h3>Free Service Package</h3>
                 <p>Receive complimentary servicing for two years with your new car purchase.</p>
               </div>
             </section>
           </ng-container>
-          
+
+          <!-- Similar Cars Tab Content -->
           <ng-container *ngSwitchCase="'Similar Cars'">
             <div class="similar-cars-section">
               <h3>Similar Cars to {{ car.name }}</h3>
@@ -87,7 +70,7 @@
                     <img [src]="similarCar.img" [alt]="similarCar.name" class="car-image" />
                     <h4>{{ similarCar.name }} ({{ similarCar.year }})</h4>
                     <p>{{ similarCar.make }} - {{ similarCar.model }}</p>
-                    <p>Model: {{ similarCar.model }}</p> 
+                    <p>Model: {{ similarCar.model }}</p>
                     <p>Year: {{ similarCar.year }}</p>
                     <p>Price: ${{ similarCar.price }}</p>
                   </li>
@@ -98,7 +81,8 @@
               </ng-template>
             </div>
           </ng-container>
-          
+
+          <!-- Colors Tab Content -->
           <ng-container *ngSwitchCase="'Colors'">
             <div class="color-message">
               <p>You can modify the color of {{ car.name }}.</p>
@@ -106,18 +90,47 @@
             </div>
           </ng-container>
 
+          <!-- Mileage Tab Content -->
+          <ng-container *ngSwitchCase="'Mileage'">
+            <div class="mileage-section">
+              <div class="mileage-grid">
+                <div class="mileage-item">
+                  <span class="label">Engine</span>
+                  <span class="value">{{ car.engine }}</span>
+                </div>
+                <div class="mileage-item">
+                  <span class="label">Fuel Type</span>
+                  <span class="value">{{ car.fuel }}</span>
+                </div>
+                <div class="mileage-item">
+                  <span class="label">Transmission</span>
+                  <span class="value">{{ car.transmission }}</span>
+                </div>
+                <div class="mileage-item">
+                  <span class="label">Mileage</span>
+                  <span class="value">{{ car.mileage }}</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
 
-          <ng-container *ngSwitchCase="'Mileage'"
-            >Mileage information for {{ car.name }}.</ng-container
-          >
-
-
-
-
-
-          <ng-container *ngSwitchCase="'User Review'"
-            >User reviews for {{ car.name }}.</ng-container
-          >
+          <!-- User Review Tab Content -->
+          <ng-container *ngSwitchCase="'User Review'">
+            <div class="reviews-container">
+              <!-- <h2>User Reviews for {{ car.name }}</h2> -->
+              <div class="review-card" *ngFor="let review of reviews">
+                <div class="review-header">
+                  <h3 >{{ review.name }}</h3>
+                  <div class="stars">
+                    <ng-container *ngFor="let star of getStarsArray(review.rating)">
+                      <span [class.filled]="star <= review.rating">★</span>
+                    </ng-container>
+                  </div>
+                </div>
+                <p class="review-text">{{ review.review }}</p>
+              </div>
+            </div>
+          </ng-container>
         </ng-container>
       </p>
     </div>
