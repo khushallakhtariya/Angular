@@ -493,7 +493,7 @@ button:hover::before {
   text-align: center; /* Ensures the text is centered */
   line-height: 1.4;
   letter-spacing: 0.5px; /* Added slight letter spacing for better readability */
-}~
+}
 
 /*  milage section*/
 .mileage-section {
