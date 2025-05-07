@@ -474,20 +474,26 @@ button:hover::before {
   font-size: 16px;
   color: #333;
   line-height: 1.6;
-  padding: 10px;
-  /* background-color: #f4f4f4; */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f4f4f4; /* Re-enabled background color for contrast */
+  border-radius: 12px; /* Slightly increased border-radius for a smoother look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Increased shadow for more depth */
+  text-align: center; /* Centered text for better alignment */
+  margin-top: 20px; /* Added margin for spacing around the section */
+  max-width: 500px; /* Limit the width for better readability */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .color-message p {
-  margin: 5px 0;
-  font-size: 25px;
-  font-weight: bold;
-  color: black;
-  text-align: center;
-}
-
+  margin: 10px 0;
+  font-size: 18px; /* Reduced the font size for a balanced look */
+  font-weight: 600; /* Made the text bold but not too heavy */
+  color: #333; /* Keeping the text color consistent */
+  text-align: center; /* Ensures the text is centered */
+  line-height: 1.4;
+  letter-spacing: 0.5px; /* Added slight letter spacing for better readability */
+}~
 
 /*  milage section*/
 .mileage-section {
