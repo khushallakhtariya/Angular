@@ -15,7 +15,7 @@ export class HomeComponent {
 
   cars = [
     {
-      code: 'code-1',
+      code: 'car-1',
       name: 'Porsche 911',
       year: 2021,
       price: 'Rs. 1.99 - 4.26 Crore',
@@ -26,7 +26,7 @@ export class HomeComponent {
         'https://imgd.aeplcdn.com/664x374/n/cw/ec/39232/911-exterior-right-front-three-quarter-154382.jpeg?isig=0&wm=1&q=80',
     },
     {
-      code: 'code-2',
+      code: 'car-2',
       name: 'Porsche Macan',
       year: 2021,
       price: 'Rs. 96.05 Lakh',
@@ -37,7 +37,7 @@ export class HomeComponent {
         'https://imgd.aeplcdn.com/664x374/n/cw/ec/99421/macan-exterior-right-front-three-quarter-9.jpeg?isig=0&q=80',
     },
     {
-      code: 'code-3',
+      code: 'car-3',
       name: 'Porsche Cayenne',
       year: 2021,
       price: 'Rs. 1.42 - 2.00 Crore',
@@ -48,7 +48,7 @@ export class HomeComponent {
         'https://imgd.aeplcdn.com/664x374/n/cw/ec/32951/cayenne-exterior-right-front-three-quarter-2.jpeg?isig=0&wm=1&q=80',
     },
     {
-      code: 'code-4',
+      code: 'car-4',
       name: 'Porsche Taycan',
       year: 2021,
       price: 'Rs. 1.67 - 2.54 Crore',
@@ -59,7 +59,7 @@ export class HomeComponent {
         'https://imgd.aeplcdn.com/664x374/n/cw/ec/45063/taycan-exterior-right-front-three-quarter-5.jpeg?isig=0&q=80',
     },
     {
-      code: 'code-5',
+      code: 'car-5',
       name: 'Porsche Panamera',
       year: 2021,
       price: 'Rs. 1.70 - 2.34 Crore',

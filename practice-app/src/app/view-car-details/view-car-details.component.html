@@ -1,4 +1,3 @@
-<!-- Tab Buttons as Navigation Links -->
 <div class="car-details-container">
   <a
     class="tab-button"
@@ -10,7 +9,6 @@
     {{ tab }}
   </a>
 </div>  
-
 <!-- Car Detail Section -->
 <ng-container *ngFor="let car of cars">
   <div *ngIf="car.code === carCode" class="car-card">
@@ -21,24 +19,105 @@
         <p class="price">{{ car.price }}</p>
         <p class="rating">⭐ {{ car.rating }} / 5</p>
         <p class="description">{{ car.description }}</p>
-        
+
         <button class="btn-1" (click)="showPlan(car.name)">Get Info</button>
       </div>
     </div>
 
     <!-- Scrollable Tab Sections -->
-    <div *ngFor="let tab of tabs" [id]="getTabId(tab)" class="tab-section">
+    <div *ngFor="let tab of tabs" [id]="getTabId(tab)" class="tab-section-content">
       <h3>{{ tab }}</h3>
       <p>
         <!-- Display real or placeholder content -->
         <ng-container [ngSwitch]="tab">
-          <ng-container *ngSwitchCase="'Overview'">{{ car.description }}</ng-container>
-          <ng-container *ngSwitchCase="'Variant'">Variant details for {{ car.name }} will go here.</ng-container>
-          <ng-container *ngSwitchCase="'Offers'">Current offers for {{ car.name }} will go here.</ng-container>
-          <ng-container *ngSwitchCase="'Similar Cars'">Similar cars to {{ car.name }} will be shown here.</ng-container>
-          <ng-container *ngSwitchCase="'Colors'">Available colors for {{ car.name }}.</ng-container>
-          <ng-container *ngSwitchCase="'Mileage'">Mileage information for {{ car.name }}.</ng-container>
-          <ng-container *ngSwitchCase="'User Review'">User reviews for {{ car.name }}.</ng-container>
+          <ng-container *ngSwitchCase="'Variant'">
+            <div class="row">
+              <div class="col-md-4 mb-4" *ngFor="let v of variant">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ v.name }}</h5>
+                    <ul class="spec-list">
+                      <li><span class="label">Engine:-</span><span class="value">{{ v.engine }}</span></li>
+                      <li><span class="label">Fuel:-</span><span class="value">{{ v.fuel }}</span></li>
+                      <li><span class="label">Transmission:-</span><span class="value">{{ v.transmission }}</span></li>
+                      <li><span class="label">Mileage:-</span><span class="value">{{ v.mileage }}</span></li>
+                      <li><span class="label">Power:-</span><span class="value">{{ v.power }}</span></li>
+                      <li><span class="label">Price:-</span><span class="value">{{ v.price }}</span></li>
+                    </ul>
+                  </div>
+                  <div class="save-button">
+                    <button> Save me!
+                    </button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+  
+
+
+
+          <ng-container *ngSwitchCase="'Offers'">
+            <section class="offer-section">
+              <h2>Current Offers for {{ car.name }}</h2>
+          
+              <div class="offer-card">
+                <h3>Limited Time Discount</h3>
+                <p>Enjoy a 10% discount on the base price when you book by May 31st.</p>
+              </div>
+          
+              <div class="offer-card">
+                <h3>Zero Down Payment</h3>
+                <p>Finance your {{ car.name }} with no upfront cost, subject to credit approval.</p>
+              </div>
+          
+              <div class="offer-card">
+                <h3>Free Service Package</h3>
+                <p>Receive complimentary servicing for two years with your new car purchase.</p>
+              </div>
+            </section>
+          </ng-container>
+          
+          <ng-container *ngSwitchCase="'Similar Cars'">
+            <div class="similar-cars-section">
+              <h3>Similar Cars to {{ car.name }}</h3>
+              <div *ngIf="similarCars.length > 0; else noSimilarCars">
+                <ul class="similar-cars-list">
+                  <li *ngFor="let similarCar of similarCars" class="similar-car-card">
+                    <img [src]="similarCar.img" [alt]="similarCar.name" class="car-image" />
+                    <h4>{{ similarCar.name }} ({{ similarCar.year }})</h4>
+                    <p>{{ similarCar.make }} - {{ similarCar.model }}</p>
+                    <p>Model: {{ similarCar.model }}</p> 
+                    <p>Year: {{ similarCar.year }}</p>
+                    <p>Price: ${{ similarCar.price }}</p>
+                  </li>
+                </ul>
+              </div>
+              <ng-template #noSimilarCars>
+                <p class="no-similar-cars">No similar cars available.</p>
+              </ng-template>
+            </div>
+          </ng-container>
+          
+          <ng-container *ngSwitchCase="'Colors'">
+            <div class="color-message">
+              <p>You can modify the color of {{ car.name }}.</p>
+              <p>Other features are not customizable.</p>
+            </div>
+          </ng-container>
+
+
+          <ng-container *ngSwitchCase="'Mileage'"
+            >Mileage information for {{ car.name }}.</ng-container
+          >
+
+
+
+
+
+          <ng-container *ngSwitchCase="'User Review'"
+            >User reviews for {{ car.name }}.</ng-container
+          >
         </ng-container>
       </p>
     </div>

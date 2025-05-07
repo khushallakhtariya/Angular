@@ -1,55 +1,76 @@
 html {
   scroll-behavior: smooth;
 }
+.car-details-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 30px;
+  text-decoration: underline;
+}
 
 .tab-button {
-  margin-right: 10px;
-  padding: 10px 15px;
-  background-color: #eee;
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   text-decoration: none;
-  color: black;
-  font-weight: bold;
+  display: inline-block;
 }
 
 .tab-button:hover {
-  background-color: #ccc;
+  background-color: #d4d4d4;
 }
 
-.tab-section {
-  margin-top: 50px;
-  padding: 20px;
-  border-top: 1px solid #ddd;
+.tab-button.active {
+  background-color: #2e8b57;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
 }
+/* ========== TAB CSS ========== */
+
+.tab-section-content{
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+  color: #db0101;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== CAR CARD ========== */
 .car-card {
   width: 80%;
   margin: 2rem auto;
   border: 1px solid #e0e0e0;
   border-radius: 16px;
-  overflow: hidden;
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
-  height: auto;
+  animation: zoomIn 0.5s ease-out forwards;
+  overflow: hidden;
 }
-
 .car-card:hover {
   transform: translateY(-4px);
 }
 
 .car-content {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .car-image {
   flex: 1 1 300px;
-  /* max-width: 3000px; */
-  height: auto;
-  object-fit: cover;
   width: 100%;
+  object-fit: cover;
 }
 
 .car-details {
@@ -59,26 +80,23 @@ html {
   flex-direction: column;
   justify-content: center;
 }
-
 .car-details h2 {
-  margin: 0 0 0.5rem;
   font-size: 1.75rem;
+  margin-bottom: 0.5rem;
 }
-
 .price {
   color: #2e8b57;
   font-weight: bold;
-  margin-bottom: 0.5rem;
   font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
-
 .rating {
   font-size: 1rem;
   color: #ffa500;
   margin-bottom: 1rem;
 }
 .btn-1 {
-  background-color: #007bff;
+  background-color: gray;
   color: white;
   width: 70%;
   border: none;
@@ -86,109 +104,205 @@ html {
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin: 0.5rem auto;
   display: flex;
   justify-content: center;
   font-size: 1rem;
   font-weight: 500;
-  margin: 0.5rem auto;
 }
-
-button {
-  align-self: flex-start;
-  padding: 0.6rem 1.2rem;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-  font-size: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
+.btn-1:hover {
   background-color: #0056b3;
 }
 
-/* Responsive stacking for smaller screens */
-@media (max-width: 768px) {
-  .car-content {
-    flex-direction: column;
-  }
+/* ========== VARIANT CARD ========== */
+.card {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .car-image {
+/* .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+} */
+
+.card-title,
+.variant-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.col-md-4 {
+  flex: 1 1 calc(33.333% - 2rem);
+  max-width: calc(33.333% - 2rem);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 1 1 100%;
     max-width: 100%;
   }
+}
 
-  .car-details {
-    padding: 1rem;
+.card-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.card-body strong {
+  color: #111827;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.reward-btn {
+  background: #6a8ef6;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.reward-btn:hover {
+  background: #4f76e8;
+  transform: scale(1.05);
+}
+
+.reward-btn .IconContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.reward-btn .coin {
+  width: 10px;
+  height: 10px;
+  background: #facc15;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-.car-details-container {
-  align-items: center;
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 2rem auto;
-  padding: 1rem;
-  border: none;
-}
-
-.car-tabs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  border-bottom: 2px solid #f0f0f0;
-  background-color: #f9f9f9;
-  padding: 0.5rem 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.tab-button {
-  margin: 0.5rem;
-  padding: 0.6rem 1.4rem;
+  flex-direction: column;
+  gap: 0.75rem;
   font-size: 1rem;
+  color: #374151;
+}
+
+.spec-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.spec-list .label {
   font-weight: 500;
-  color: #333;
-  background-color: #eaeaea;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: #1f2937;
 }
 
-.tab-button:hover {
-  background-color: #d4d4d4;
+.spec-list .value {
+  font-weight: 600;
+  color: #111827;
+  text-align: right;
 }
 
-.tab-button.active {
-  background-color: #007bff;
-  color: white;
-  transform: scale(1.05);
-  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+/* ========== BUTTON ========== */
+.save-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* From Uiverse.io by alexroumi */
+button {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
 }
 
-/* @keyframes fadeSlideUp {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .car-card {
-        animation: fadeSlideUp 0.6s ease forwards;
-    } */
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
 
+button:hover {
+  color: #e8e8e8;
+}
+
+button:hover::before {
+  width: 100%;
+}
+
+/* ========== ANIMATIONS ========== */
 @keyframes zoomIn {
   0% {
     transform: scale(0.95);
@@ -200,6 +314,176 @@ button:hover {
   }
 }
 
-.car-card {
-  animation: zoomIn 0.5s ease-out forwards;
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  .car-content {
+    flex-direction: column;
+  }
+  .car-image {
+    max-width: 100%;
+  }
+  .car-details {
+    padding: 1rem;
+  }
+  .card {
+    width: 90%;
+    padding: 1.2rem;
+  }
+  .reward-btn {
+    width: 130px;
+    height: 40px;
+  }
+  .IconContainer {
+    width: 25px;
+    height: 25px;
+  }
+  .coin {
+    width: 15%;
+    height: 15%;
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    padding: 1rem;
+  }
+  .reward-btn {
+    width: 120px;
+    height: 38px;
+    font-size: 12px;
+  }
+  .IconContainer {
+    width: 22px;
+    height: 22px;
+  }
+  .coin {
+    width: 12%;
+    height: 12%;
+  }
+}
+
+/* ========== OFFER-SECTION CSS ========== */
+
+.offer-section {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.offer-section h2 {
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+.offer-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  border-left: 4px solid #db0101;
+  border-right: 4px solid #db0101;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.offer-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.offer-card h3 {
+  margin-top: 0;
+  color: green;
+}
+
+.offer-card p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+/* ========== SIMILAR CSS ========== */
+.similar-cars-section {
+  margin-top: 30px;
+}
+
+.similar-cars-section h3 {
+  font-size: 26px;
+  margin-bottom: 24px;
+  color: #222;
+  font-weight: 600;
+}
+
+.similar-cars-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.similar-car-card {
+  background: linear-gradient(145deg, #f9f9f9, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.similar-car-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.similar-car-card h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #111;
+  font-weight: 600;
+}
+
+.similar-car-card p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.no-similar-cars {
+  font-size: 16px;
+  color: #888;
+  padding: 16px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .similar-cars-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .similar-cars-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== COLER CSS ========== */
+
+.color-message {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  padding: 10px;
+  /* background-color: #f4f4f4; */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-message p {
+  margin: 5px 0;
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
 }
