@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-car-details',
   standalone: true,
-  imports: [CommonModule,RouterLink ],
+  imports: [CommonModule ],
   templateUrl: './view-car-details.component.html',
   styleUrls: ['./view-car-details.component.css'],
 })

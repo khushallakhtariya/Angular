@@ -1,29 +1,34 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // ✅ Import this
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-info',
   standalone: true,
-  imports: [CommonModule, FormsModule], // ✅ Add CommonModule here
+  imports: [CommonModule, FormsModule], 
   templateUrl: './get-info.component.html',
   styleUrls: ['./get-info.component.css']
 })
 export class InfoComponent {
-  pincode: string = '';
+  pincode: number | string = '';
   city: string = '';
   address: string = '';
   submittedMessage: string = '';
 
-  onSubmit() {
+
+  onSubmit(form: NgForm) {
     this.submittedMessage = 'Hello, your information has been received. We will contact you soon.';
     this.pincode = '';
     this.city = '';
     this.address = '';
 
+    form.resetForm();
+
+
 
   setTimeout(() => {
     this.submittedMessage = '';
-  }, 2000); // 2000 milliseconds = 2 seconds
+  }, 2000); 
   }
 }

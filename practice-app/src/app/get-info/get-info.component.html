@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="form-wrapper">
-      <form #form="ngForm" (ngSubmit)="onSubmit()" class="pincode-form">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="pincode-form">
         <input
           type="text"
           [(ngModel)]="pincode"
