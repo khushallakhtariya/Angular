@@ -1,0 +1,122 @@
+.feedback-container {
+    max-width: 500px;
+    margin: 40px ;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .feedback-container h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  
+  .feedback-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .feedback-container label {
+    font-size: 16px;
+    color: #34495e;
+    font-weight: 500;
+    margin-bottom: -10px;
+  }
+  
+  .feedback-container input,
+  .feedback-container textarea {
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+  }
+  
+  .feedback-container input:focus,
+  .feedback-container textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  .feedback-container textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  .feedback-container button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .feedback-container button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+  
+  .feedback-container button:active {
+    transform: translateY(0);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 650px) {
+    .feedback-container {
+      margin: 20px;
+      padding: 20px;
+    }
+    
+    .feedback-container h2 {
+      font-size: 24px;
+    }
+  }
+  
+  /* Validation styles */
+
+  
+  /* Animation for form elements */
+  
+  .feedback-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px;
+  }
+  
+  .feedback-container {
+    flex: 1 1 35%;
+  }
+  
+  .review-display {
+    flex: 1 1 60%;
+    background-color: #f1f1f1;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .review-display h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .review-display p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
