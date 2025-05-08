@@ -1,3 +1,14 @@
+<div class="tab-header">
+  <button
+    *ngFor="let tab of tabs"
+    (click)="selectTab(tab)"
+    [class.active]="selectedTab === tab"
+    class="tab-button"
+  >
+    {{ tab }}
+  </button>
+</div>
+
 <ng-container *ngFor="let car of cars">
   <div *ngIf="car.code === carCode" class="car-card">
     <div class="car-content">
@@ -13,7 +24,11 @@
     </div>
 
     <!-- Scrollable Tab Sections -->
-    <div *ngFor="let tab of tabs" [id]="getTabId(tab)" class="tab-section-content">
+    <div
+      *ngFor="let tab of tabs"
+      [id]="getTabId(tab)"
+      class="tab-section-content"
+    >
       <h3>{{ tab }}</h3>
       <p>
         <ng-container [ngSwitch]="tab">
@@ -25,16 +40,34 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ v.name }}</h5>
                     <ul class="spec-list">
-                      <li><span class="label">Engine:-</span><span class="value">{{ v.engine }}</span></li>
-                      <li><span class="label">Fuel:-</span><span class="value">{{ v.fuel }}</span></li>
-                      <li><span class="label">Transmission:-</span><span class="value">{{ v.transmission }}</span></li>
-                      <li><span class="label">Mileage:-</span><span class="value">{{ v.mileage }}</span></li>
-                      <li><span class="label">Power:-</span><span class="value">{{ v.power }}</span></li>
-                      <li><span class="label">Price:-</span><span class="value">{{ v.price }}</span></li>
+                      <li>
+                        <span class="label">Engine:-</span
+                        ><span class="value">{{ v.engine }}</span>
+                      </li>
+                      <li>
+                        <span class="label">Fuel:-</span
+                        ><span class="value">{{ v.fuel }}</span>
+                      </li>
+                      <li>
+                        <span class="label">Transmission:-</span
+                        ><span class="value">{{ v.transmission }}</span>
+                      </li>
+                      <li>
+                        <span class="label">Mileage:-</span
+                        ><span class="value">{{ v.mileage }}</span>
+                      </li>
+                      <li>
+                        <span class="label">Power:-</span
+                        ><span class="value">{{ v.power }}</span>
+                      </li>
+                      <li>
+                        <span class="label">Price:-</span
+                        ><span class="value">{{ v.price }}</span>
+                      </li>
                     </ul>
                   </div>
                   <div class="save-button">
-                    <button> Save me! </button>
+                    <button>Save me!</button>
                   </div>
                 </div>
               </div>
@@ -47,15 +80,24 @@
               <h2>Current Offers for {{ car.name }}</h2>
               <div class="offer-card">
                 <h3>Limited Time Discount</h3>
-                <p>Enjoy a 10% discount on the base price when you book by May 31st.</p>
+                <p>
+                  Enjoy a 10% discount on the base price when you book by May
+                  31st.
+                </p>
               </div>
               <div class="offer-card">
                 <h3>Zero Down Payment</h3>
-                <p>Finance your {{ car.name }} with no upfront cost, subject to credit approval.</p>
+                <p>
+                  Finance your {{ car.name }} with no upfront cost, subject to
+                  credit approval.
+                </p>
               </div>
               <div class="offer-card">
                 <h3>Free Service Package</h3>
-                <p>Receive complimentary servicing for two years with your new car purchase.</p>
+                <p>
+                  Receive complimentary servicing for two years with your new
+                  car purchase.
+                </p>
               </div>
             </section>
           </ng-container>
@@ -66,8 +108,15 @@
               <h3>Similar Cars to {{ car.name }}</h3>
               <div *ngIf="similarCars.length > 0; else noSimilarCars">
                 <ul class="similar-cars-list">
-                  <li *ngFor="let similarCar of similarCars" class="similar-car-card">
-                    <img [src]="similarCar.img" [alt]="similarCar.name" class="car-image" />
+                  <li
+                    *ngFor="let similarCar of similarCars"
+                    class="similar-car-card"
+                  >
+                    <img
+                      [src]="similarCar.img"
+                      [alt]="similarCar.name"
+                      class="car-image"
+                    />
                     <h4>{{ similarCar.name }} ({{ similarCar.year }})</h4>
                     <p>{{ similarCar.make }} - {{ similarCar.model }}</p>
                     <p>Model: {{ similarCar.model }}</p>
@@ -120,9 +169,11 @@
               <!-- <h2>User Reviews for {{ car.name }}</h2> -->
               <div class="review-card" *ngFor="let review of reviews">
                 <div class="review-header">
-                  <h3 >{{ review.name }}</h3>
+                  <h3>{{ review.name }}</h3>
                   <div class="stars">
-                    <ng-container *ngFor="let star of getStarsArray(review.rating)">
+                    <ng-container
+                      *ngFor="let star of getStarsArray(review.rating)"
+                    >
                       <span [class.filled]="star <= review.rating">★</span>
                     </ng-container>
                   </div>

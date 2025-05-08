@@ -20,7 +20,7 @@
       <p class="car-price">{{ car.price }}</p>
       <p class="car-rating">⭐ Rating: {{ car.rating }} / 5</p>
       <p class="car-description">{{ car.description }}</p>
-      <button class="car-btn" [routerLink]="['/car', car.code, 'details']">
+      <button class="car-btn" [routerLink]="['/view', car.code, 'details']">
         View Details
       </button>
     </div>

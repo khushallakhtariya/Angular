@@ -8,7 +8,7 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: "car/:code/details",
+    path: "view/:code/details",
     loadComponent: () =>
       import("./view-car-details/view-car-details.component").then(
         (m) => m.ViewCarDetailsComponent,
@@ -36,13 +36,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import("./get-info/get-info.component").then((m) => m.InfoComponent),
   },
-  {
-    path: "view-car-details/:code/:section",
-    loadComponent: () =>
-      import("./view-car-details/view-car-details.component").then(
-        (m) => m.ViewCarDetailsComponent,
-      ),
-  },
+  // {
+  //   path: "view-car-details/:code/:section",
+  //   loadComponent: () =>
+  //     import("./view-car-details/view-car-details.component").then(
+  //       (m) => m.ViewCarDetailsComponent,
+  //     ),
+  // },
 
   {
     path: "**",
