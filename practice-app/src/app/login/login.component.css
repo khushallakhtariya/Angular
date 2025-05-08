@@ -1,111 +1,299 @@
-/* Container */
+F:host {
+  display: flex;
+  min-height: 80%;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75%;
-  background: linear-gradient(to right, #f4f4f4, #e2e8f0);
-  padding: 20px;
+  min-height: 90vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-/* Form */
-.auth-form {
-  background: #fff;
-  padding: 30px 25px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  /* max-width: 400px; */
+.auth-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-/* Title */
-.form-title {
+.auth-header {
+  padding: 2rem 2rem 1rem;
   text-align: center;
-  margin-bottom: 25px;
-  font-size: 1.5rem;
-  color: red;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
-/* Form Groups */
+.auth-header h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.auth-header p {
+  margin: 0.5rem 0 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.auth-form {
+  padding: 2rem;
+}
+
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  color: #333;
+  margin-bottom: 0.5rem;
   font-weight: 500;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #a0aec0;
+  z-index: 1;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #a0aec0;
+  z-index: 2;
+}
+
+.password-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.password-toggle:hover {
+  color: #4a5568;
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
   font-size: 1rem;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
   box-sizing: border-box;
 }
 
-/* Error Messages */
-.error-message {
-  color: #e63946;
-  font-size: 0.85rem;
-  margin-top: 5px;
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background-color: white;
 }
 
-/* Buttons */
-button {
-  display: block;
-  width: 100%;
-  padding: 12px;
+.error-message {
+  color: #e53e3e;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.error-message svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.success-message {
+  color: #38a169;
+  font-size: 0.9rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background-color: #f0fff4;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.success-message svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  font-weight: bold;
-  border-radius: 6px;
+  font-weight: 500;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.2s ease;
+  border: none;
+  width: 100%;
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color: #667eea;
   color: white;
-  border: none;
-  margin-top: 10px;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #5a67d8;
 }
 
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
+.btn-primary:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.btn-primary.loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn-primary.loading::after {
+  content: "";
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  color: #4a5568;
+  transition: all 0.2s ease;
+}
+
+.btn-social:hover {
+  background-color: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.btn-social.google:hover {
+  background-color: #f8f1f1;
+  border-color: #e53e3e;
+}
+
+.btn-social.github:hover {
+  background-color: #f0f5ff;
+  border-color: #4299e1;
+}
+
+.btn-social svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.btn-link {
+  background: none;
   border: none;
-  margin-top: 10px;
+  color: #667eea;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
 }
 
-.btn-secondary:hover {
-  background-color: #495057;
+.btn-link:hover {
+  text-decoration: underline;
 }
-/*message*/
-.success-message {
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  color: #a0aec0;
+  font-size: 0.875rem;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.divider::before {
+  margin-right: 1rem;
+}
+
+.divider::after {
+  margin-left: 1rem;
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.switch-mode {
   text-align: center;
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: green;
+  margin-top: 1.5rem;
+  color: #718096;
+  font-size: 0.95rem;
 }
 
-
-
-
-
-/* Responsive (Optional for mobile) */
-@media (max-width: 500px) {
-  .auth-form {
-    padding: 20px 15px;
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 1rem;
   }
-
-  .form-title {
-    font-size: 1.25rem;
+  
+  .auth-card {
+    border-radius: 12px;
+  }
+  
+  .auth-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .auth-form {
+    padding: 1.5rem;
+  }
+  
+  .social-buttons {
+    grid-template-columns: 1fr;
   }
 }

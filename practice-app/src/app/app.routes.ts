@@ -1,11 +1,37 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-// import { ViewCarDetailsComponent } from "./view-car-details/view-car-details.component";
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: HomeComponent,  // Keep HomeComponent as the default route
+  },
+  {
+    path: 'about',
+    loadComponent: () =>
+      import('./about/about.component').then((m) => m.AboutComponent),
+  },
+  {
+    path: 'contact',
+    loadComponent: () =>
+      import('./contact/contact.component').then((m) => m.ContactComponent),
+  },
+  {
+    path: 'help-me',
+    loadComponent: () =>
+      import('./help-me/help-me.component').then((m) => m.HelpMeComponent),
+  },
+  {
+    path: 'user-feedback',
+    loadComponent: () =>
+      import('./user-riew/user-riew.component').then(
+        (m) => m.UserRiewComponent
+      ),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./login/login.component').then((m) => m.LoginComponent),
   },
   {
     path: 'view/:code/details',
@@ -28,29 +54,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./get-info/get-info.component').then((m) => m.InfoComponent),
   },
-
   {
-    path: 'about',
+    path: 'privacy-policy',
     loadComponent: () =>
-      import('./about/about.component').then((m) => m.AboutComponent),
+      import('./privacy-policy/privacy-policy.component').then(
+        (m) => m.PrivacyPolicyComponent
+      ),
   },
-  {
-    path: 'contact',
-    loadComponent: () =>
-      import('./contact/contact.component').then((m) => m.ContactComponent),
-  },
-
-  {
-    path: 'help-me',
-    loadComponent: () =>
-      import('./help-me/help-me.component').then((m) => m.HelpMeComponent),
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./login/login.component').then((m) => m.LoginComponent),
-  },
-
   {
     path: '**',
     loadComponent: () =>

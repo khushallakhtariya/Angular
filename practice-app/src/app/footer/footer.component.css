@@ -26,3 +26,16 @@ footer {
   footer {
     animation: fadeIn 1s ease-in-out;
   }
+
+  .footer-link {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  .footer-link:hover {
+    text-decoration: none;
+    color: red; /* Or any color you prefer */
+  }
+  
