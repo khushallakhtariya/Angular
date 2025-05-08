@@ -14,7 +14,20 @@ export const routes: Routes = [
         (m) => m.ViewCarDetailsComponent,
       ),
   },
+  {
+    path: "view/car/details/:code/:section",
+    loadComponent: () =>
+      import("./view-car-details/view-car-details.component").then(
+        (m) => m.ViewCarDetailsComponent,
+      ),
+  },
 
+  {
+    path: 'view/:code/details/info',
+    loadComponent: () =>
+      import('./get-info/get-info.component').then((m) => m.InfoComponent),
+  },
+ 
   {
     path: "about",
     loadComponent: () =>
@@ -35,18 +48,6 @@ export const routes: Routes = [
     path: "login",
     loadComponent: () =>
       import("./login/login.component").then((m) => m.LoginComponent),
-  },
-  {
-    path: 'view/:code/details/info',
-    loadComponent: () =>
-      import('./get-info/get-info.component').then((m) => m.InfoComponent),
-  },
-  {
-    path: "view/car/details/:code/:section",
-    loadComponent: () =>
-      import("./view-car-details/view-car-details.component").then(
-        (m) => m.ViewCarDetailsComponent,
-      ),
   },
 
   {
