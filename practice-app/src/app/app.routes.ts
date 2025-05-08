@@ -16,23 +16,23 @@ export const routes: Routes = [
   },
 
   {
-    path: "home/about",
+    path: "about",
     loadComponent: () =>
       import("./about/about.component").then((m) => m.AboutComponent),
   },
   {
-    path: "home/contact",
+    path: "contact",
     loadComponent: () =>
       import("./contact/contact.component").then((m) => m.ContactComponent),
   },
 
   {
-    path: "home/help-me",
+    path: "help-me",
     loadComponent: () =>
       import("./help-me/help-me.component").then((m) => m.HelpMeComponent),
   },
   {
-    path: "home/login",
+    path: "login",
     loadComponent: () =>
       import("./login/login.component").then((m) => m.LoginComponent),
   },
