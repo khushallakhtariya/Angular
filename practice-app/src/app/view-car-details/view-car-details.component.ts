@@ -52,7 +52,7 @@ export class ViewCarDetailsComponent implements OnInit {
     this.selectedTab = tab;
     const tabId = this.getTabId(tab);
 
-    this.location.replaceState(`/view-car-details/${this.carCode}/${tabId}`);
+    this.location.replaceState(`/view/car/details/${this.carCode}/${tabId}`);
 
     // Scroll to the section
     const el = document.getElementById(tabId);
@@ -63,9 +63,10 @@ export class ViewCarDetailsComponent implements OnInit {
     }
   }
 
-  showPlan(carName: string) {
-    this.router.navigate(['/get-info', carName]);
-  }
+ 
+showPlan(code: string) {
+  this.router.navigate(['/view', code, 'details', 'info']);
+}
 
   cars = [
     {

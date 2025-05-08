@@ -32,17 +32,22 @@ export const routes: Routes = [
       import("./help-me/help-me.component").then((m) => m.HelpMeComponent),
   },
   {
-    path: "get-info/:carName",
+    path: "home/login",
     loadComponent: () =>
-      import("./get-info/get-info.component").then((m) => m.InfoComponent),
+      import("./login/login.component").then((m) => m.LoginComponent),
   },
-  // {
-  //   path: "view-car-details/:code/:section",
-  //   loadComponent: () =>
-  //     import("./view-car-details/view-car-details.component").then(
-  //       (m) => m.ViewCarDetailsComponent,
-  //     ),
-  // },
+  {
+    path: 'view/:code/details/info',
+    loadComponent: () =>
+      import('./get-info/get-info.component').then((m) => m.InfoComponent),
+  },
+  {
+    path: "view/car/details/:code/:section",
+    loadComponent: () =>
+      import("./view-car-details/view-car-details.component").then(
+        (m) => m.ViewCarDetailsComponent,
+      ),
+  },
 
   {
     path: "**",
