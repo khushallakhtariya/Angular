@@ -1,16 +1,37 @@
-<div class="feedback-container">
+<div class="feedback-wrapper">
+
+  <div class="feedback-container">
     <h2>User Feedback</h2>
-    <form >
-      <label >Name</label>
-      <input type="text" required>
+    <form (submit)="SubmitBtn(); $event.preventDefault();">
+      <label>Name</label>
+      <input type="text" [(ngModel)]="name" name="name" required />
 
-      <label >Email</label>
-      <input type="email"required>
+      <label>Email</label>
+      <input type="email" [(ngModel)]="email" name="email" required />
 
-      <label >Feedback</label>
-      <textarea ></textarea>
+      <label>Feedback</label>
+      <textarea [(ngModel)]="feedback" name="feedback" required></textarea>
 
-      <button (click)="SubmitBtn()">Submit Feedback</button>
+      <button type="submit">Submit Feedback</button>
+
       <p *ngIf="message">{{ message }}</p>
     </form>
   </div>
+
+  <div class="review-display" *ngIf="feedbackList.length">
+    <h2>Submitted Feedback</h2>
+    
+    <div *ngFor="let fb of feedbackList; let i = index" class="feedback-item">
+      <p><strong>Name:</strong> {{ fb.name }}</p>
+      <p><strong>Email:</strong> {{ fb.email }}</p>
+      <p><strong>Feedback:</strong> {{ fb.feedback }}</p>
+
+      <div class="delete-div">
+        <button class="delete-btn" (click)="delete(i)">
+          <i class="material-icons">delete</i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
