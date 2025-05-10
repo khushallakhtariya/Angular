@@ -1,0 +1,106 @@
+<div class="min-h-screen bg-gray-50 p-4 md:p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Dashboard Overview</h1>
+    <p class="text-gray-600 mt-1 md:mt-2">Welcome back! Here's what's happening today.</p>
+  </div>
+
+  <!-- Chart Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+    <!-- Doughnut Chart -->
+    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 md:mb-6">
+        <div>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-800">Performance Distribution</h2>
+          <p class="text-sm md:text-base text-gray-600">Overview of your key metrics</p>
+        </div>
+      </div>
+      <div class="flex-1 min-h-[250px] md:min-h-[300px]">
+        <p-chart 
+          type="doughnut" 
+          [data]="doughnutData" 
+          [options]="doughnutOptions">
+        </p-chart>
+      </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+      <div class="mb-4 md:mb-6">
+        <h2 class="text-lg md:text-xl font-semibold text-gray-800">User Distribution</h2>
+        <p class="text-sm md:text-base text-gray-600">Breakdown by user segments</p>
+      </div>
+      <div class="flex-1 min-h-[250px] md:min-h-[300px]">
+        <p-chart 
+          type="pie" 
+          [data]="pieData" 
+          [options]="pieOptions">
+        </p-chart>
+      </div>
+    </div>
+
+    <!-- Vertical Bar Chart -->
+    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 md:mb-6">
+        <div>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-800">Monthly Sales</h2>
+          <p class="text-sm md:text-base text-gray-600">Revenue by month</p>
+        </div>
+      </div>
+      <div class="flex-1 min-h-[250px] md:min-h-[300px]">
+        <p-chart 
+          type="bar" 
+          [data]="barData" 
+          [options]="barOptions">
+        </p-chart>
+      </div>
+    </div>
+
+    <!-- Line Chart -->
+    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 md:mb-6">
+        <div>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-800">User Growth</h2>
+          <p class="text-sm md:text-base text-gray-600">Daily active users trend</p>
+        </div>
+      </div>
+      <div class="flex-1 min-h-[250px] md:min-h-[300px]">
+        <p-chart 
+          type="line" 
+          [data]="lineData" 
+          [options]="lineOptions">
+        </p-chart>
+      </div>
+    </div>
+
+    <!-- Stacked Bar Chart -->
+    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+      <div class="mb-4 md:mb-6">
+        <h2 class="text-lg md:text-xl font-semibold text-gray-800">Product Performance</h2>
+        <p class="text-sm md:text-base text-gray-600">Sales by product category</p>
+      </div>
+      <div class="flex-1 min-h-[250px] md:min-h-[300px]">
+        <p-chart 
+          type="bar" 
+          [data]="stackedBarData" 
+          [options]="stackedBarOptions">
+        </p-chart>
+      </div>
+    </div>
+
+    <!-- Multi-Axis Line Chart -->
+    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+      <div class="mb-4 md:mb-6">
+        <h2 class="text-lg md:text-xl font-semibold text-gray-800">Metrics Comparison</h2>
+        <p class="text-sm md:text-base text-gray-600">Users vs Revenue vs Conversion</p>
+      </div>
+      <div class="flex-1 min-h-[250px] md:min-h-[300px]">
+        <p-chart 
+          type="line" 
+          [data]="multiAxisData" 
+          [options]="multiAxisOptions">
+        </p-chart>
+      </div>
+    </div>
+  </div>
+</div>

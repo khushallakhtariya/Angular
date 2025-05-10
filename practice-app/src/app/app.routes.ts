@@ -34,6 +34,18 @@ export const routes: Routes = [
       import('./login/login.component').then((m) => m.LoginComponent),
   },
   {
+    path: 'admin',
+    loadComponent: () =>
+      import('./admin/admin.component').then((m) => m.AdminComponent),
+    children: [
+      {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./dashboard/dashboard.component').then((m) => m.DashboardComponent),
+      }
+    ]
+  },
+  {
     path: 'view/:code/details',
     loadComponent: () =>
       import('./view-car-details/view-car-details.component').then(

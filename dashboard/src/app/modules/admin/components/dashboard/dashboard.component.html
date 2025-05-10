@@ -1,0 +1,48 @@
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <nav class="w-64 min-w-[16rem] bg-gray-800 text-white flex flex-col">
+    <!-- Top: Navigation links -->
+    <div class="p-6 space-y-8 flex-grow">
+      <h2 class="text-2xl font-bold">Dashboard</h2>
+
+      <ul class="space-y-4">
+        <li>
+          <a
+            routerLink="home"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="hover:bg-gray-700 hover:text-blue-400 flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200"
+          >
+            <span class="material-symbols-outlined">home</span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="users"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="hover:bg-gray-700 hover:text-blue-400 flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200"
+          >
+            <span class="material-symbols-outlined"> person </span>
+            <span>users</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Bottom: Logout button -->
+    <div class="p-6 border-t border-gray-700">
+      <button
+        (click)="logout()"
+        class="w-full hover:bg-gray-700 hover:text-blue-400 flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200"
+      >
+        <span class="material-symbols-outlined">logout</span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main routed content -->
+  <main class="flex-1 overflow-auto p-8">
+    <router-outlet></router-outlet>
+  </main>
+</div>

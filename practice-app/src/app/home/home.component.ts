@@ -104,9 +104,9 @@ export class HomeComponent implements AfterViewInit {
     }
   }
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.carName = params.get("name") || "";
-    });
-  }
+  // ngOnInit(): void {
+  //   this.route.paramMap.subscribe((params) => {
+  //     this.carName = params.get("name") || "";
+  //   });
+  // }
 }
