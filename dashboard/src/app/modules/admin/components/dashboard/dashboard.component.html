@@ -8,13 +8,19 @@
     <!-- Collapse Button -->
     <div class="p-4 flex justify-end">
       <button (click)="toggleSidebar()" class="text-white focus:outline-none">
-        <span class="material-symbols-outlined hover:text-blue-400 transition-all duration-200 cursor-pointer"> swap_horiz </span>
+        <span
+          class="material-symbols-outlined hover:text-blue-400 transition-all duration-200 cursor-pointer"
+        >
+          swap_horiz
+        </span>
       </button>
     </div>
 
     <!-- Navigation -->
     <div class="flex-grow px-4 space-y-6">
-      <div class="flex flex-col items-center transition-all duration-300 ease-in-out">
+      <div
+        class="flex flex-col items-center transition-all duration-300 ease-in-out"
+      >
         <!-- Dashboard Image -->
         <img
           src="https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -25,7 +31,7 @@
             'opacity-100 scale-100': !collapsed
           }"
         />
-      
+
         <!-- Dashboard Title -->
         <div
           class="text-2xl font-bold transition-all duration-300 origin-left"
@@ -82,9 +88,7 @@
             routerLinkActive="bg-gray-700 text-blue-400"
             class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
           >
-            <span class="material-symbols-outlined">
-              drag_handle
-            </span>
+            <span class="material-symbols-outlined"> drag_handle </span>
             <span
               class="transition-all duration-300 origin-left"
               [ngClass]="{
@@ -102,9 +106,7 @@
             routerLinkActive="bg-gray-700 text-blue-400"
             class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
           >
-          <span class="material-symbols-outlined">
-            account_circle
-            </span>
+            <span class="material-symbols-outlined"> account_circle </span>
             <span
               class="transition-all duration-300 origin-left"
               [ngClass]="{
@@ -112,9 +114,85 @@
                 'opacity-100 scale-100': !collapsed
               }"
             >
-            profile
+              profile
             </span>
           </a>
+        </li>
+
+        <li class="relative">
+          <!-- Dropdown Toggle Button -->
+          <button
+          class="flex items-center justify-between p-3 w-full rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          (click)="toggleDropdown()"
+        >
+          <div class="flex items-center space-x-3">
+            <span class="material-symbols-outlined text-gray-300"> error </span>
+            <span
+              class="transition-all duration-300 origin-left text-gray-200"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+              Error Pages
+            </span>
+          </div>
+          <span
+            class="material-symbols-outlined text-gray-300 transition-transform duration-200"
+            [ngClass]="{
+              'rotate-180': collapsed
+            }"
+          >
+            expand_more
+          </span>
+        </button>
+
+          <!-- Dropdown Menu -->
+          <ul
+            *ngIf="dropdownOpen"
+            class="absolute left-0 w-full mt-2 bg-gray-800 text-white rounded-lg shadow-lg z-50 border border-gray-700 overflow-hidden animate-fade-in"
+          >
+            <li>
+              <a
+                routerLink="error-404"
+                routerLinkActive="bg-gray-700 text-blue-400"
+                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-all duration-200 text-gray-300 hover:text-white"
+              >
+                <span class="material-symbols-outlined text-blue-400">
+                  error
+                </span>
+                <span
+                  class="transition-all duration-300 origin-left"
+                  [ngClass]="{
+                    'opacity-0 scale-90': collapsed,
+                    'opacity-100 scale-100': !collapsed
+                  }"
+                >
+                  Error 404
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="error-500"
+                routerLinkActive="bg-gray-700 text-blue-400"
+                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-all duration-200 text-gray-300 hover:text-white"
+              >
+                <span class="material-symbols-outlined text-yellow-400">
+                  warning
+                </span>
+                <span
+                  class="transition-all duration-300 origin-left"
+                  [ngClass]="{
+                    'opacity-0 scale-90': collapsed,
+                    'opacity-100 scale-100': !collapsed
+                  }"
+                >
+                  Error 500
+                </span>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

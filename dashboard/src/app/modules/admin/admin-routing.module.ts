@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from '../admin/components/dashboard/dashboard.component'; 
+import { DashboardComponent } from '../admin/components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { StudentComponent } from './components/student/student.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { Error404Component } from './components/errors/error-404/error-404.component';
+import { Error500Component } from './components/errors/error-500/error-500.component';
 
 const routes: Routes = [
   {
@@ -14,33 +15,42 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'home',  
-        pathMatch: 'full'
+        redirectTo: 'home',
+        pathMatch: 'full',
       },
       {
         path: 'home',
-        loadComponent: () => HomeComponent
+        loadComponent: () => HomeComponent,
       },
       {
-        path:'users',
-        loadComponent: () => StudentComponent
+        path: 'users',
+        loadComponent: () => StudentComponent,
       },
       {
-        path:'builder',
-        loadComponent: ()=> LayoutComponent
+        path: 'builder',
+        loadComponent: () => LayoutComponent,
       },
-        {
-          path: 'profile',
-          loadChildren: () =>
-            import('./components/profile/profile-routing.module').then((m) => m.ProfileRoutingModule)
-        },
-      
-    ]
-  }
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./components/profile/profile-routing.module').then(
+            (m) => m.ProfileRoutingModule
+          ),
+      },
+      {
+        path: 'error-404',
+        loadComponent: () => Error404Component,
+      },
+      {
+        path: 'error-500',
+        loadComponent: () => Error500Component,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AdminRoutingModule {}

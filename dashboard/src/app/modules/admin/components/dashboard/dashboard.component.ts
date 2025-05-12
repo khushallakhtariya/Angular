@@ -18,5 +18,12 @@ export class DashboardComponent {
   toggleSidebar() {
     this.collapsed = !this.collapsed;
   }
+  // Removed duplicate declaration of 'collapsed'
+  dropdownOpen = false; // to manage dropdown state
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
 
 }
