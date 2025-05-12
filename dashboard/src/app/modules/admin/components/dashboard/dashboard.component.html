@@ -1,48 +1,146 @@
 <div class="flex h-screen bg-gray-100">
   <!-- Sidebar -->
-  <nav class="w-64 min-w-[16rem] bg-gray-800 text-white flex flex-col">
-    <!-- Top: Navigation links -->
-    <div class="p-6 space-y-8 flex-grow">
-      <h2 class="text-2xl font-bold">Dashboard</h2>
+  <nav
+    class="bg-gray-800 text-white flex flex-col transition-all duration-300 ease-in-out"
+    [class.w-64]="!collapsed"
+    [class.w-20]="collapsed"
+  >
+    <!-- Collapse Button -->
+    <div class="p-4 flex justify-end">
+      <button (click)="toggleSidebar()" class="text-white focus:outline-none">
+        <span class="material-symbols-outlined hover:text-blue-400 transition-all duration-200 cursor-pointer"> swap_horiz </span>
+      </button>
+    </div>
 
-      <ul class="space-y-4">
+    <!-- Navigation -->
+    <div class="flex-grow px-4 space-y-6">
+      <div class="flex flex-col items-center transition-all duration-300 ease-in-out">
+        <!-- Dashboard Image -->
+        <img
+          src="https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="Dashboard Image"
+          class="w-16 h-16 object-cover rounded-full mb-2 transform transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'opacity-0 scale-90': collapsed,
+            'opacity-100 scale-100': !collapsed
+          }"
+        />
+      
+        <!-- Dashboard Title -->
+        <div
+          class="text-2xl font-bold transition-all duration-300 origin-left"
+          [ngClass]="{
+            'opacity-0 scale-90': collapsed,
+            'opacity-100 scale-100': !collapsed
+          }"
+        >
+          Dashboard
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="space-y-2">
         <li>
           <a
             routerLink="home"
             routerLinkActive="bg-gray-700 text-blue-400"
-            class="hover:bg-gray-700 hover:text-blue-400 flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
           >
             <span class="material-symbols-outlined">home</span>
-            <span>Home</span>
+            <span
+              class="transition-all duration-300 origin-left"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+              Home
+            </span>
           </a>
         </li>
         <li>
           <a
             routerLink="users"
             routerLinkActive="bg-gray-700 text-blue-400"
-            class="hover:bg-gray-700 hover:text-blue-400 flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
           >
-            <span class="material-symbols-outlined"> person </span>
-            <span>users</span>
+            <span class="material-symbols-outlined">person</span>
+            <span
+              class="transition-all duration-300 origin-left"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+              Users
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="builder"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
+            <span class="material-symbols-outlined">
+              drag_handle
+            </span>
+            <span
+              class="transition-all duration-300 origin-left"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+              Layout Builder
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="profile"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
+          <span class="material-symbols-outlined">
+            account_circle
+            </span>
+            <span
+              class="transition-all duration-300 origin-left"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+            profile
+            </span>
           </a>
         </li>
       </ul>
     </div>
 
-    <!-- Bottom: Logout button -->
-    <div class="p-6 border-t border-gray-700">
+    <!-- Logout Button -->
+    <div class="p-4 border-t border-gray-700">
       <button
         (click)="logout()"
-        class="w-full hover:bg-gray-700 hover:text-blue-400 flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200"
+        class="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
       >
         <span class="material-symbols-outlined">logout</span>
-        <span>Logout</span>
+        <span
+          class="transition-all duration-300 origin-left"
+          [ngClass]="{
+            'opacity-0 scale-90': collapsed,
+            'opacity-100 scale-100': !collapsed
+          }"
+        >
+          Logout
+        </span>
       </button>
     </div>
   </nav>
 
-  <!-- Main routed content -->
-  <main class="flex-1 overflow-auto p-8">
+  <!-- Main Content -->
+  <main class="flex-1 overflow-auto p-2">
     <router-outlet></router-outlet>
   </main>
 </div>

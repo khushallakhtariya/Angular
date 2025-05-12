@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface User {
   id: number;
@@ -26,11 +25,15 @@ export class StudentComponent implements OnInit {
   showDeleteModal = false;
   userToDelete: number | null = null;
 
+  // Edit mode variables
+  editMode = false;
+  editingUserId: number | null = null;
+
   constructor(private fb: FormBuilder) {
     this.newUserForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // 10-digit number validation
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
     });
   }
 
@@ -42,7 +45,24 @@ export class StudentComponent implements OnInit {
   }
 
   addUser(): void {
-    if (this.newUserForm.valid) {
+    if (this.newUserForm.invalid) {
+      this.showMessage('Please fill all fields correctly.', 'error');
+      return;
+    }
+
+    if (this.editMode && this.editingUserId !== null) {
+      this.users = this.users.map((user) =>
+        user.id === this.editingUserId
+          ? {
+              ...user,
+              name: this.newUserForm.value.name,
+              email: this.newUserForm.value.email,
+              mobile: this.newUserForm.value.mobile,
+            }
+          : user
+      );
+      this.showMessage('User updated successfully!', 'success');
+    } else {
       const user: User = {
         id: this.users.length + 1,
         name: this.newUserForm.value.name,
@@ -50,12 +70,27 @@ export class StudentComponent implements OnInit {
         mobile: this.newUserForm.value.mobile,
       };
       this.users.push(user);
-      this.saveUsers();
-      this.newUserForm.reset();
       this.showMessage('User added successfully!', 'success');
-    } else {
-      this.showMessage('Please fill all fields correctly.', 'error');
     }
+
+    this.saveUsers();
+    this.cancelEdit();
+  }
+
+  editUser(user: User): void {
+    this.editMode = true;
+    this.editingUserId = user.id;
+    this.newUserForm.setValue({
+      name: user.name,
+      email: user.email,
+      mobile: user.mobile,
+    });
+  }
+
+  cancelEdit(): void {
+    this.editMode = false;
+    this.editingUserId = null;
+    this.newUserForm.reset();
   }
 
   confirmDeleteUser(id: number): void {

@@ -1,0 +1,54 @@
+<div class="container mx-auto px-4 py-8">
+
+    <div class="grid gap-6">
+      <!-- Loop over fileGroups -->
+      <div *ngFor="let group of fileGroups" class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Card Header -->
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+          <h2 class="text-xl font-semibold text-gray-700">{{ group.name }}</h2>
+          <p class="text-sm text-gray-500 mt-1">{{ group.files.length }} files</p>
+        </div>
+  
+        <!-- Files List -->
+        <div class="divide-y divide-gray-200">
+          <div *ngFor="let file of group.files" class="px-6 py-4 hover:bg-gray-50 transition-colors duration-150">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <!-- File Icon -->
+                <div class="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+  
+                <!-- File Info -->
+                <div>
+                  <h3 class="font-medium text-gray-800">{{ file.name }}</h3>
+                  <p class="text-sm" [class]="getRecencyColor(file.modified)">
+                    Modified {{ file.modified }}
+                  </p>
+                </div>
+              </div>
+  
+              <!-- Action Button -->
+              <button class="text-gray-400 hover:text-gray-600 transition-colors duration-150">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+  
+          <!-- Empty State -->
+          <div *ngIf="group.files.length === 0" class="px-6 py-8 text-center">
+            <p class="text-gray-500">No files in this category</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
