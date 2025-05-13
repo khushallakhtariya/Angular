@@ -1,1 +1,32 @@
-<p>group-chat works!</p>
+<div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-md h-[600px] flex flex-col p-4">
+    <h2 class="text-xl font-bold mb-4 border-b pb-2">Group Chat</h2>
+  
+    <!-- Messages Area -->
+    <div class="flex-1 overflow-y-auto space-y-3 mb-4 pr-2">
+      <div *ngFor="let msg of messages" class="flex flex-col">
+        <div class="text-sm text-gray-500">{{ msg.sender }} · {{ msg.time }}</div>
+        <div class="bg-blue-100 text-gray-800 rounded-xl px-4 py-2 max-w-xs" 
+             [ngClass]="{'self-end bg-green-100': msg.sender === 'You'}">
+          {{ msg.text }}
+        </div>
+      </div>
+    </div>
+  
+    <!-- Input Area -->
+    <div class="flex items-center gap-2">
+      <input
+        type="text"
+        [(ngModel)]="newMessage"
+        (keydown.enter)="sendMessage()"
+        placeholder="Type a message..."
+        class="flex-1 border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      />
+      <button
+        (click)="sendMessage()"
+        class="bg-blue-500 hover:bg-blue-600 text-white rounded-xl px-4 py-2 transition"
+      >
+        Send
+      </button>
+    </div>
+  </div>
+  

@@ -41,8 +41,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./components/chats/chats.module').then(m => m.ChatsModule)
       },
-      { path: '', redirectTo: 'chats', pathMatch: 'full' },
-      { path: '**', redirectTo: 'chats' },
       {
         path: 'error-404',
         loadComponent: () => Error404Component,

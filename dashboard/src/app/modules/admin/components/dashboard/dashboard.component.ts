@@ -11,6 +11,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 export class DashboardComponent {
   profileMenuOpen = false;
   chatsDropdownOpen = false;
+  errorDropdownOpen: boolean = false;
   constructor(private router: Router) {}
   collapsed = false;
   logout() {
