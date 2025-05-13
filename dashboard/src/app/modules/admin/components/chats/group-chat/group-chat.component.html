@@ -1,32 +1,66 @@
-<div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-md h-[600px] flex flex-col p-4">
-    <h2 class="text-xl font-bold mb-4 border-b pb-2">Group Chat</h2>
-  
+<div class="w-full p-4 max-w-screen-xl mx-auto bg-white rounded-3xl shadow-xl h-[900px] flex flex-col lg:flex-row overflow-hidden">
+  <!-- Groups List (Sidebar) -->
+  <div class="w-full lg:w-1/4 bg-gray-100 p-4 space-y-4 overflow-y-auto lg:max-h-[calc(100vh-4rem)]">
+    <div
+      *ngFor="let group of groups"
+      class="cursor-pointer p-4 rounded-xl hover:bg-gray-200 transition duration-300 transform hover:scale-105"
+      (click)="selectGroup(group)"
+    >
+      <span class="font-semibold text-lg text-gray-800">{{ group.name }}</span>
+    </div>
+    <button
+      (click)="createNewGroup()"
+      class="flex justify-center items-center text-blue-500 hover:text-blue-700 p-4 rounded-xl mt-6 border border-blue-500 w-full text-center transition duration-300 transform hover:scale-105"
+    >
+      Create New Group
+    </button>
+  </div>
+
+  <!-- Selected Group Chat -->
+  <div *ngIf="selectedGroup" class="flex-1 flex flex-col">
+    <!-- Chat Header -->
+    <div class="flex justify-between items-center bg-gradient-to-r from-blue-500 to-teal-500 text-white p-6 rounded-t-3xl">
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-semibold">{{ selectedGroup.name }}</span>
+        <span class="text-sm text-gray-200">Online</span>
+      </div>
+      <button class="text-white hover:text-gray-300 text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M3 10h18M3 15h18M3 20h18" />
+        </svg>
+      </button>
+    </div>
+
     <!-- Messages Area -->
-    <div class="flex-1 overflow-y-auto space-y-3 mb-4 pr-2">
-      <div *ngFor="let msg of messages" class="flex flex-col">
-        <div class="text-sm text-gray-500">{{ msg.sender }} · {{ msg.time }}</div>
-        <div class="bg-blue-100 text-gray-800 rounded-xl px-4 py-2 max-w-xs" 
-             [ngClass]="{'self-end bg-green-100': msg.sender === 'You'}">
-          {{ msg.text }}
+    <div class="flex-1 overflow-y-auto px-6 py-6 space-y-6 bg-gray-50 rounded-b-3xl">
+      <div *ngFor="let msg of selectedGroup.messages" class="flex flex-col">
+        <div class="text-xs text-gray-500 mb-1">{{ msg.sender }} · {{ msg.time }}</div>
+        <div class="flex gap-4">
+          <div *ngIf="msg.sender !== 'You'" class="bg-gray-100 text-gray-800 p-4 rounded-lg max-w-xs shadow-md">
+            <p>{{ msg.text }}</p>
+          </div>
+          <div *ngIf="msg.sender === 'You'" class="bg-blue-100 text-blue-800 p-4 rounded-lg self-end max-w-xs shadow-md">
+            <p>{{ msg.text }}</p>
+          </div>
         </div>
       </div>
     </div>
-  
+
     <!-- Input Area -->
-    <div class="flex items-center gap-2">
+    <div class="p-6 bg-gray-50 border-t flex items-center gap-6">
       <input
         type="text"
         [(ngModel)]="newMessage"
         (keydown.enter)="sendMessage()"
         placeholder="Type a message..."
-        class="flex-1 border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        class="flex-1 border border-gray-300 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ease-in-out duration-300"
       />
       <button
         (click)="sendMessage()"
-        class="bg-blue-500 hover:bg-blue-600 text-white rounded-xl px-4 py-2 transition"
+        class="bg-blue-500 hover:bg-blue-600 text-white rounded-xl px-6 py-4 transition-all ease-in-out duration-300"
       >
         Send
       </button>
     </div>
   </div>
-  
+</div>

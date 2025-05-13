@@ -1,1 +1,99 @@
-<p>drawer-chat works!</p>
+<!-- People Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-8">
+    <div
+      *ngFor="let person of people"
+      class="bg-white border border-gray-200 rounded-lg shadow-lg flex flex-col"
+    >
+      <img
+        [src]="person.avatar"
+        alt="Avatar"
+        class="w-32 h-32 object-cover rounded-full mx-auto mt-4"
+      />
+      <div class="p-4 flex-1 flex flex-col justify-center items-center">
+        <h3 class="text-lg font-semibold text-gray-800 text-center">{{ person.name }}</h3>
+        <p class="text-sm text-gray-500 text-center">{{ person.role }}</p>
+        <p class="mt-2 text-sm text-gray-700 text-center">Avg. Earnings: ${{ person.avgEarnings | number }}</p>
+        <p class="mt-2 text-sm text-gray-700 text-center">Total Sales: ${{ person.totalSales | number }}</p>
+      </div>
+      <div class="p-4 flex justify-center items-center">
+        <button
+          (click)="openSlider(person)"
+          class="bg-blue-400 p-2 text-white rounded-2xl hover:bg-blue-500 transition"
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Message Slider -->
+  <div
+    *ngIf="showMessageSlider"
+    class="fixed inset-0 bg-black/50 z-40 flex justify-end"
+    (click)="onOverlayClick($event)"
+  >
+    <div
+      class="w-full sm:w-[400px] h-full bg-white shadow-lg p-4 overflow-y-auto transition-transform"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold">Chat with {{ selectedPerson?.name }}</h3>
+        <button
+          (click)="closeSlider()"
+          class="text-gray-500 hover:text-red-600 transition"
+        >
+          ✕
+        </button>
+      </div>
+  
+      <!-- Chat History -->
+      <div class="flex items-center gap-3 p-3 border-b">
+        <img
+          [src]="selectedPerson?.avatar || 'https://images.pexels.com/photos/354951/pexels-photo-354951.jpeg?auto=compress&cs=tinysrgb&w=600'"
+          alt="avatar"
+          class="w-10 h-10 rounded-full"
+        />
+        <div class="font-medium text-lg">{{ selectedPerson?.name }}</div>
+      </div>
+      
+      <!-- Chat History -->
+      <div class="flex flex-col gap-2 p-3 overflow-y-auto max-h-96">
+        <div
+          *ngFor="let msg of chatHistories[selectedPerson?.name || '']"
+          [ngClass]="{
+            'self-end bg-blue-600 text-white': msg.from === 'me',
+            'self-start bg-gray-200 text-gray-800': msg.from !== 'me'
+          }"
+          class="p-2 rounded-lg max-w-[75%] w-fit"
+        >
+          {{ msg.text }}
+          <div class="text-xs mt-1 text-right opacity-70">{{ msg.time }}</div>
+        </div>
+      </div>
+      
+      <!-- Message Input -->
+      <div class="p-3 border-t">
+        <textarea
+          [(ngModel)]="newMessage"
+          placeholder="Type a message..."
+          class="w-full p-2 border border-gray-300 rounded mb-2 resize-none"
+          rows="3"
+        ></textarea>
+      
+        <div class="flex justify-end gap-2">
+          <button
+            (click)="closeSlider()"
+            class="text-sm text-gray-500 hover:text-gray-800"
+          >
+            Cancel
+          </button>
+          <button
+            (click)="sendMessage()"
+            class="bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+  </div>
+  
