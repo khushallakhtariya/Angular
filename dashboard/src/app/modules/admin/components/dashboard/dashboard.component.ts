@@ -10,6 +10,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 })
 export class DashboardComponent {
   profileMenuOpen = false;
+  chatsDropdownOpen = false;
   constructor(private router: Router) {}
   collapsed = false;
   logout() {
@@ -25,5 +26,7 @@ export class DashboardComponent {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-
+stopPropagation(event: MouseEvent) {
+  event.stopPropagation();
+}
 }

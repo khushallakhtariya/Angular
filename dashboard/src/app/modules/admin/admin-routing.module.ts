@@ -4,7 +4,6 @@ import { DashboardComponent } from '../admin/components/dashboard/dashboard.comp
 import { HomeComponent } from './components/home/home.component';
 import { StudentComponent } from './components/student/student.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { Error404Component } from './components/errors/error-404/error-404.component';
 import { Error500Component } from './components/errors/error-500/error-500.component';
 
@@ -37,6 +36,13 @@ const routes: Routes = [
             (m) => m.ProfileRoutingModule
           ),
       },
+      {
+        path: 'chats',
+        loadChildren: () =>
+          import('./components/chats/chats.module').then(m => m.ChatsModule)
+      },
+      { path: '', redirectTo: 'chats', pathMatch: 'full' },
+      { path: '**', redirectTo: 'chats' },
       {
         path: 'error-404',
         loadComponent: () => Error404Component,
