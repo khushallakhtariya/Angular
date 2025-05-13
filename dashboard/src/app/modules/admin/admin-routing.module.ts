@@ -6,6 +6,8 @@ import { StudentComponent } from './components/student/student.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { Error404Component } from './components/errors/error-404/error-404.component';
 import { Error500Component } from './components/errors/error-500/error-500.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { HelpsComponent } from './components/helps/helps.component';
 
 const routes: Routes = [
   {
@@ -25,16 +27,21 @@ const routes: Routes = [
         path: 'users',
         loadComponent: () => StudentComponent,
       },
-      {
-        path: 'builder',
-        loadComponent: () => LayoutComponent,
-      },
+    
       {
         path: 'profile',
         loadChildren: () =>
           import('./components/profile/profile-routing.module').then(
             (m) => m.ProfileRoutingModule
           ),
+      },
+      {
+        path: 'settings',
+        loadComponent: () => SettingsComponent,
+      },
+      {
+        path: 'help',
+        loadComponent: () => HelpsComponent,
       },
       {
         path: 'chats',

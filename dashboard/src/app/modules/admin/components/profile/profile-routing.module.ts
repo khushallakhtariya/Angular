@@ -7,6 +7,7 @@ import { CampaignsComponent } from './campaigns/campaigns.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { ConnectionsComponent } from './connections/connections.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -32,6 +33,7 @@ const routes: Routes = [
         path:'connections',
         loadComponent: ()=> ConnectionsComponent
       },
+
       {
         path: '',
         pathMatch: 'full',

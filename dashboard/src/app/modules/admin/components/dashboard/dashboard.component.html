@@ -43,6 +43,11 @@
           Dashboard
         </div>
       </div>
+      <h1
+        class="text-blue-300 cursor-pointer flex justify-center hover:text-blue-500 transition-all duration-300 ease-in-out"
+      >
+        CRAFTED
+      </h1>
 
       <!-- Navigation Links -->
       <ul class="space-y-2">
@@ -82,24 +87,6 @@
             </span>
           </a>
         </li>
-        <li>
-          <a
-            routerLink="builder"
-            routerLinkActive="bg-gray-700 text-blue-400"
-            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
-          >
-            <span class="material-symbols-outlined"> drag_handle </span>
-            <span
-              class="transition-all duration-300 origin-left"
-              [ngClass]="{
-                'opacity-0 scale-90': collapsed,
-                'opacity-100 scale-100': !collapsed
-              }"
-            >
-              Layout Builder
-            </span>
-          </a>
-        </li>
 
         <li>
           <a
@@ -119,6 +106,47 @@
             </span>
           </a>
         </li>
+        <li>
+          <a
+            routerLink="settings"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
+            <span class="material-symbols-outlined"> settings </span>
+            <span
+              class="transition-all duration-300 origin-left"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+              settings
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="help"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
+            <span class="material-symbols-outlined"> help </span>
+            <span
+              class="transition-all duration-300 origin-left"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+              help
+            </span>
+          </a>
+        </li>
+        <h1
+          class="text-blue-300 cursor-pointer flex justify-center hover:text-blue-400 transition-all duration-300 ease-in-out"
+        >
+          APPS
+        </h1>
 
         <li class="relative">
           <!-- Main chats link -->
@@ -144,101 +172,104 @@
 
           <!-- Dropdown Menu -->
           <ul
-          *ngIf="chatsDropdownOpen"
-          class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
-          [ngClass]="{
-            'opacity-0 scale-95': collapsed,
-            'opacity-100 scale-100': !collapsed
-          }"
-        >
-          <li>
-            <a
-              routerLink="chats/private"
-              class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
-            >
-              <span class="material-symbols-outlined text-blue-400">business_messages</span>
-              <span>Private Chats</span>
-            </a>
-          </li>
-          <li>
-            <a
-              routerLink="chats/group"
-              class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
-            >
-              <span class="material-symbols-outlined text-red-400">groups</span>
-              <span>Group Chats</span>
-            </a>
-          </li>
-          <li>
-            <a
-              routerLink="chats/drawer"
-              class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
-            >
-              <span class="material-symbols-outlined text-purple-400">sms</span>
-              <span>Drawer Chats</span>
-            </a>
-          </li>
-        </ul>
+            *ngIf="chatsDropdownOpen"
+            class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
+            [ngClass]="{
+              'opacity-0 scale-95': collapsed,
+              'opacity-100 scale-100': !collapsed
+            }"
+          >
+            <li>
+              <a
+                routerLink="chats/private"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-blue-400"
+                  >business_messages</span
+                >
+                <span>Private Chats</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="chats/group"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-red-400"
+                  >groups</span
+                >
+                <span>Group Chats</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="chats/drawer"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-purple-400"
+                  >sms</span
+                >
+                <span>Drawer Chats</span>
+              </a>
+            </li>
+          </ul>
         </li>
 
+        <li class="relative">
+          <!-- Main Error Pages link -->
+          <button
+            (click)="errorDropdownOpen = !errorDropdownOpen"
+            class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+            [ngClass]="{ 'bg-gray-700 text-blue-400': errorDropdownOpen }"
+          >
+            <span class="material-symbols-outlined">error</span>
+            <span
+              class="transition-all duration-300 origin-left"
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+            >
+              Error Pages
+            </span>
+            <span class="ml-auto material-symbols-outlined">
+              {{ errorDropdownOpen ? "expand_less" : "expand_more" }}
+            </span>
+          </button>
 
-
-
-
-
-        
-
-      <li class="relative">
-  <!-- Main Error Pages link -->
-  <button
-    (click)="errorDropdownOpen = !errorDropdownOpen"
-    class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
-    [ngClass]="{ 'bg-gray-700 text-blue-400': errorDropdownOpen }"
-  >
-    <span class="material-symbols-outlined">error</span>
-    <span
-      class="transition-all duration-300 origin-left"
-      [ngClass]="{
-        'opacity-0 scale-90': collapsed,
-        'opacity-100 scale-100': !collapsed
-      }"
-    >
-      Error Pages
-    </span>
-    <span class="ml-auto material-symbols-outlined">
-      {{ errorDropdownOpen ? "expand_less" : "expand_more" }}
-    </span>
-  </button>
-
-  <!-- Dropdown Menu -->
-  <ul
-    *ngIf="errorDropdownOpen"
-    class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
-    [ngClass]="{
-      'opacity-0 scale-95': collapsed,
-      'opacity-100 scale-100': !collapsed
-    }"
-  >
-    <li>
-      <a
-        routerLink="error-404"
-        class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
-      >
-        <span class="material-symbols-outlined text-blue-400">error</span>
-        <span>Error 404</span>
-      </a>
-    </li>
-    <li>
-      <a
-        routerLink="error-500"
-        class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
-      >
-        <span class="material-symbols-outlined text-yellow-400">warning</span>
-        <span>Error 500</span>
-      </a>
-    </li>
-  </ul>
-</li>
+          <!-- Dropdown Menu -->
+          <ul
+            *ngIf="errorDropdownOpen"
+            class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
+            [ngClass]="{
+              'opacity-0 scale-95': collapsed,
+              'opacity-100 scale-100': !collapsed
+            }"
+          >
+            <li>
+              <a
+                routerLink="error-404"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-blue-400"
+                  >error</span
+                >
+                <span>Error 404</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="error-500"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-yellow-400"
+                  >warning</span
+                >
+                <span>Error 500</span>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
 
