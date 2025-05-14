@@ -20,6 +20,10 @@ const routes: Routes = [
         loadComponent: () => import('./ng-forms/form-3/form-3.component').then(m => m.Form3Component)
       },
       {
+        path: 'reactive-form-4',
+        loadComponent: () => import('./ng-forms/form-4/form-4.component').then(m => m.Form4Component)
+      },
+      {
         path: '',
         redirectTo: 'reactive-form-1',
         pathMatch: 'full'

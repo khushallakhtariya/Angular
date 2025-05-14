@@ -1,0 +1,49 @@
+<div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      
+      <!-- name -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" placeholder="Enter your name" />
+        <div class="error" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+          Name is required and must be at least 3 characters.
+        </div>
+      </div>
+  
+      <!-- email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="Enter your email" />
+        <div class="error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+          Please enter a valid email.
+        </div>
+      </div>
+  
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="text" formControlName="password" placeholder="Enter password" />
+        <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+          Password must be at least 6 characters.
+        </div>
+      </div>
+  
+      <!-- re enter Password -->
+      <div class="form-group">
+        <label for="repeatPassword">Re-enter Password</label>
+        <input id="repeatPassword" type="password" formControlName="repeatPassword" placeholder="Re-enter password" />
+        <div class="error" *ngIf="form.get('repeatPassword')?.touched && form.get('repeatPassword')?.invalid">
+          Password must be at least 6 characters.
+        </div>
+        <div class="error" *ngIf="form.errors?.['mismatch'] && form.get('repeatPassword')?.touched">
+          Passwords must match.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="form.invalid">Submit</button>
+      <div *ngIf="successMessage" class="mt-4 text-green-600 font-semibold">
+        {{ successMessage }}
+      </div>
+    </form>
+  </div>
+  
