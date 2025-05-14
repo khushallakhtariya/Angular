@@ -22,17 +22,18 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   login() {
-    this.loading = true; 
+    this.loading = true;
     this.errorMessage = '';
-   
+  
     setTimeout(() => {
-      if (this.email === this.defaultEmail && this.password === this.defaultPassword) {
-       
+      if (this.email === 'admin@gmail.com' && this.password === 'admin123') {
         this.router.navigate(['/deshbord']);
+      } else if (this.email === 'student@gmail.com' && this.password === 'student123') {
+        this.router.navigate(['/forms']);
       } else {
         this.errorMessage = 'Invalid email or password';
       }
-      this.loading = false; 
+      this.loading = false;
     }, 1000);
   }
 }

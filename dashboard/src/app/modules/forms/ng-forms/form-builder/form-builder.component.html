@@ -1,0 +1,95 @@
+<h1 class="form-heading">Reactive Form</h1>
+<div class="form-container">
+  <div class="form-wrapper">
+    <form [formGroup]="studentForm" (ngSubmit)="onSave()">
+      
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" formControlName="firstName" class="form-input" />
+        <div *ngIf="studentForm.controls['firstName'].touched">
+          <div *ngIf="studentForm.controls['firstName'].hasError('required')" class="text-danger">
+            This is required
+          </div>
+          <div *ngIf="studentForm.controls['firstName'].hasError('minlength')" class="text-danger">
+            Min Char 3 required
+          </div>
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" formControlName="lastName" class="form-input" />
+      </div>
+
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" formControlName="username" class="form-input" />
+        <div *ngIf="studentForm.controls['username'].touched">
+          <div *ngIf="studentForm.controls['username'].hasError('required')" class="text-danger">
+            This is required
+          </div>
+          <div *ngIf="studentForm.controls['username'].hasError('email')" class="text-danger">
+            Please enter a valid email
+          </div>
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" formControlName="city" class="form-input" />
+      </div>
+
+      <!-- State -->
+      <div class="form-group">
+        <label for="state">State:</label>
+        <select class="form-input" formControlName="state">
+          <option value="">Select a state</option>
+          <option value="CA">Gujrat</option>
+          <option value="TX">Madhya Pradesh</option>
+          <option value="NY">Mumbai</option>
+          <option value="FL">Tamil Nadu</option>
+        </select>
+      </div>
+
+      <!-- ZIP Code -->
+      <div class="form-group">
+        <label for="zip">ZIP Code:</label>
+        <input type="text" formControlName="zipCode" class="form-input" />
+        <div *ngIf="studentForm.controls['zipCode'].touched">
+          <div *ngIf="studentForm.controls['zipCode'].hasError('pattern')" class="text-danger">
+            ZIP code must be a valid number
+          </div>
+        </div>
+      </div>
+
+      <!-- Accept Terms -->
+      <label>
+        <input
+          type="checkbox"
+          formControlName="isAccepted"
+          class="form-checkbox"
+        />
+        Accept Terms and Conditions
+      </label>
+
+      <!-- Buttons -->
+      <div class="btn">
+        <button type="submit" class="submit-btn" [disabled]="studentForm.invalid">
+          Submit
+        </button>
+        <button type="button" class="submit-btn" (click)="onReset()">
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Form Value Preview -->
+<div class="col-4">
+  {{ formValue | json }}
+</div>

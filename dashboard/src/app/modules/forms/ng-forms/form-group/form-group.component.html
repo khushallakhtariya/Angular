@@ -1,0 +1,86 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-6">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userArray">
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <button class="btn btn-sm btn-success" (click)="onEdit(user.id)">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <form [formGroup]="userForm" novalidate>
+    <div class="row mb-3">
+      <div class="col-4">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-control"
+        />
+        <div class="text-danger" *ngIf="userForm.controls['name'].touched && userForm.controls['name'].invalid">
+          <span *ngIf="userForm.controls['name'].errors?.['required']">Name is required.</span>
+          <span *ngIf="userForm.controls['name'].errors?.['minlength']">Minimum length is 3 characters.</span>
+          <span *ngIf="userForm.controls['name'].errors?.['maxlength']">Maximum length is 50 characters.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-4">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+        />
+        <div class="text-danger" *ngIf="userForm.controls['username'].touched && userForm.controls['username'].invalid">
+          <span *ngIf="userForm.controls['username'].errors?.['required']">Username is required.</span>
+          <span *ngIf="userForm.controls['username'].errors?.['minlength']">Minimum length is 3 characters.</span>
+          <span *ngIf="userForm.controls['username'].errors?.['maxlength']">Maximum length is 30 characters.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-4">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+        />
+        <div class="text-danger" *ngIf="userForm.controls['email'].touched && userForm.controls['email'].invalid">
+          <span *ngIf="userForm.controls['email'].errors?.['required']">Email is required.</span>
+          <span *ngIf="userForm.controls['email'].errors?.['email']">Invalid email format.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-6">
+        <button type="button" class="btn btn-success" (click)="OnsaveUser()" [disabled]="userForm.invalid">
+          Save User
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

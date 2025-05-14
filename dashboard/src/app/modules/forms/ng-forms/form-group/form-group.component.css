@@ -1,0 +1,119 @@
+/* General Container */
+.container {
+    margin-top: 30px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table Styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  
+  .table-bordered {
+    border: 1px solid #ddd;
+  }
+  
+  .table thead {
+    background-color: #f8f9fa;
+  }
+  
+  .table th {
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .table td {
+    padding: 12px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #e9ecef;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  /* Label Styling */
+  label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+    text-transform: capitalize;
+    color: #333;
+    font-size: 15px;
+  }
+  
+  /* Form Input Styling */
+  input.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input.form-control:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
+  }
+  
+  /* Row Spacing */
+  .row {
+    margin-bottom: 20px;
+  }
+  
+  /* Button Styling */
+  button.btn-success {
+    padding: 12px 25px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button.btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+  }
+  
+  button.btn-success:active {
+    transform: translateY(1px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .col-4, .col-6 {
+      width: 100%;
+    }
+  
+    .container {
+      padding: 20px;
+    }
+  
+    .table th, .table td {
+      font-size: 14px;
+    }
+  
+    button.btn-success {
+      width: 100%;
+      padding: 15px;
+    }
+  }
+  

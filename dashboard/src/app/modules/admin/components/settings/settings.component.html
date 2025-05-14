@@ -1,184 +1,269 @@
 <div class="p-6 w-full mx-auto h-full bg-white rounded-xl shadow-sm space-y-8">
-    <div class="space-y-2">
-      <h2 class="text-2xl font-bold text-gray-900">Account Settings</h2>
-      <p class="text-gray-500">Manage your account information and preferences</p>
-    </div>
-  
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Personal Information -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-medium text-gray-900 border-b pb-2">Personal Information</h3>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-          <input type="text" [(ngModel)]="settings.fullName"
-                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Contact Phone</label>
-          <input type="tel" [(ngModel)]="settings.phone"
-                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-        </div>
+  <div class="space-y-2">
+    <h2 class="text-2xl font-bold text-gray-900">Account Settings</h2>
+    <p class="text-gray-500">Manage your account information and preferences</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Personal Information -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-medium text-gray-900 border-b pb-2">
+        Personal Information
+      </h3>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Full Name</label
+        >
+        <input
+          type="text"
+          [(ngModel)]="settings.fullName"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
       </div>
-  
-      <!-- Company Information -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-medium text-gray-900 border-b pb-2">Company Information</h3>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Company</label>
-          <input type="text" [(ngModel)]="settings.company"
-                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Company Site</label>
-          <input type="url" [(ngModel)]="settings.companySite"
-                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-      </div>
-  
-      <!-- Preferences -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-medium text-gray-900 border-b pb-2">Preferences</h3>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-          <select [(ngModel)]="settings.country"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option disabled>Select a Country...</option>
-            <option>United States</option>
-            <option>United Kingdom</option>
-            <option>Germany</option>
-            <option>India</option>
-          </select>
-        </div>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Language</label>
-          <select [(ngModel)]="settings.language"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option disabled>Select a Language...</option>
-            <option>English (US)</option>
-            <option>Deutsch</option>
-            <option>Español</option>
-            <option>Français</option>
-          </select>
-        </div>
-      </div>
-  
-      <!-- Regional Settings -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-medium text-gray-900 border-b pb-2">Regional Settings</h3>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Time Zone</label>
-          <select [(ngModel)]="settings.timezone"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option disabled>Select a Timezone...</option>
-            <option>UTC</option>
-            <option>GMT+1</option>
-            <option>EST</option>
-            <option>IST</option>
-          </select>
-        </div>
-  
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Currency</label>
-          <select [(ngModel)]="settings.currency"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option disabled>Select a currency...</option>
-            <option>USD</option>
-            <option>EUR</option>
-            <option>GBP</option>
-            <option>INR</option>
-          </select>
-        </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Contact Phone</label
+        >
+        <input
+          type="tel"
+          [(ngModel)]="settings.phone"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
       </div>
     </div>
-  
-    <!-- Communication Preferences -->
-    <div class="pt-4">
-        <h3 class="text-lg font-medium text-gray-900 mb-3">Communication Preferences</h3>
-        <div class="space-y-3">
-      
-          <!-- Email Notifications -->
-          <div class="flex items-center gap-2">
-            <input id="email-notifications"
-                   type="checkbox"
-                   [(ngModel)]="settings.emailNotifications"
-                   class="peer hidden" />
-            <div class="w-6 h-6 rounded border border-gray-500 peer-checked:border-blue-600 peer-hover:border-pink-500 flex items-center justify-center transition-colors duration-150">
-              <svg *ngIf="settings.emailNotifications"
-                   class="w-4 h-4 text-blue-600"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="3"
-                   viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <label for="email-notifications" class="text-sm text-gray-700 cursor-pointer hover:text-pink-600 transition-colors">
-              Email notifications
-            </label>
-          </div>
-      
-          <!-- SMS Notifications -->
-          <div class="flex items-center gap-2">
-            <input id="sms-notifications"
-                   type="checkbox"
-                   [(ngModel)]="settings.smsNotifications"
-                   class="peer hidden" />
-            <div class="w-6 h-6 rounded border border-gray-500 peer-checked:border-blue-600 peer-hover:border-pink-500 flex items-center justify-center transition-colors duration-150">
-              <svg *ngIf="settings.smsNotifications"
-                   class="w-4 h-4 text-blue-600"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="3"
-                   viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <label for="sms-notifications" class="text-sm text-gray-700 cursor-pointer hover:text-pink-600 transition-colors">
-              SMS notifications
-            </label>
-          </div>
-          
-          <!-- Marketing Communications -->
-          <div class="flex items-center gap-2">
-            <input id="marketing-communications"
-                   type="checkbox"
-                   [(ngModel)]="settings.marketingCommunications"
-                   class="peer hidden" />
-            <div class="w-6 h-6 rounded border border-gray-500 peer-checked:border-blue-600 peer-hover:border-pink-500 flex items-center justify-center transition-colors duration-150">
-              <svg *ngIf="settings.marketingCommunications"
-                   class="w-4 h-4 text-blue-600"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="3"
-                   viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <label for="marketing-communications" class="text-sm text-gray-700 cursor-pointer hover:text-pink-600 transition-colors">
-              Receive marketing communications
-            </label>
-          </div>
-      
-        </div>
+
+    <!-- Company Information -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-medium text-gray-900 border-b pb-2">
+        Company Information
+      </h3>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Company</label
+        >
+        <input
+          type="text"
+          [(ngModel)]="settings.company"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
       </div>
-  
-    <!-- Action Buttons -->
-    <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-      <button type="button" (click)="onCancel()"
-              class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-        Cancel
-      </button>
-      <button type="button" (click)="onSave()"
-              class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-        Save Changes
-      </button>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Company Site</label
+        >
+        <input
+          type="url"
+          [(ngModel)]="settings.companySite"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-medium text-gray-900 border-b pb-2">
+        Preferences
+      </h3>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Country</label
+        >
+        <select
+          [(ngModel)]="settings.country"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option disabled>Select a Country...</option>
+          <option>United States</option>
+          <option>United Kingdom</option>
+          <option>Germany</option>
+          <option>India</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Language</label
+        >
+        <select
+          [(ngModel)]="settings.language"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option disabled>Select a Language...</option>
+          <option>English (US)</option>
+          <option>Deutsch</option>
+          <option>Español</option>
+          <option>Français</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Regional Settings -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-medium text-gray-900 border-b pb-2">
+        Regional Settings
+      </h3>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Time Zone</label
+        >
+        <select
+          [(ngModel)]="settings.timezone"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option disabled>Select a Timezone...</option>
+          <option>UTC</option>
+          <option>GMT+1</option>
+          <option>EST</option>
+          <option>IST</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Currency</label
+        >
+        <select
+          [(ngModel)]="settings.currency"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option disabled>Select a currency...</option>
+          <option>USD</option>
+          <option>EUR</option>
+          <option>GBP</option>
+          <option>INR</option>
+        </select>
+      </div>
     </div>
   </div>
-  
+
+  <!-- Communication Preferences -->
+  <div class="pt-4">
+    <h3 class="text-lg font-medium text-gray-900 mb-3">
+      Communication Preferences
+    </h3>
+    <div class="space-y-3">
+      <!-- Email Notifications -->
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input
+          id="email-notifications"
+          type="checkbox"
+          [(ngModel)]="settings.emailNotifications"
+          class="peer hidden"
+        />
+        <div
+          class="w-6 h-6 rounded border border-gray-500 peer-checked:border-blue-600 peer-hover:border-pink-500 flex items-center justify-center transition-colors duration-150"
+        >
+          <svg
+            *ngIf="settings.emailNotifications"
+            class="w-4 h-4 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <span
+          class="text-sm text-gray-700 hover:text-pink-600 transition-colors"
+        >
+          Email notifications
+        </span>
+      </label>
+
+      <!-- SMS Notifications -->
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input
+          id="sms-notifications"
+          type="checkbox"
+          [(ngModel)]="settings.smsNotifications"
+          class="peer hidden"
+        />
+        <div
+          class="w-6 h-6 rounded border border-gray-500 peer-checked:border-blue-600 peer-hover:border-pink-500 flex items-center justify-center transition-colors duration-150"
+        >
+          <svg
+            *ngIf="settings.smsNotifications"
+            class="w-4 h-4 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <span
+          class="text-sm text-gray-700 hover:text-pink-600 transition-colors"
+        >
+          SMS notifications
+        </span>
+      </label>
+
+      <!-- Marketing Communications -->
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input
+          id="marketing-communications"
+          type="checkbox"
+          [(ngModel)]="settings.marketingCommunications"
+          class="peer hidden"
+        />
+        <div
+          class="w-6 h-6 rounded border border-gray-500 peer-checked:border-blue-600 peer-hover:border-pink-500 flex items-center justify-center transition-colors duration-150"
+        >
+          <svg
+            *ngIf="settings.marketingCommunications"
+            class="w-4 h-4 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <span
+          class="text-sm text-gray-700 hover:text-pink-600 transition-colors"
+        >
+          Receive marketing communications
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+    <button
+      type="button"
+      (click)="onCancel()"
+      class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      (click)="onSave()"
+      class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+    >
+      Save Changes
+    </button>
+  </div>
+</div>
