@@ -8,16 +8,20 @@ const routes: Routes = [
     component: NavDeshComponent,
     children: [
       {
-        path: 'form-group',
+        path: 'reactive-form-1',
         loadComponent: () => import('./ng-forms/form-group/form-group.component').then(m => m.FormGroupComponent)
       },
       {
-        path: 'reactive-form',
+        path: 'reactive-form-2',
         loadComponent: () => import('./ng-forms/form-builder/form-builder.component').then(m => m.FormBuilderComponent)
       },
       {
+        path: 'reactive-form-3',
+        loadComponent: () => import('./ng-forms/form-3/form-3.component').then(m => m.Form3Component)
+      },
+      {
         path: '',
-        redirectTo: 'form-group',
+        redirectTo: 'reactive-form-1',
         pathMatch: 'full'
       }
     ]

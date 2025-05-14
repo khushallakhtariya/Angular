@@ -5,7 +5,183 @@
     <p class="text-gray-600 mt-1 md:mt-2">Welcome back! Here's what's happening today.</p>
   </div>
 
-  <!-- Chart Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 p-4 md:p-6 bg-gray-50 min-h-screen">
+    <!-- Card 1: General Card -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-semibold text-gray-800">Overview</h3>
+        <span class="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">New</span>
+      </div>
+      <p class="text-gray-600 text-sm">Some quick insights or summary data can go here.</p>
+      <div class="mt-4 pt-4 border-t border-gray-100">
+        <a  class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center">
+          View details
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  
+    <!-- Card 2: To-Do List -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-800">To-Do List</h3>
+        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">Add New</button>
+      </div>
+      <ul class="space-y-3">
+        <li class="flex items-center justify-between py-2">
+          <div class="flex items-center">
+            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500" />
+            <span class="ml-3 text-gray-700">Finish UI design</span>
+          </div>
+          <span class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full">Today</span>
+        </li>
+        <li class="flex items-center justify-between py-2">
+          <div class="flex items-center">
+            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500" checked />
+            <span class="ml-3 text-gray-500 line-through">Update API response</span>
+          </div>
+        </li>
+        <li class="flex items-center justify-between py-2">
+          <div class="flex items-center">
+            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500" />
+            <span class="ml-3 text-gray-700">Push to repo</span>
+          </div>
+          <span class="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full">Tomorrow</span>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Card 3: Membership Status -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+      <h3 class="text-lg font-semibold text-gray-800 mb-3">Membership Status</h3>
+      <p class="text-gray-600 text-sm mb-4">You have <span class="font-bold text-blue-600">1,240</span> active members.</p>
+      <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+        <div class="bg-blue-500 h-2.5 rounded-full" style="width: 75%"></div>
+      </div>
+      <div class="flex justify-between text-xs text-gray-500">
+        <span>Target: 2,000</span>
+        <span>75%</span>
+      </div>
+    </div>
+  
+    <!-- Card 4: Notifications -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-800">Notifications</h3>
+        <span class="text-xs px-2 py-1 bg-red-100 text-red-600 rounded-full">3 New</span>
+      </div>
+      <ul class="space-y-3">
+        <li class="flex items-start">
+          <div class="bg-blue-100 p-2 rounded-full mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-800">New user registration</p>
+            <p class="text-xs text-gray-500">5 minutes ago</p>
+          </div>
+        </li>
+        <li class="flex items-start">
+          <div class="bg-green-100 p-2 rounded-full mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-800">Task completed: UI Fixes</p>
+            <p class="text-xs text-gray-500">1 hour ago</p>
+          </div>
+        </li>
+        <li class="flex items-start">
+          <div class="bg-purple-100 p-2 rounded-full mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-800">Product deployed successfully</p>
+            <p class="text-xs text-gray-500">Yesterday</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Card 5: Trending Now -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+      <h3 class="text-lg font-semibold text-gray-800 mb-4">Trending Now</h3>
+      <div class="space-y-4">
+        <div>
+          <p class="text-xs text-gray-500 mb-1">Top keyword</p>
+          <div class="flex items-center">
+            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">"AI Features"</span>
+            <span class="ml-auto text-sm text-gray-600">+24%</span>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 mb-1">Most visited page</p>
+          <div class="flex items-center">
+            <span class="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">/dashboard/insights</span>
+            <span class="ml-auto text-sm text-gray-600">1.2k visits</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 pt-4 border-t border-gray-100">
+        <button class="w-full py-2 px-4 border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">
+          View all trends
+        </button>
+      </div>
+    </div>
+  
+    <!-- Card 6: Latest Products -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-800">Latest Products</h3>
+        <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">3 New</span>
+      </div>
+      <ul class="space-y-4">
+        <li class="flex items-center">
+          <div class="bg-gray-100 rounded-lg p-2 mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-800">Smart Watch X1</p>
+            <p class="text-xs text-gray-500">Wearables</p>
+          </div>
+          <span class="text-green-600 font-medium">$199</span>
+        </li>
+        <li class="flex items-center">
+          <div class="bg-gray-100 rounded-lg p-2 mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-800">Wireless Earbuds Pro</p>
+            <p class="text-xs text-gray-500">Audio</p>
+          </div>
+          <span class="text-green-600 font-medium">$129</span>
+        </li>
+        <li class="flex items-center">
+          <div class="bg-gray-100 rounded-lg p-2 mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-800">Gaming Mouse Ultra</p>
+            <p class="text-xs text-gray-500">Accessories</p>
+          </div>
+          <span class="text-green-600 font-medium">$89</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
     <!-- Doughnut Chart -->
     <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">

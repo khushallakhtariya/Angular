@@ -12,7 +12,9 @@ span {
   justify-content: center;
   padding: 20px;
 }
-
+.text-danger{
+  color: red;
+}
 .form-wrapper {
   width: 100%;
   max-width: 600px;
