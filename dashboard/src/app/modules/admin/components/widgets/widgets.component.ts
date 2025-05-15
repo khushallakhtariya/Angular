@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./widgets.component.css']
 })
 export class WidgetsComponent {
-  // export class YourComponent {
-  //   isNavOpen = false; // controls mobile nav toggle
-  // } 
+  isNavOpen = false; // controls mobile nav toggle
+
 }
