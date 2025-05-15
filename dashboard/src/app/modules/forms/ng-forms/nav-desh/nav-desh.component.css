@@ -15,7 +15,22 @@
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
   transition: width 0.3s ease;
 }
-
+.Name{
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 1rem;
+}
+.name{
+  align-items: center;  
+  display: flex;
+  justify-content: center;
+}
+.Name :hover{
+  color: #00b4d8;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
 .nav-links {
   list-style: none;
   padding: 10px 0;
