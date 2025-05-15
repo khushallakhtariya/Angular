@@ -1,0 +1,40 @@
+{
+  "user": [
+    {
+      "name": "ram",
+      "email": "ram@gmail.com",
+      "age": 25,
+      "id": "e892"
+    },
+    {
+      "id": "53a4",
+      "name": "lakshman",
+      "email": "lakshman@gmail.com",
+      "age": 23
+    },
+    {
+      "id": "2a52",
+      "name": "sita",
+      "email": "sita@gmail.com",
+      "age": 24
+    },
+    {
+      "name": "hahunam ji",
+      "email": "hanuman@gmail.com",
+      "age": 26,
+      "id": "508b"
+    },
+    {
+      "id": "b839",
+      "name": "ravan",
+      "email": "ravan@gmail.com",
+      "age": 25
+    },
+    {
+      "id": "df69",
+      "name": "khushal",
+      "email": "khushal@gmail.com",
+      "age": 25
+    }
+  ]
+}

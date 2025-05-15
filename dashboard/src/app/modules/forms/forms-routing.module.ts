@@ -6,6 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { Form3Component } from './ng-forms/form-3/form-3.component';
 import { Form4Component } from './ng-forms/form-4/form-4.component';
 import { ProductApiComponent } from './api/product-api/product-api.component';
+import { UserApiComponent } from './api/user-api/user-api.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
       {
         path:'Api-Products' ,
         component: ProductApiComponent
+      },
+
+      {
+       path: 'Api-user',
+       component: UserApiComponent
       },
       {
         path: '',

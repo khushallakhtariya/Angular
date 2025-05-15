@@ -3,9 +3,9 @@
     <div class="logo">
       <h2>MyDashboard</h2>
     </div>
-   <div class="Name">
-    <h1 class="name">Form's</h1>
-   </div>
+    <div class="Name">
+      <h1 class="name">Form's</h1>
+    </div>
     <ul class="nav-links">
       <li>
         <a routerLink="reactive-form-1" routerLinkActive="active">
@@ -34,38 +34,42 @@
     </ul>
     <div class="Name">
       <h1 class="name">Api's</h1>
-     </div>
-     <ul class="nav-links">
+    </div>
+    <ul class="nav-links">
       <li>
         <a routerLink="Api-Products" routerLinkActive="active">
-          <span class="material-symbols-outlined">fact_check</span>
+          <span class="material-symbols-outlined"> api </span>
           <span>Api product's</span>
         </a>
       </li>
-     </ul>
+      <li>
+        <a routerLink="Api-user" routerLinkActive="active">
+          <span class="material-symbols-outlined"> webhook </span>
+          <span>Api user's</span>
+        </a>
+      </li>
+    </ul>
 
-
-      <!-- 👇 This pushes logout to the bottom -->
-  <div class="p-4 border-t border-gray-700 mt-auto">
-    <button
-      (click)="logout()"
-      class="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
-    >
-      <span class="material-symbols-outlined">logout</span>
-      <span
-        class="transition-all duration-300 origin-left"
-        [ngClass]="{
-          'opacity-0 scale-90': collapsed,
-          'opacity-100 scale-100': !collapsed
-        }"
+    <!-- 👇 This pushes logout to the bottom -->
+    <div class="p-4 border-t border-gray-700 mt-auto">
+      <button
+        (click)="logout()"
+        class="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
       >
-        Logout
-      </span>
-    </button>
-  </div>
-  
+        <span class="material-symbols-outlined">logout</span>
+        <span
+          class="transition-all duration-300 origin-left"
+          [ngClass]="{
+            'opacity-0 scale-90': collapsed,
+            'opacity-100 scale-100': !collapsed
+          }"
+        >
+          Logout
+        </span>
+      </button>
+    </div>
   </aside>
- 
+
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>

@@ -1,3 +1,4 @@
+// products.service.ts
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -5,12 +6,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProductsService {
-  private url = 'https://dummyjson.com/products';
+  private userUrl = 'http://localhost:3000/user';
 
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<{ products: any[] }>(this.url);
+    return this.http.get<{ products: any[] }>('https://dummyjson.com/products');
+  }
+
+  getuser() { 
+    return this.http.get<{ users: any[] }>(this.userUrl);
+  }
+  saveUser(user: any) {
+    return this.http.post(this.userUrl, user);
+  }
+
+  deleteUser(id:any){
+    return this.http.delete(`${this.userUrl}/${id}`);
+  }
+  updateUser(id: any, user: any) {
+    return this.http.put(`${this.userUrl}/${id}`, user);
   }
 }
-// This service is responsible for fetching product data from the API.
