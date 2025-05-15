@@ -1,0 +1,58 @@
+<div class="container mx-auto p-4 w-full">
+    <!-- Navigation -->
+    <nav class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-8">
+        <a
+            routerLink="list"
+            routerLinkActive="bg-gray-600 text-white shadow-50"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="text-center px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-gray-50 text-gray-700 hover:bg-sky-400 hover:text-white transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base border border-gray-200 hover:border-blue-500 hover:shadow-sm active:scale-95"
+        >
+            <i class="fas fa-list mr-2"></i> List
+        </a>
+
+        <a
+            routerLink="statistics"
+            routerLinkActive="bg-gray-600 text-white shadow-50"
+            class="text-center px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-gray-50 text-gray-700 hover:bg-sky-400 hover:text-white transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base border border-gray-200 hover:border-blue-500 hover:shadow-sm active:scale-95"
+        >
+            <i class="fas fa-chart-bar mr-2"></i> Stats
+        </a>
+
+        <a
+            routerLink="chart"
+            routerLinkActive="bg-gray-600 text-white shadow-50"
+            class="text-center px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-gray-50 text-gray-700 hover:bg-sky-400 hover:text-white transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base border border-gray-200 hover:border-blue-500 hover:shadow-sm active:scale-95"
+        >
+            <i class="fas fa-chart-line mr-2"></i> Chart
+        </a>
+
+        <a
+            routerLink="mixed"
+            routerLinkActive="bg-gray-600 text-white shadow-50"
+            class="text-center px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-gray-50 text-gray-700 hover:bg-sky-400 hover:text-white transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base border border-gray-200 hover:border-blue-500 hover:shadow-sm active:scale-95"
+        >
+            <i class="fas fa-layer-group mr-2"></i> Mixed
+        </a>
+
+        <a
+            routerLink="tables"
+            routerLinkActive="bg-gray-600 text-white shadow-50"
+            class="text-center px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-gray-50 text-gray-700 hover:bg-sky-400 hover:text-white transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base border border-gray-200 hover:border-blue-500 hover:shadow-sm active:scale-95"
+        >
+            <i class="fas fa-table mr-2"></i> Tables
+        </a>
+
+        <a
+            routerLink="feeds"
+            routerLinkActive="bg-gray-600 text-white shadow-50"
+            class="text-center px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-gray-50 text-gray-700 hover:bg-sky-400 hover:text-white transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base border border-gray-200 hover:border-blue-500 hover:shadow-sm active:scale-95"
+        >
+            <i class="fas fa-rss mr-2"></i> Feeds
+        </a>
+    </nav>
+
+    <!-- Content Area -->
+    <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 border border-gray-100">
+        <router-outlet></router-outlet>
+    </div>
+</div>

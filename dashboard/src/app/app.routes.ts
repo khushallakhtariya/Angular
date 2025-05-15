@@ -5,8 +5,8 @@ import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: LoginComponent,
+    path:'',
+    loadChildren: () => import('./auth/modules/modules.module').then((m) => m.ModulesModule),
   },
 
   {
@@ -18,6 +18,7 @@ export const routes: Routes = [
     path: 'forms',
     loadChildren: () => import('./modules/forms/forms.module').then((m) => m.FormsModule),
   },
+
 
   {
     path: '**',
