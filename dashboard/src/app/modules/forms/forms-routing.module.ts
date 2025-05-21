@@ -7,6 +7,9 @@ import { Form3Component } from './ng-forms/form-3/form-3.component';
 import { Form4Component } from './ng-forms/form-4/form-4.component';
 import { ProductApiComponent } from './api/product-api/product-api.component';
 import { UserApiComponent } from './api/user-api/user-api.component';
+import { AutocompleteComponent } from './components-up/autocomplete/autocomplete.component';
+import { ButtonsComponent } from './components-up/buttons/buttons.component';
+import { ChipsComponent } from './components-up/chips/chips.component';
 
 const routes: Routes = [
   {
@@ -38,6 +41,18 @@ const routes: Routes = [
        path: 'Api-user',
        component: UserApiComponent
       },
+      {
+        path: 'autocomplete',
+        component: AutocompleteComponent
+      },
+      {
+        path: 'button',
+        component: ButtonsComponent
+      },
+      {
+        path: 'chips',
+        component: ChipsComponent
+      },  
       {
         path: '',
         redirectTo: 'reactive-form-1',

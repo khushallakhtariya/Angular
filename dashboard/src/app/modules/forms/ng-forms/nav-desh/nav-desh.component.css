@@ -118,10 +118,10 @@
 }
 
 /* Hover & Active States for Sidebar */
-.sidebar:hover .nav-links li a {
+/* .sidebar:hover .nav-links li a {
   background-color: #1e2a32;
   color: #fff;
-}
+} */
 
 .sidebar:hover .nav-links li a.active {
   background-color: #007bb5;

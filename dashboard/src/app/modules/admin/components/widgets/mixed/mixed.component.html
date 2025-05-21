@@ -1,1 +1,506 @@
-<p>mixed works!</p>
+<!-- sales-mix.component.html -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-inner">
+    <!-- Sales Summary Card -->
+    <div class="md:col-span-2 bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">Sales Summary</h2>
+          <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">Q2 2023</span>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Balance -->
+          <div class="bg-gradient-to-br  from-blue-50 to-blue-100 p-4 rounded-xl border border-blue-100 transition-transform hover:scale-[1.02]">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="p-2 bg-blue-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <p class="text-sm font-medium text-blue-600">Your Balance</p>
+            </div>
+            <p class="text-2xl font-bold text-gray-800 ">${{salesSummary.balance | number:'1.2-2'}}</p>
+          </div>
+          
+          <!-- Sales -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl border border-green-100 transition-transform hover:scale-[1.02]">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="p-2 bg-green-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7h-2l-1 2H8l-1-2H5V5z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <p class="text-sm font-medium text-green-600">Sales</p>   
+            </div>
+            <div class="flex justify-between items-end">
+              <p class="text-xl font-bold text-gray-800">{{salesSummary.salesRegions}} Regions</p>
+              <p class="text-lg font-semibold text-gray-700">${{salesSummary.salesValue}}b</p>
+            </div>
+          </div>
+          
+          <!-- Revenue -->
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-xl border border-purple-100 transition-transform hover:scale-[1.02]">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="p-2 bg-purple-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <p class="text-sm font-medium text-purple-600">Revenue</p>
+            </div>
+            <div class="flex justify-between items-end">
+              <p class="text-lg font-semibold text-gray-700">Q2/Q3</p>
+              <p class="text-xl font-bold text-gray-800">${{salesSummary.revenue}}b</p>
+            </div>
+          </div>
+          
+          <!-- Growth -->
+          <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-4 rounded-xl border border-amber-100 transition-transform hover:scale-[1.02]">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="p-2 bg-amber-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <p class="text-sm font-medium text-amber-600">Growth</p>
+            </div>
+            <div class="flex justify-between items-end">
+              <p class="text-xl font-bold text-gray-800">{{salesSummary.growthRate}}% Rate</p>
+              <p class="text-lg font-semibold text-gray-700">${{salesSummary.growthValue}}m</p>
+            </div>
+          </div>
+          
+          <!-- Dispute -->
+          <div class="bg-gradient-to-br from-rose-50 to-rose-100 p-4 rounded-xl border border-rose-100 transition-transform hover:scale-[1.02]">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="p-2 bg-rose-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <p class="text-sm font-medium text-rose-600">Dispute</p>
+            </div>
+            <div class="flex justify-between items-end">
+              <p class="text-lg font-semibold text-gray-700">{{salesSummary.disputeRefunds}} Refunds</p>
+              <p class="text-xl font-bold text-gray-800">${{salesSummary.disputeValue}}m</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sales Statistics Card -->
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">Sales Statistics</h2>
+          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">Weekly</span>
+        </div>
+        
+        <div class="space-y-4">
+          <div *ngFor="let stat of salesStats" 
+               class="flex items-center justify-between p-4 bg-gray-50 rounded-xl transition-all duration-200 hover:bg-white hover:shadow-sm">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">{{stat.icon}}</span>
+              <div>
+                <p class="text-sm font-medium text-gray-500 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">{{stat.title}}</p>
+                <p class="text-lg font-bold text-gray-800">{{stat.value}}</p>
+              </div>
+            </div>
+            <div [ngClass]="getTrendColor(stat.trend)" class="flex items-center font-medium">
+              <span class="text-lg mr-1">{{getTrendIcon(stat.trend)}}</span>
+              <span>{{stat.change}}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 pt-6 border-t border-gray-200">
+          <button class="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl text-sm font-semibold text-white hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            View Full Report
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>    
+  
+<div class="bg-gray-100 p-6 w-full">
+  <div class="container mx-auto">
+      <!-- Subscription Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <!-- Subscription Card 1 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-start">
+                      <div>
+                          <h3 class="text-lg font-semibold text-gray-800">Monthly Subscription</h3>
+                          <p class="text-sm text-gray-500">Due: 27 Apr 2020</p>
+                      </div>
+                      <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Active</span>
+                  </div>
+                  
+                  <div class="mt-4">
+                      <h4 class="text-sm font-medium text-gray-500 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Progress</h4>
+                      <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
+                      </div>
+                      <p class="text-xs text-gray-500 mt-1">75% completed</p>
+                  </div>
+                  
+                  <div class="mt-6 flex items-center">
+                      <div class="flex -space-x-2">
+                          <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                          <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                          <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+                      </div>
+                      <span class="text-xs text-gray-500 ml-2">+5 Team members</span>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Subscription Card 2 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-start">
+                      <div>
+                          <h3 class="text-lg font-semibold text-gray-800">Monthly Subscription</h3>
+                          <p class="text-sm text-gray-500">Due: 27 Apr 2020</p>
+                      </div>
+                      <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Completed</span>
+                  </div>
+                  
+                  <div class="mt-4">
+                      <h4 class="text-sm font-medium text-gray-500 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Progress</h4>
+                      <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                          <div class="bg-green-600 h-2.5 rounded-full" style="width: 100%"></div>
+                      </div>
+                      <p class="text-xs text-gray-500 mt-1">100% completed</p>
+                  </div>
+                  
+                  <div class="mt-6 flex items-center">
+                      <div class="flex -space-x-2">
+                          <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/75.jpg" alt="">
+                          <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/22.jpg" alt="">
+                      </div>
+                      <span class="text-xs text-gray-500 ml-2">+2 Team members</span>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Subscription Card 3 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-start">
+                      <div>
+                          <h3 class="text-lg font-semibold text-gray-800">Monthly Subscription</h3>
+                          <p class="text-sm text-gray-500">Due: 27 Apr 2020</p>
+                      </div>
+                      <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Pending</span>
+                  </div>
+                  
+                  <div class="mt-4">
+                      <h4 class="text-sm font-medium text-gray-500 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Progress</h4>
+                      <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                          <div class="bg-yellow-400 h-2.5 rounded-full" style="width: 30%"></div>
+                      </div>
+                      <p class="text-xs text-gray-500 mt-1">30% completed</p>
+                  </div>
+                  
+                  <div class="mt-6 flex items-center">
+                      <div class="flex -space-x-2">
+                          <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/46.jpg" alt="">
+                      </div>
+                      <span class="text-xs text-gray-500 ml-2">+1 Team member</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Project Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <!-- PitStop Card -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-start">
+                      <div>
+                          <h3 class="text-lg font-semibold text-gray-800">PitStop - Multiple Email Generator</h3>
+                          <p class="text-sm text-gray-500">7 hours ago</p>
+                      </div>
+                      <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">New</span>
+                  </div>
+                  
+                  <div class="mt-4">
+                      <p class="text-gray-600">A tool for generating multiple email templates with customization options.</p>
+                  </div>
+                  
+                  <div class="mt-6 flex justify-between items-center">
+                      <div class="flex items-center">
+                          <i class="fas fa-code-branch text-gray-400 mr-1"></i>
+                          <span class="text-xs text-gray-500">v2.1.0</span>
+                      </div>
+                      <button class="text-purple-600 cursor-pointer hover:text-purple-800 text-sm font-medium">View Project</button>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- ReactJS Admin Theme -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-start">
+                      <div>
+                          <h3 class="text-lg font-semibold text-gray-800">ReactJS Admin Theme</h3>
+                          <p class="text-sm text-gray-500">10 days ago</p>
+                      </div>
+                      <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Updated</span>
+                  </div>
+                  
+                  <div class="mt-4">
+                      <p class="text-gray-600">A modern admin dashboard theme built with ReactJS and Tailwind CSS.</p>
+                  </div>
+                  
+                  <div class="mt-6 flex justify-between items-center">
+                      <div class="flex items-center">
+                          <i class="fas fa-star text-yellow-400 mr-1"></i>
+                          <span class="text-xs text-gray-500">4.8 (124 reviews)</span>
+                      </div>
+                      <button class="text-blue-600 cursor-pointer hover:text-blue-800 text-sm font-medium">View Project</button>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- KT.com Templates -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-start">
+                      <div>
+                          <h3 class="text-lg font-semibold text-gray-800">KT.com - High Quality Templates</h3>
+                          <p class="text-sm text-gray-500">2 weeks ago</p>
+                      </div>
+                      <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Popular</span>
+                  </div>
+                  
+                  <div class="mt-4">
+                      <p class="text-gray-600">Premium templates for various business needs with responsive design.</p>
+                  </div>
+                  
+                  <div class="mt-6 flex justify-between items-center">
+                      <div class="flex items-center">
+                          <i class="fas fa-download text-green-500 mr-1"></i>
+                          <span class="text-xs text-gray-500">1,240 downloads</span>
+                      </div>
+                      <button class="text-green-600 cursor-pointer hover:text-green-800 text-sm font-medium ">View Project</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Sales Overview Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Sales Card 1 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold text-gray-800">Sales Overview</h3>
+                      <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Recent sales statistics</span>
+                  </div>
+                  <p-chart type="line" [data]="data" [options]="options" class="h-[30rem]" />
+                  <div class="space-y-4">
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Average Sale</span>
+                          <span class="font-semibold">$650</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Commission</span>
+                          <span class="font-semibold">$233,600</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Annual Taxes 2019</span>
+                          <span class="font-semibold">$29,004</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                          <span class="text-gray-600 font-medium cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Annual Income</span>
+                          <span class="text-blue-600 font-bold">$1,480,000</span>
+                      </div>
+                  </div>
+                  
+                  <button class="mt-6 w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-300">
+                      View Details
+                  </button>
+              </div>
+          </div>
+          
+          <!-- Sales Card 2 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300">
+              <div class="p-6">
+                  <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold text-gray-800">Sales Overview</h3>
+                      <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Recent sales statistics</span>
+                      
+                  </div>
+                  <p-chart type="line" [data]="data" [options]="options" class="h-[30rem]" />
+                  <div class="space-y-4">
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Average Sale</span>
+                          <span class="font-semibold">$650</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Commission</span>
+                          <span class="font-semibold">$233,600</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Annual Taxes 2019</span>
+                          <span class="font-semibold">$29,004</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                          <span class="text-gray-600 font-medium cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Annual Income</span>
+                          <span class="text-green-600 font-bold">$1,480,000</span>
+                      </div>
+                  </div>
+                  
+                  <button class="mt-6 w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors duration-300">
+                      View Details
+                  </button>
+              </div>
+          </div>
+          
+          <!-- Sales Card 3 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 ">
+              <div class="p-6">
+                  <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold text-gray-800">Sales Overview</h3>
+                      <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Recent sales statistics</span>
+                  </div>
+                  <p-chart type="line" [data]="data" [options]="options" class="h-[30rem]" />
+                  <div class="space-y-4">
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Average Sale</span>
+                          <span class="font-semibold">$650</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Commission</span>
+                          <span class="font-semibold">$233,600</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center">
+                          <span class="text-gray-600 cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Annual Taxes 2019</span>
+                          <span class="font-semibold">$29,004</span>
+                      </div>
+                      
+                      <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                          <span class="text-gray-600 font-medium  cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out">Annual Income</span>
+                          <span class="text-purple-600 font-bold">$1,480,000</span>
+                      </div>
+                  </div>
+                  
+                  <button class="mt-6 w-full cursor-pointer bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg transition-colors duration-300">
+                      View Details
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Charts Section -->
+<div class="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">Analytics Dashboard</h1>
+      <p class="text-gray-600 mb-8">Visual representation of your data</p>
+  
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+        <!-- Pie Chart Card -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 h-auto flex flex-col">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Revenue Distribution</h3>
+            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Monthly</span>
+          </div>
+          <div class="flex-1 relative">
+            <div class="h-full w-full">
+              <p-chart
+                type="pie"
+                [data]="data"
+                [options]="options"
+                styleClass="w-full h-full"
+              ></p-chart>
+            </div>
+            <div class="absolute bottom-2 right-2 flex space-x-2">
+              <span class="inline-block w-3 h-3 rounded-full bg-blue-500"></span>
+              <span class="inline-block w-3 h-3 rounded-full bg-green-500"></span>
+              <span class="inline-block w-3 h-3 rounded-full bg-yellow-500"></span>
+              <span class="inline-block w-3 h-3 rounded-full bg-red-500"></span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Line Chart Card -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 h-auto flex flex-col">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Sales Trend</h3>
+            <div class="flex space-x-2">
+              <button class="text-xs px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">2023</button>
+              <button class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded">2024</button>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="h-full w-full">
+              <p-chart
+                type="line"
+                [data]="lineData"
+                [options]="lineOptions"
+                styleClass="w-full h-full"
+              ></p-chart>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Radar Chart Card -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 h-auto flex flex-col">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Performance Metrics</h3>
+            <span class="text-xs text-gray-500">Last 30 days</span>
+          </div>
+          <div class="flex-1">
+            <div class="h-full w-full">
+              <p-chart
+                type="radar"
+                [data]="radarData"
+                [options]="radarOptions"
+                styleClass="w-full h-full"
+              ></p-chart>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Polar Area Chart Card -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 h-auto flex flex-col">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Market Share</h3>
+            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Q2 2024</span>
+          </div>
+          <div class="flex-1">
+            <div class="h-full w-full">
+              <p-chart
+                type="polarArea"
+                [data]="polarData"
+                [options]="polarOptions"
+                styleClass="w-full h-full"
+              ></p-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,36 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Number</mat-label>
+      <input #input
+             type="text"
+             placeholder="Pick one"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto"
+             (input)="filter()"
+             (focus)="filter()">
+      <mat-autocomplete requireSelection #auto="matAutocomplete">
+        @for (option of filteredOptions; track option) {
+          <mat-option [value]="option">{{option}}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+
+  <form class="example-form">
+    <input type="text"
+           placeholder="Search for a street"
+           [formControl]="control"
+           [matAutocomplete]="auto"
+           class="example-input">
+    <mat-autocomplete #auto="matAutocomplete">
+      @for (street of filteredStreets | async; track street) {
+        <mat-option [value]="street">{{street}}</mat-option>
+      }
+    </mat-autocomplete>
+  </form>
+
+
+
+  
