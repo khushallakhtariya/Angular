@@ -2,16 +2,16 @@
 <div class="form-container">
   <div class="form-wrapper">
     <form [formGroup]="studentForm" (ngSubmit)="onSave()">
-      
+
       <!-- First Name -->
       <div class="form-group">
         <label for="firstName">First Name:</label>
-        <input type="text" formControlName="firstName" class="form-input" />
-        <div *ngIf="studentForm.controls['firstName'].touched">
-          <div *ngIf="studentForm.controls['firstName'].hasError('required')" class="text-danger">
+        <input id="firstName" type="text" formControlName="firstName" class="form-input" />
+        <div *ngIf="f['firstName'].touched">
+          <div *ngIf="f['firstName'].hasError('required')" class="text-danger">
             This is required
           </div>
-          <div *ngIf="studentForm.controls['firstName'].hasError('minlength')" class="text-danger">
+          <div *ngIf="f['firstName'].hasError('minlength')" class="text-danger">
             Min Char 3 required
           </div>
         </div>
@@ -20,18 +20,18 @@
       <!-- Last Name -->
       <div class="form-group">
         <label for="lastName">Last Name:</label>
-        <input type="text" formControlName="lastName" class="form-input" />
+        <input id="lastName" type="text" formControlName="lastName" class="form-input" />
       </div>
 
       <!-- Username -->
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" formControlName="username" class="form-input" />
-        <div *ngIf="studentForm.controls['username'].touched">
-          <div *ngIf="studentForm.controls['username'].hasError('required')" class="text-danger">
+        <input id="username" type="text" formControlName="username" class="form-input" />
+        <div *ngIf="f['username'].touched">
+          <div *ngIf="f['username'].hasError('required')" class="text-danger">
             This is required
           </div>
-          <div *ngIf="studentForm.controls['username'].hasError('email')" class="text-danger">
+          <div *ngIf="f['username'].hasError('email')" class="text-danger">
             Please enter a valid email
           </div>
         </div>
@@ -40,13 +40,13 @@
       <!-- City -->
       <div class="form-group">
         <label for="city">City:</label>
-        <input type="text" formControlName="city" class="form-input" />
+        <input id="city" type="text" formControlName="city" class="form-input" />
       </div>
 
       <!-- State -->
       <div class="form-group">
         <label for="state">State:</label>
-        <select class="form-input" formControlName="state">
+        <select id="state" class="form-input" formControlName="state">
           <option value="">Select a state</option>
           <option value="CA">Gujrat</option>
           <option value="TX">Madhya Pradesh</option>
@@ -57,24 +57,23 @@
 
       <!-- ZIP Code -->
       <div class="form-group">
-        <label for="zip">ZIP Code:</label>
-        <input type="text" formControlName="zipCode" class="form-input" />
-        <div *ngIf="studentForm.controls['zipCode'].touched">
-          <div *ngIf="studentForm.controls['zipCode'].hasError('pattern')" class="text-danger">
-            ZIP code must be a valid number
-          </div>
+        <label for="zipCode">ZIP Code:</label>
+        <input id="zipCode" type="text" formControlName="zipCode" class="form-input" />
+        <div *ngIf="f['zipCode'].touched && f['zipCode'].hasError('pattern')" class="text-danger">
+          ZIP code must be a valid number
         </div>
       </div>
 
       <!-- Accept Terms -->
-      <label>
-        <input
-          type="checkbox"
-          formControlName="isAccepted"
-          class="form-checkbox"
-        />
-        Accept Terms and Conditions
-      </label>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" formControlName="isAccepted" class="form-checkbox" />
+          Accept Terms and Conditions
+        </label>
+        <div *ngIf="f['isAccepted'].touched && f['isAccepted'].invalid" class="text-danger">
+          You must accept the terms
+        </div>
+      </div>
 
       <!-- Buttons -->
       <div class="btn">
@@ -90,6 +89,7 @@
 </div>
 
 <!-- Form Value Preview -->
-<div class="col-4">
-  {{ formValue | json }}
+<div class="col-4 mt-4">
+  <h3>Form Value Preview</h3>
+  <pre>{{ formValue | json }}</pre>
 </div>

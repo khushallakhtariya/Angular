@@ -1,36 +1,42 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Number</mat-label>
-      <input #input
-             type="text"
-             placeholder="Pick one"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto"
-             (input)="filter()"
-             (focus)="filter()">
-      <mat-autocomplete requireSelection #auto="matAutocomplete">
-        @for (option of filteredOptions; track option) {
-          <mat-option [value]="option">{{option}}</mat-option>
-        }
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-
-
-  <form class="example-form">
-    <input type="text"
-           placeholder="Search for a street"
-           [formControl]="control"
-           [matAutocomplete]="auto"
-           class="example-input">
-    <mat-autocomplete #auto="matAutocomplete">
-      @for (street of filteredStreets | async; track street) {
-        <mat-option [value]="street">{{street}}</mat-option>
+<!-- First Autocomplete Form (Number) -->
+<form class="w-full max-w-md mx-auto p-4">
+  <mat-form-field class="w-full">
+    <mat-label>Number</mat-label>
+    <input
+      #input
+      type="text"
+      placeholder="Pick one"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="numberAuto"
+      (input)="filter()"
+      (focus)="filter()"
+      class="w-full"
+    />
+    <mat-autocomplete #numberAuto="matAutocomplete">
+      @for (option of filteredOptions; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
       }
     </mat-autocomplete>
-  </form>
+  </mat-form-field>
+</form>
 
-
-
-  
+<!-- Second Autocomplete Form (Street) -->
+<form class="w-full max-w-md mx-auto p-4">
+  <mat-form-field class="w-full">
+    <mat-label>Street</mat-label>
+    <input
+      type="text"
+      placeholder="Search for a street"
+      matInput
+      [formControl]="control"
+      [matAutocomplete]="streetAuto"
+      class="w-full"
+    />
+    <mat-autocomplete #streetAuto="matAutocomplete">
+      @for (street of filteredStreets | async; track street) {
+        <mat-option [value]="street">{{ street }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

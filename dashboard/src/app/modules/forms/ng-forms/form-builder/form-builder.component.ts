@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-form-builder',
-  imports: [ReactiveFormsModule,CommonModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './form-builder.component.html',
   styleUrls: ['./form-builder.component.css']
 })
@@ -15,13 +17,15 @@ export class FormBuilderComponent {
     username: new FormControl('', [Validators.required, Validators.email]),
     city: new FormControl(''),
     state: new FormControl(''),
-    zipCode: new FormControl('', [
-      Validators.pattern('^[0-9]+$')
-    ]),
+    zipCode: new FormControl('', [Validators.pattern('^[0-9]+$')]),
     isAccepted: new FormControl(false, Validators.requiredTrue)
   });
 
   formValue: any;
+
+  get f() {
+    return this.studentForm.controls;
+  }
 
   onSave() {
     if (this.studentForm.valid) {

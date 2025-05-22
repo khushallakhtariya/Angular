@@ -21,16 +21,16 @@ const routes: Routes = [
         path: 'reactive-form-1',
         component: FormGroupComponent
       },
+      // {
+      //   path: 'reactive-form-2',
+      //   component: FormBuilder
+      // },
       {
         path: 'reactive-form-2',
-        component: FormBuilder
-      },
-      {
-        path: 'reactive-form-3',
         component: Form3Component
       },
       {
-        path: 'reactive-form-4',
+        path: 'reactive-form-3',
         component: Form4Component
       },
       {
