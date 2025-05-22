@@ -1,119 +1,141 @@
-<section>
-    <div class="example-label">Basic</div>
-    <div class="example-button-row">
-      <button mat-button>Basic</button>
-      <button mat-button disabled>Disabled</button>
-      <a mat-button href="https://www.google.com/" target="_blank">Link</a>
-    </div>
-  </section>
-  <mat-divider></mat-divider>
-  <section>
-    <div class="example-label">Raised</div>
-    <div class="example-button-row">
-      <button mat-raised-button>Basic</button>
-      <button mat-raised-button disabled>Disabled</button>
-      <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
-    </div>
-  </section>
-  <mat-divider></mat-divider>
-  <section>
-    <div class="example-label">Stroked</div>
-    <div class="example-button-row">
-      <button mat-stroked-button>Basic</button>
-      <button mat-stroked-button disabled>Disabled</button>
-      <a mat-stroked-button href="https://www.google.com/" target="_blank">Link</a>
-    </div>
-  </section>
-  <mat-divider></mat-divider>
-  <section>
-    <div class="example-label">Flat</div>
-    <div class="example-button-row">
-      <button mat-flat-button>Basic</button>
-      <button mat-flat-button disabled>Disabled</button>
-      <a mat-flat-button href="https://www.google.com/" target="_blank">Link</a>
-    </div>
-  </section>
-  <mat-divider></mat-divider>
-  <section>
-    <div class="example-label">Icon</div>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
-          <mat-icon>open_in_new</mat-icon>
-        </button>
-      </div>
-    </div>
-  </section>
-  <mat-divider></mat-divider>
-  <section>
-    <div class="example-label">FAB</div>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <button mat-fab aria-label="Example icon button with a delete icon">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-        <div class="example-button-container">
-          <button mat-fab disabled aria-label="Example icon button with a heart icon">
-            <mat-icon>favorite</mat-icon>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <mat-divider></mat-divider>
-  <section>
-    <div class="example-label">Mini FAB</div>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <button mat-mini-fab aria-label="Example icon button with a menu icon">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </div>
-        <div class="example-button-container">
-          <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
-            <mat-icon>home</mat-icon>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="example-label">Extended Fab</div>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <button mat-fab extended>
-            <mat-icon>favorite</mat-icon>
-            Basic
-          </button>
-        </div>
-        <div class="example-button-container">
-          <button mat-fab extended disabled>
-            <mat-icon>favorite</mat-icon>
-            Disabled
-          </button>
-        </div>
-        <div class="example-button-container">
-          <a mat-fab extended routerLink=".">
-            <mat-icon>favorite</mat-icon>
-            Link
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <hr />
-  <hr />
-  
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle value="bold">Bold</mat-button-toggle>
-    <mat-button-toggle value="italic">Italic</mat-button-toggle>
-    <mat-button-toggle value="underline">Underline</mat-button-toggle>
+<section class="button-section">
+  <div class="section-label">Basic Buttons</div>
+  <div class="button-group">
+    <button mat-button class="basic-button">Basic</button>
+    <button mat-button disabled class="basic-button disabled">Disabled</button>
+    <a mat-button href="https://www.google.com/" target="_blank" class="basic-button link">Link</a>
+  </div>
+</section>
+
+<mat-divider class="section-divider"></mat-divider>
+
+<section class="button-section">
+  <div class="section-label">Raised Buttons</div>
+  <div class="button-group">
+    <button mat-raised-button class="raised-button">Basic</button>
+    <button mat-raised-button disabled class="raised-button disabled">Disabled</button>
+    <a mat-raised-button href="https://www.google.com/" target="_blank" class="raised-button link">Link</a>
+  </div>
+</section>
+
+<mat-divider class="section-divider"></mat-divider>
+
+<section class="button-section">
+  <div class="section-label">Stroked Buttons</div>
+  <div class="button-group">
+    <button mat-stroked-button class="stroked-button">Basic</button>
+    <button mat-stroked-button disabled class="stroked-button disabled">Disabled</button>
+    <a mat-stroked-button href="https://www.google.com/" target="_blank" class="stroked-button link">Link</a>
+  </div>
+</section>
+
+<mat-divider class="section-divider"></mat-divider>
+
+<section class="button-section">
+  <div class="section-label">Flat Buttons</div>
+  <div class="button-group">
+    <button mat-flat-button class="flat-button">Basic</button>
+    <button mat-flat-button disabled class="flat-button disabled">Disabled</button>
+    <a mat-flat-button href="https://www.google.com/" target="_blank" class="flat-button link">Link</a>
+  </div>
+</section>
+
+<mat-divider class="section-divider"></mat-divider>
+
+<section class="button-section">
+  <div class="section-label">Icon Buttons</div>
+  <div class="button-group icon-group">
+    <button mat-icon-button class="icon-button" aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <button mat-icon-button disabled class="icon-button disabled" aria-label="Example icon button with a open in new tab icon">
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+  </div>
+</section>
+
+<mat-divider class="section-divider"></mat-divider>
+
+<section class="button-section">
+  <div class="section-label">FAB Buttons</div>
+  <div class="button-group fab-group">
+    <button mat-fab class="fab-button" aria-label="Example icon button with a delete icon">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-fab disabled class="fab-button disabled" aria-label="Example icon button with a heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </div>
+</section>
+
+<mat-divider class="section-divider"></mat-divider>
+
+<section class="button-section">
+  <div class="section-label">Mini FAB Buttons</div>
+  <div class="button-group fab-group">
+    <button mat-mini-fab class="mini-fab-button" aria-label="Example icon button with a menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-mini-fab disabled class="mini-fab-button disabled" aria-label="Example icon button with a home icon">
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+</section>
+
+<section class="button-section">
+  <div class="section-label">Extended FAB</div>
+  <div class="button-group extended-fab-group">
+    <button mat-fab extended class="extended-fab-button">
+      <mat-icon>favorite</mat-icon>
+      Basic
+    </button>
+    <button mat-fab extended disabled class="extended-fab-button disabled">
+      <mat-icon>favorite</mat-icon>
+      Disabled
+    </button>
+    <a mat-fab extended routerLink="." class="extended-fab-button link">
+      <mat-icon>favorite</mat-icon>
+      Link
+    </a>
+  </div>
+</section>
+
+<hr class="divider-line" />
+
+<div class="toggle-section">
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="font-toggle-group">
+    <mat-button-toggle value="bold" class="toggle-button">Bold</mat-button-toggle>
+    <mat-button-toggle value="italic" class="toggle-button">Italic</mat-button-toggle>
+    <mat-button-toggle value="underline" class="toggle-button">Underline</mat-button-toggle>
   </mat-button-toggle-group>
+</div>
+<hr class="divider-line" />
+
+<!-- bagde example -->
+<div matBadge="4" matBadgeOverlap="false" class="badge-container">Text with a badge</div>
+
+<div matBadge="1" matBadgeSize="small" class="badge-container">Text with small badge</div>
+<div matBadge="1" matBadgeSize="large" class="badge-container">Text with large badge</div>
+
+<div class="badge-container">
+Button with a badge on the left
+<button mat-raised-button matBadge="8" matBadgePosition="before">
+  Action
+</button>
+</div>
+
+<div class="badge-container">
+  Button toggles badge visibility
+  <button mat-raised-button matBadge="7" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
+      Hide
+  </button>
+</div>
+
+<div class="badge-container">
+Icon with a badge
+<mat-icon matBadge="15">home</mat-icon>
+  <!-- Include text description of the icon's meaning for screen-readers -->
+  <span class="cdk-visually-hidden">
+    Example with a home icon with overlaid badge showing the number 15
+  </span>
+</div>

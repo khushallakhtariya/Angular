@@ -4,18 +4,26 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle'; // <-- import this
 import { CommonModule } from '@angular/common';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @Component({
   selector: 'app-buttons',
-  standalone: true, // <-- Add this if you want a standalone component
+  standalone: true,
   imports: [
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    MatButtonToggleModule, // <-- add here
-    CommonModule
+    MatButtonToggleModule, 
+    CommonModule,
+    MatBadgeModule
   ],
   templateUrl: './buttons.component.html',
-  styleUrls: ['./buttons.component.css']  // fix typo from styleUrl to styleUrls
+  styleUrls: ['./buttons.component.css']  
 })
-export class ButtonsComponent {}
+export class ButtonsComponent {
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+}

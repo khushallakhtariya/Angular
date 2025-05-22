@@ -10,6 +10,7 @@ import { UserApiComponent } from './api/user-api/user-api.component';
 import { AutocompleteComponent } from './components-up/autocomplete/autocomplete.component';
 import { ButtonsComponent } from './components-up/buttons/buttons.component';
 import { ChipsComponent } from './components-up/chips/chips.component';
+import { BottomSheetComponent } from './components-up/bottom-sheet/bottom-sheet.component';
 
 const routes: Routes = [
   {
@@ -52,7 +53,11 @@ const routes: Routes = [
       {
         path: 'chips',
         component: ChipsComponent
-      },  
+      }, 
+      {
+        path: 'bottom-sheet',
+        component: BottomSheetComponent
+      }, 
       {
         path: '',
         redirectTo: 'reactive-form-1',

@@ -1,16 +1,20 @@
-<mat-form-field class="example-chip-list">
-    <mat-label>Favorite Fruits</mat-label>
-    <mat-chip-grid #chipGrid aria-label="Enter fruits">
+<!-- Your component HTML with enhanced Tailwind classes -->
+<div class="container mx-auto px-4 py-8 w-full">
+  <!-- Chip List for Favorite Fruits -->
+  <mat-form-field class="w-full mb-8">
+    <mat-label class="text-gray-700 font-medium">Favorite Fruits</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter fruits" class="p-2 bg-gray-50 rounded-lg">
       @for (fruit of fruits(); track fruit) {
         <mat-chip-row
           (removed)="remove(fruit)"
           [editable]="true"
           (edited)="edit(fruit, $event)"
           [aria-description]="'press enter to edit ' + fruit.name"
+          class="bg-blue-100 text-blue-800 font-medium hover:bg-blue-200 transition-colors duration-150"
         >
-          {{fruit.name}}
-          <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
-            <mat-icon>cancel</mat-icon>
+          {{ fruit.name }}
+          <button matChipRemove [attr.aria-label]="'remove ' + fruit.name" class="hover:bg-blue-300 rounded-full">
+            <mat-icon class="text-red-500 hover:text-red-700">cancel</mat-icon>
           </button>
         </mat-chip-row>
       }
@@ -20,7 +24,75 @@
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         [matChipInputAddOnBlur]="addOnBlur"
         (matChipInputTokenEnd)="add($event)"
+        class="mt-2 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none w-full"
       />
     </mat-chip-grid>
   </mat-form-field>
-  
+
+  <!-- Tabbed Image Sections -->
+  <mat-tab-group class="mb-8 shadow-lg rounded-xl overflow-hidden">
+    <mat-tab label="First Animal" class="rounded-t-lg">
+      <div class="flex justify-center p-6 bg-gray-50">
+        <img
+          src="https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg"
+          alt="Squirrel"
+          class="w-full max-w-md h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+        />
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Second Animal">
+      <div class="flex justify-center p-6 bg-gray-50">
+        <img
+          src="https://images.pexels.com/photos/162140/duckling-birds-yellow-fluffy-162140.jpeg"
+          alt="Duckling"
+          class="w-full max-w-md h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+        />
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Third Animal">
+      <div class="flex justify-center p-6 bg-gray-50">
+        <img
+          src="https://images.pexels.com/photos/635499/pexels-photo-635499.jpeg"
+          alt="Hummingbird"
+          class="w-full max-w-md h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+        />
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <!-- Data Table -->
+  <div class="mb-8 overflow-hidden rounded-xl shadow-lg border border-gray-200">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="w-full"
+    >
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Weight</th>
+        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef>Symbol</th>
+        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

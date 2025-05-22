@@ -1,88 +1,113 @@
-<div class="dashboard-layout">
-  <aside class="sidebar">
-    <div class="logo">
-      <h2>MyDashboard</h2>
+<div class="dashboard-layout flex h-screen">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-600 text-white flex flex-col">
+    <!-- Logo -->
+    <div class="p-4 border-b border-gray-700">
+      <h2 class="text-2xl font-bold">Student Dashboard</h2>
     </div>
-    <div class="Name">
-      <h1 class="name">Form's</h1>
-    </div>
-    <ul class="nav-links">
-      <li>
-        <a routerLink="reactive-form-1" routerLinkActive="active">
-          <span class="material-symbols-outlined">assignment</span>
-          <span>Reactive Form-1</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="reactive-form-2" routerLinkActive="active">
-          <span class="material-symbols-outlined">fact_check</span>
-          <span>Reactive Form-2</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="reactive-form-3" routerLinkActive="active">
-          <span class="material-symbols-outlined">fact_check</span>
-          <span>Reactive Form-3</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="reactive-form-4" routerLinkActive="active">
-          <span class="material-symbols-outlined">fact_check</span>
-          <span>Reactive Form-4</span>
-        </a>
-      </li>
-    </ul>
-    <div class="Name">
-      <h1 class="name">Api's</h1>
-    </div>
-    <ul class="nav-links">
-      <li>
-        <a routerLink="Api-Products" routerLinkActive="active">
-          <span class="material-symbols-outlined"> api </span>
-          <span>Api product's</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="Api-user" routerLinkActive="active">
-          <span class="material-symbols-outlined"> webhook </span>
-          <span>Api user's</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="autocomplete" routerLinkActive="active">
-          <span class="material-symbols-outlined">
-            prompt_suggestion
-            </span>
-          <span>autocomplete</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="button" routerLinkActive="active">
-          <span class="material-symbols-outlined">
-            radio_button_checked
-            </span>
-          <span>button's</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="chips" routerLinkActive="active">
-          <span class="material-symbols-outlined">
-            poker_chip
-            </span>
-          <span>chips</span>
-        </a>
-      </li>
-    </ul>
 
-    <!-- 👇 This pushes logout to the bottom -->
-    <div class="p-4 border-t border-gray-700 mt-auto">
+    <!-- Scrollable Menu -->
+    <div class="flex-1 overflow-y-auto px-4 py-2 space-y-6">
+      <!-- Forms Section -->
+      <div>
+        <h1 class="text-sm font-semibold uppercase text-gray-400 mb-2">Forms</h1>
+        <ul class="space-y-2">
+          <li>
+            <a routerLink="reactive-form-1" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">assignment</span>
+              <span>Reactive Form-1</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="reactive-form-2" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">fact_check</span>
+              <span>Reactive Form-2</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="reactive-form-3" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">fact_check</span>
+              <span>Reactive Form-3</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="reactive-form-4" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">fact_check</span>
+              <span>Reactive Form-4</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- API Section -->
+      <div>
+        <h1 class="text-sm font-semibold uppercase text-gray-400 mb-2">APIs</h1>
+        <ul class="space-y-2">
+          <li>
+            <a routerLink="Api-Products" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">api</span>
+              <span>API Products</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="Api-user" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">webhook</span>
+              <span>API Users</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="autocomplete" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">prompt_suggestion</span>
+              <span>Autocomplete</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Material Section -->
+      <div>
+        <h1 class="text-sm font-semibold uppercase text-gray-400 mb-2">Material</h1>
+        <ul class="space-y-2">
+          <li>
+            <a routerLink="button" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">radio_button_checked</span>
+              <span>Buttons</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="chips" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">poker_chip</span>
+              <span>Chips</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="bottom-sheet" routerLinkActive="active"
+              class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 transition">
+              <span class="material-symbols-outlined">folder_open</span>
+              <span>Bottom Sheet</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Logout Button (Fixed at Bottom) -->
+    <div class="p-4 border-t border-gray-700">
       <button
         (click)="logout()"
-        class="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+        class="w-full flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition"
       >
         <span class="material-symbols-outlined">logout</span>
         <span
-          class="transition-all duration-300 origin-left"
           [ngClass]="{
             'opacity-0 scale-90': collapsed,
             'opacity-100 scale-100': !collapsed
@@ -94,7 +119,8 @@
     </div>
   </aside>
 
-  <main class="main-content">
+  <!-- Main Content -->
+  <main class="flex-1 bg-gray-100 p-6 overflow-auto">
     <router-outlet></router-outlet>
   </main>
 </div>
