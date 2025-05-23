@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { RouterModule, RouterLink } from "@angular/router";
@@ -13,6 +13,7 @@ import { RouterModule, RouterLink } from "@angular/router";
 export class HomeComponent implements AfterViewInit {
   @ViewChild("heroVideo") heroVideoRef!: ElementRef<HTMLVideoElement>;
   isVideoPlaying = true;
+  showScrollTop = false;
 
   cars = [
     {
@@ -109,4 +110,13 @@ export class HomeComponent implements AfterViewInit {
   //     this.carName = params.get("name") || "";
   //   });
   // }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showScrollTop = window.pageYOffset > 300;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

@@ -20,9 +20,18 @@
       <p class="car-price">{{ car.price }}</p>
       <p class="car-rating">⭐ Rating: {{ car.rating }} / 5</p>
       <p class="car-description">{{ car.description }}</p>
-      <button class="car-btn" [routerLink]="['/view', car.code, 'details']">
+      <button class="car-btn" [routerLink]="['/view', car.code]">
         View Details
       </button>
     </div>
   </div>
 </div>
+<button
+  class="scroll-to-top"
+  *ngIf="showScrollTop"
+  (click)="scrollToTop()"
+>
+<span class="material-symbols-outlined">
+  arrow_upward
+  </span>
+</button>

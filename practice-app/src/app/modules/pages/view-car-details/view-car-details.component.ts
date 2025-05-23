@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-view-car-details',
@@ -13,6 +14,7 @@ import { Location } from '@angular/common';
 export class ViewCarDetailsComponent implements OnInit {
   carCode: string | null = null;
   selectedTab = 'Overview';
+  showScrollTop = false;
 
   tabs = [ 'Variant', 'Offers', 'Similar Cars', 'Colors', 'Mileage', 'User Review'];
 
@@ -52,7 +54,7 @@ export class ViewCarDetailsComponent implements OnInit {
     this.selectedTab = tab;
     const tabId = this.getTabId(tab);
 
-    this.location.replaceState(`/view/car/details/${this.carCode}/${tabId}`);
+    this.location.replaceState(`/view/${this.carCode}/${tabId}`);
 
     // Scroll to the section
     const el = document.getElementById(tabId);
@@ -65,7 +67,7 @@ export class ViewCarDetailsComponent implements OnInit {
 
  
 showPlan(code: string) {
-  this.router.navigate(['/view', code, 'details', 'info']);
+  this.router.navigate(['/view', code, 'info']);
 }
 
   cars = [
@@ -296,4 +298,12 @@ showPlan(code: string) {
       rating: 5,
     }
   ];
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showScrollTop = window.pageYOffset > 300;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

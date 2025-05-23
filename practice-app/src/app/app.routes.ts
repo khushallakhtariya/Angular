@@ -36,7 +36,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'view/:code/details',
+    path: 'view/:code',
     loadComponent: () =>
       import('./modules/pages/view-car-details/view-car-details.component').then(
         (m) => m.ViewCarDetailsComponent
@@ -52,7 +52,7 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'view/:code/details/info',
+    path: 'view/:code/info',
     loadComponent: () =>
       import('./modules/pages/get-info/get-info.component').then((m) => m.InfoComponent),
   },
