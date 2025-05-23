@@ -1,85 +1,50 @@
-<div class="max-w-6xl mx-auto p-4 md:p-6 font-sans text-gray-800 grid grid-cols-1 lg:grid-cols-3 gap-3          ">
+<div class="max-w-6xl mx-auto p-4 md:p-6 font-sans text-gray-800 grid grid-cols-1 lg:grid-cols-3 gap-3">
     <!-- Left: Profile Card -->
     <div class="bg-white rounded-lg shadow-md p-6 space-y-6 border border-gray-100">
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
-          <img
-            class="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
-            [src]="user.avatarUrl"
-            alt="Profile"
-          />
+          <img class="w-16 h-16 rounded-full object-cover border-2 border-gray-100" [src]="user.avatarUrl" alt="Profile" />
           <div>
             <h2 class="text-lg font-semibold text-gray-900">{{ user.name }}</h2>
             <p class="text-sm text-gray-500">{{ user.email }}</p>
           </div>
         </div>
-        <button 
-          class="text-gray-400 hover:text-gray-600 transition-colors duration-200"
-          (click)="goToEditPage()"
-        >
+        <button class="text-gray-400 hover:text-gray-600 transition-colors duration-200" (click)="goToEditPage()">
           <span class="material-symbols-outlined">edit_square</span>
         </button>
       </div>
   
       <div class="text-sm space-y-3">
-        <p class="flex items-center">
-          <span class="font-medium text-gray-700 w-24">Phone:</span> 
-          <span class="text-gray-600">{{ user.phone }}</span>
-        </p>
-        <p class="flex items-center">
-          <span class="font-medium text-gray-700 w-24">Date of birth:</span> 
-          <span class="text-gray-600">{{ user.dob }}</span>
-        </p>
-        <p class="flex items-center">
-          <span class="font-medium text-gray-700 w-24">Last Online:</span> 
-          <span class="text-gray-600">{{ user.lastOnline }}</span>
-        </p>
+        <p class="flex items-center"><span class="font-medium text-gray-700 w-24">Phone:</span><span class="text-gray-600">{{ user.phone }}</span></p>
+        <p class="flex items-center"><span class="font-medium text-gray-700 w-24">Date of birth:</span><span class="text-gray-600">{{ user.dob }}</span></p>
+        <p class="flex items-center"><span class="font-medium text-gray-700 w-24">Last Online:</span><span class="text-gray-600">{{ user.lastOnline }}</span></p>
       </div>
   
       <div class="flex justify-center space-x-4 pt-2 pb-4">
-        <!-- Facebook -->
         <button class="p-2 rounded-full border border-gray-200 hover:border-blue-600 hover:bg-blue-50 transition-all duration-200">
-          <img src="https://www.pngmart.com/files/23/Facebook-Logo-PNG-Isolated-HD.png" alt="Facebook" class="w-5 h-5 object-contain">
+          <img src="https://www.pngmart.com/files/23/Facebook-Logo-PNG-Isolated-HD.png" alt="Facebook" class="w-5 h-5 object-contain" />
         </button>
-      
-        <!-- Twitter -->
         <button class="p-2 rounded-full border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all duration-200">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/2491px-Logo_of_Twitter.svg.png" alt="Twitter" class="w-5 h-5 object-contain">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/2491px-Logo_of_Twitter.svg.png" alt="Twitter" class="w-5 h-5 object-contain" />
         </button>
-      
-        <!-- LinkedIn -->
         <button class="p-2 rounded-full border border-gray-200 hover:border-blue-700 hover:bg-blue-50 transition-all duration-200">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/1200px-LinkedIn_icon_circle.svg.png" alt="LinkedIn" class="w-5 h-5 object-contain">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/1200px-LinkedIn_icon_circle.svg.png" alt="LinkedIn" class="w-5 h-5 object-contain" />
         </button>
-      
-        <!-- Pinterest -->
         <button class="p-2 rounded-full border border-gray-200 hover:border-red-600 hover:bg-red-50 transition-all duration-200">
-          <img src="https://1000logos.net/wp-content/uploads/2018/03/Pinterest-Logo-2011-2016.png" alt="Pinterest" class="w-5 h-5 object-contain">
+          <img src="https://1000logos.net/wp-content/uploads/2018/03/Pinterest-Logo-2011-2016.png" alt="Pinterest" class="w-5 h-5 object-contain" />
         </button>
       </div>
-      
-      <button
-        class="w-full bg-blue-600 text-white py-2.5 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium text-sm"
-      >
-        Send Message
-      </button>
-      <button
-        class="w-full text-red-600 border border-red-200 rounded-md py-2.5 hover:bg-red-50 transition-colors duration-200 font-medium text-sm"
-      >
-        Delete
-      </button>
+  
+      <button class="w-full bg-blue-600 text-white py-2.5 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium text-sm">Send Message</button>
+      <button class="w-full text-red-600 border border-red-200 rounded-md py-2.5 hover:bg-red-50 transition-colors duration-200 font-medium text-sm">Delete</button>
     </div>
   
     <!-- Right: Tabs and Info -->
     <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6 border border-gray-100">
       <div class="border-b border-gray-200 pb-4 mb-6">
         <nav class="flex space-x-8">
-          <button class="text-blue-600 border-b-2 border-blue-600 pb-2 px-1 text-sm font-medium">
-            Billing
-          </button>
-          <button class="text-gray-500 hover:text-gray-700 pb-2 px-1 text-sm font-medium transition-colors duration-200">
-            Activity
-          </button>
+          <button class="text-blue-600 border-b-2 border-blue-600 pb-2 px-1 text-sm font-medium">Billing</button>
+          <button class="text-gray-500 hover:text-gray-700 pb-2 px-1 text-sm font-medium transition-colors duration-200">Activity</button>
         </nav>
       </div>
   
@@ -87,21 +52,10 @@
       <div class="mb-8">
         <h3 class="text-base font-semibold text-gray-800 mb-4">Purchase history</h3>
         <div class="space-y-4">
-          <div
-            *ngFor="let item of purchases"
-            class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm border-b border-gray-100 pb-3 last:border-0 last:pb-0"
-          >
+          <div *ngFor="let item of purchases" class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm border-b border-gray-100 pb-3 last:border-0 last:pb-0">
             <span class="text-gray-800 font-medium mb-1 sm:mb-0">{{ item.name }}</span>
             <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-xs sm:text-sm">
-              <span
-                [ngClass]="{
-                  'text-yellow-600 bg-yellow-50': item.status === 'Pending',
-                  'text-green-600 bg-green-50': item.status === 'Paid'
-                }"
-                class="font-medium px-2 py-1 rounded-md inline-flex items-center justify-center w-fit"
-              >
-                {{ item.status }}
-              </span>
+              <span [ngClass]="{ 'text-yellow-600 bg-yellow-50': item.status === 'Pending', 'text-green-600 bg-green-50': item.status === 'Paid' }" class="font-medium px-2 py-1 rounded-md inline-flex items-center justify-center w-fit">{{ item.status }}</span>
               <span class="text-gray-500">{{ item.date }}</span>
               <span class="text-gray-800 font-medium">{{ item.amount }}</span>
             </div>
@@ -112,17 +66,13 @@
       <!-- Addresses -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
         <div class="bg-gray-50 p-4 rounded-lg">
-          <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-            Billing Address
-          </h4>
+          <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Billing Address</h4>
           <div class="text-sm space-y-2">
             <p *ngFor="let line of addresses.billing" class="text-gray-700">{{ line }}</p>
           </div>
         </div>
         <div class="bg-gray-50 p-4 rounded-lg">
-          <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-            Delivery Address
-          </h4>
+          <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Delivery Address</h4>
           <div class="text-sm space-y-2">
             <p *ngFor="let line of addresses.delivery" class="text-gray-700">{{ line }}</p>
           </div>
@@ -133,29 +83,51 @@
       <div>
         <h3 class="text-base font-semibold text-gray-800 mb-4">Payment Methods</h3>
         <div class="space-y-4">
-          <div
-            *ngFor="let method of paymentMethods"
-            class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-          >
+          <div *ngFor="let method of paymentMethods" class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors duration-200">
             <div class="mb-2 sm:mb-0">
               <p class="font-medium text-gray-800">
                 {{ method.type }}
-                <span class="text-sm font-normal text-gray-600 ml-1"
-                  >{{ method.name }} •••• {{ method.lastDigits }}</span
-                >
+                <span class="text-sm font-normal text-gray-600 ml-1">{{ method.name }} •••• {{ method.lastDigits }}</span>
               </p>
               <p class="text-xs text-gray-500 mt-1">Expires {{ method.expiry }}</p>
             </div>
             <div class="flex items-center gap-3 self-end sm:self-auto">
-              <span
-                *ngIf="method.isPrimary"
-                class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
-                >Primary</span
-              >
-              <button class="text-sm text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Edit</button>
+              <span *ngIf="method.isPrimary" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Primary</span>
+              <button (click)="openEditModal(method)" class="text-sm text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Edit</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  
+    <!-- Modal -->
+    <div *ngIf="isModalOpen" class="fixed inset-0 backdrop-blur bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+        <button (click)="closeModal()" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">✕</button>
+        <h2 class="text-lg font-semibold mb-4">Edit credit card</h2>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1">Cardholder Name</label>
+          <input type="text" [(ngModel)]="selectedMethod.name" class="w-full border px-3 py-2 rounded-lg bg-gray-100" />
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1">Card Type</label>
+          <input type="text" [(ngModel)]="selectedMethod.type" class="w-full border px-3 py-2 rounded-lg bg-gray-100" />
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1">Last 4 Digits</label>
+          <input type="text" [(ngModel)]="selectedMethod.lastDigits" maxlength="4" class="w-full border px-3 py-2 rounded-lg bg-gray-100" />
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1">Expiry</label>
+          <input type="text" [(ngModel)]="selectedMethod.expiry" class="w-full border px-3 py-2 rounded-lg bg-gray-100" />
+        </div>
+  
+        <button (click)="updateCard()" class="bg-blue-600 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-700 transition">Update</button>
+      </div>
+    </div>
   </div>
+  

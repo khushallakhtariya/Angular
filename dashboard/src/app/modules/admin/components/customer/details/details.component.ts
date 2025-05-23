@@ -5,12 +5,14 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
-  imports: [CommonModule,FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+  styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
   constructor(private router: Router) {}
+
   user = {
     name: 'Angelina Gotelli',
     email: 'carolyn_h@hotmail.com',
@@ -35,6 +37,28 @@ export class DetailsComponent {
     { type: 'VISA', name: 'Angelina Gotelli', lastDigits: '0392', expiry: 'Dec 2025', isPrimary: true },
     { type: 'Mastercard', name: 'Angelina Gotelli', lastDigits: '8461', expiry: 'Jun 2025', isPrimary: false },
   ];
+
+  selectedMethod: any = null;
+  isModalOpen = false;
+
+  openEditModal(method: any) {
+    this.selectedMethod = { ...method };
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  updateCard() {
+    // Update logic (e.g., call API or update local array)
+    const index = this.paymentMethods.findIndex(m => m.lastDigits === this.selectedMethod.lastDigits);
+    if (index !== -1) {
+      this.paymentMethods[index] = { ...this.selectedMethod };
+    }
+    this.closeModal();
+  }
+
   goToEditPage() {
     this.router.navigate(['/deshbord/customer/edit']);
   }
