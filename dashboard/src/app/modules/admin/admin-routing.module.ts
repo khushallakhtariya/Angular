@@ -38,7 +38,7 @@ const routes: Routes = [
       {
         path: 'settings',
         loadComponent: () => SettingsComponent,
-      },
+      },  
       {
         path: 'help',
         loadComponent: () => HelpsComponent,
@@ -49,6 +49,11 @@ const routes: Routes = [
           import('./components/widgets/widgets-routing.module').then(
             (m) => m.WidgetsRoutingModule
           )
+      },
+      {
+        path: 'customer',
+        loadChildren: () =>
+          import('./components/customer/customer.module').then((m) => m.CustomerModule),
       },
 
       {

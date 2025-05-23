@@ -92,12 +92,58 @@
         <li>
           <a routerLink="widgets" routerLinkActive="bg-gray-700 text-blue-400"
             class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
-            <span class="material-symbols-outlined">help</span>
+            <span class="material-symbols-outlined">dashboard</span>
             <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
               class="transition-all duration-300 origin-left">widgets</span>
           </a>
         </li>
-
+        <li class="relative">
+          <button
+            (click)="customerDropdownOpen = !customerDropdownOpen"
+            class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition"
+            [ngClass]="{ 'bg-gray-700 text-blue-400': customerDropdownOpen }">
+            <span class="material-symbols-outlined"> person_search</span>
+            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
+              class="transition-all duration-300 origin-left">Customer</span>
+            <span class="ml-auto material-symbols-outlined">
+              {{ customerDropdownOpen ? 'expand_less' : 'expand_more' }}
+            </span>
+          </button>
+        
+          <ul *ngIf="customerDropdownOpen"
+            class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
+            [ngClass]="{'opacity-0 scale-95': collapsed, 'opacity-100 scale-100': !collapsed}">
+            
+            <li>
+              <a routerLink="customer/list"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
+                <span class="material-symbols-outlined text-green-400">list</span>
+                <span>List</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="customer/edit"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
+                <span class="material-symbols-outlined text-yellow-400">edit</span>
+                <span>Edit</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="customer/create"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
+                <span class="material-symbols-outlined text-blue-400">create</span>
+                <span>Create</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="customer/details"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
+                <span class="material-symbols-outlined text-blue-400">details</span>
+                <span>Details</span>
+              </a>
+            </li>
+          </ul>
+        </li>
         <h1 class="text-blue-300 cursor-pointer flex justify-center hover:text-blue-400 transition-all duration-300 ease-in-out">
           APPS
         </h1>

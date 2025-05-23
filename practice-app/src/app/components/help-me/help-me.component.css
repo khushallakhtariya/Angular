@@ -8,6 +8,32 @@
     transform: translateY(0);
   }
 }
+  
+.custom-back-button-container {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  padding: 12px 20px;
+  z-index: 1000;
+  border-bottom: 2px solid #ccc;
+  text-align: left;
+}
+
+.custom-back-button {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.custom-back-button:hover {
+  background-color: #218838;
+}
+
 
 .faq-item,
 .contact-section li {

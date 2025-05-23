@@ -1,5 +1,8 @@
-<div class="feedback-wrapper">
+<div class="custom-back-button-container">
+  <button class="custom-back-button" (click)="goBack()">⟵Back</button>
+</div>
 
+<div class="feedback-wrapper">
   <div class="feedback-container">
     <h2>User Feedback</h2>
     <form (submit)="SubmitBtn(); $event.preventDefault();">
@@ -13,14 +16,12 @@
       <textarea [(ngModel)]="feedback" name="feedback" required></textarea>
 
       <button type="submit">Submit Feedback</button>
-
-      <p *ngIf="message">{{ message }}</p>
     </form>
   </div>
 
   <div class="review-display" *ngIf="feedbackList.length">
     <h2>Submitted Feedback</h2>
-    
+
     <div *ngFor="let fb of feedbackList; let i = index" class="feedback-item">
       <p><strong>Name:</strong> {{ fb.name }}</p>
       <p><strong>Email:</strong> {{ fb.email }}</p>
@@ -33,5 +34,16 @@
       </div>
     </div>
   </div>
+</div>
 
+<!-- Toast Notification -->
+<div 
+  *ngIf="message"
+  [ngClass]="{
+    'toast': true,
+    'toast-success': message === 'Feedback Submitted!',
+    'toast-delete': message === 'Feedback deleted!'
+  }"
+>
+  {{ message }}
 </div>

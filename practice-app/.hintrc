@@ -15,7 +15,8 @@
       "default",
       {
         "ignore": [
-          "user-select"
+          "user-select",
+          "backdrop-filter"
         ]
       }
     ],
@@ -23,6 +24,12 @@
       "default",
       {
         "image-alt": "off"
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
       }
     ]
   }

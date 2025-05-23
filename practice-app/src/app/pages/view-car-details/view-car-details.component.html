@@ -8,6 +8,10 @@
     {{ tab }}
   </button>
 </div>
+<div class="custom-back-button-container">
+  <button class="custom-back-button" (click)="goBack()">⟵Back</button>
+</div>
+
 
 <ng-container *ngFor="let car of cars">
   <div *ngIf="car.code === carCode" class="car-card">

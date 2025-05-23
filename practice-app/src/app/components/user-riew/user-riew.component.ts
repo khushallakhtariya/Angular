@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 interface Feedback {
   name: string;
@@ -13,7 +14,7 @@ interface Feedback {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './user-riew.component.html',
-  styleUrl: './user-riew.component.css'
+  styleUrls: ['./user-riew.component.css']
 })
 export class UserRiewComponent implements OnInit {
   name: string = '';
@@ -21,6 +22,12 @@ export class UserRiewComponent implements OnInit {
   feedback: string = '';
   message: string = '';
   feedbackList: Feedback[] = [];
+
+  constructor(private location: Location) {}
+
+  goBack(): void {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     const savedFeedbacks = localStorage.getItem('userFeedbacks');
@@ -41,9 +48,8 @@ export class UserRiewComponent implements OnInit {
       localStorage.setItem('userFeedbacks', JSON.stringify(this.feedbackList));
 
       this.message = 'Feedback Submitted!';
-      setTimeout(() => this.message = '', 3000);
+      setTimeout(() => this.message = '', 2000);
 
-      // Reset input fields
       this.name = '';
       this.email = '';
       this.feedback = '';
@@ -53,39 +59,8 @@ export class UserRiewComponent implements OnInit {
   delete(index: number): void {
     this.feedbackList.splice(index, 1);
     localStorage.setItem('userFeedbacks', JSON.stringify(this.feedbackList));
+
     this.message = 'Feedback deleted!';
-    setTimeout(() => this.message = '', 2000);
+    setTimeout(() => this.message = '', 4000);
   }
 }
-
-
-
-
-
-// import { CommonModule } from '@angular/common';
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-user-riew',
-//   imports: [CommonModule],
-//   templateUrl: './user-riew.component.html',
-//   styleUrl: './user-riew.component.css'
-// })
-// export class UserRiewComponent {
-//   message: string | undefined;
-//   SubmitBtn() {
-//     this.message = 'Feedback Submitted!';
-//     setTimeout(() => {
-//       this.message = '';
-//     }, 3000); 
-//   }
-
-// }
-
-// defaultReviews = [
-//   { name: 'Alice', email: 'alice@example.com', feedback: 'Great service!' },
-//   { name: 'Bob', email: 'bob@example.com', feedback: 'Very satisfied.' },
-//   { name: 'Charlie', email: 'charlie@example.com', feedback: 'Could be better.' },
-//   { name: 'Diana', email: 'diana@example.com', feedback: 'Loved it!' },
-//   { name: 'Ethan', email: 'ethan@example.com', feedback: 'Okay experience.' }
-// ];

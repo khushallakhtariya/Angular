@@ -28,6 +28,9 @@ export class ViewCarDetailsComponent implements OnInit {
     private location: Location
   ) {}
 
+  goBack(): void {
+    this.location.back();
+  }
   ngOnInit(): void {
     this.carCode = this.route.snapshot.paramMap.get('code');
 

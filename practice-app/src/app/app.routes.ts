@@ -38,14 +38,14 @@ export const routes: Routes = [
   {
     path: 'view/:code',
     loadComponent: () =>
-      import('./modules/pages/view-car-details/view-car-details.component').then(
+      import('./pages/view-car-details/view-car-details.component').then(
         (m) => m.ViewCarDetailsComponent
       ),
     children: [
       {
         path: '',
         loadComponent: () =>
-          import('./modules/pages/view-car-details/view-car-details.component').then(
+          import('./pages/view-car-details/view-car-details.component').then(
             (m) => m.ViewCarDetailsComponent
           ),
       },
@@ -54,7 +54,7 @@ export const routes: Routes = [
   {
     path: 'view/:code/info',
     loadComponent: () =>
-      import('./modules/pages/get-info/get-info.component').then((m) => m.InfoComponent),
+      import('./pages/get-info/get-info.component').then((m) => m.InfoComponent),
   },
   {
     path: 'privacy-policy',

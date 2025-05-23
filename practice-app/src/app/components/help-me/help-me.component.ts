@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-help-me',
   imports: [  ],
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './help-me.component.css'
 })
 export class HelpMeComponent {
+  constructor(private location: Location) {}
 
+  goBack(): void {
+    this.location.back();
+  }
 }

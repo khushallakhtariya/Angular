@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { CommonModule } from '@angular/common';
+import { CommonModule,Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,11 +14,13 @@ import { ActivatedRoute } from '@angular/router';
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
   isSubmitting = false;
+  
 
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
     this.contactForm = this.fb.group({
       name: ['', [
@@ -114,5 +116,8 @@ export class ContactComponent implements OnInit {
 
   resetForm() {
     this.contactForm.reset();
+  }
+  goBack(): void {
+    this.location.back();
   }
 }
