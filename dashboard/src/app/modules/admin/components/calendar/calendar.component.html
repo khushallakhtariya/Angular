@@ -1,0 +1,129 @@
+<div class="p-6 bg-white rounded-2xl shadow-lg ">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <!-- Month & Year -->
+    <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">
+      {{ month }} {{ year }}
+    </h2>
+  
+    <!-- Navigation Buttons -->
+    <div class="flex items-center gap-2">
+      <button
+        (click)="prevMonth()"
+        class="w-10 h-10 rounded-full bg-white border border-gray-300 shadow-sm hover:bg-gray-100 hover:shadow-md transition duration-150 ease-in-out flex items-center justify-center"
+        aria-label="Previous Month"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+  
+      <button
+        (click)="nextMonth()"
+        class="w-10 h-10 rounded-full bg-white border border-gray-300 shadow-sm hover:bg-gray-100 hover:shadow-md transition duration-150 ease-in-out flex items-center justify-center"
+        aria-label="Next Month"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Week Days -->
+  <div class="grid grid-cols-7 bg-gray-100 text-center text-xs font-semibold uppercase text-gray-600 py-2 rounded-lg mb-2 shadow-inner">
+    <div *ngFor="let day of days">{{ day }}</div>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div class="grid grid-cols-7 gap-2">
+    <ng-container *ngFor="let week of weeks">
+      <div
+        *ngFor="let day of week"
+        class="h-[120px] bg-white border border-gray-200 rounded-xl p-1 hover:bg-gray-50 cursor-pointer relative transition group"
+        (click)="selectDay(day)"
+      >
+        <!-- Day Number -->
+        <div class="text-xs text-right text-gray-400 pr-1 font-medium" *ngIf="day">
+          {{ day }}
+        </div>
+
+        <!-- Events -->
+        <div *ngFor="let event of getEventsForDay(day)" class="mt-1">
+          <div
+            [ngClass]="event.color"
+            class="text-xs rounded px-2 py-1 mt-1 text-gray-800 font-medium truncate"
+          >
+            <span *ngIf="event.time" class="font-semibold">{{ event.time }}</span>
+            <span *ngIf="event.time"> - </span>
+            {{ event.title }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Event Modal -->
+  <div
+    *ngIf="showEventForm && selectedDay !== null"
+    class="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 px-4"
+  >
+    <div class="bg-white w-full max-w-md p-6 rounded-2xl shadow-2xl relative">
+      <!-- Close Button -->
+      <button
+        (click)="showEventForm = false"
+        class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition"
+      >
+        <span class="material-symbols-outlined"> cancel </span>
+      </button>
+
+      <!-- Heading -->
+      <h3 class="text-lg font-bold mb-4 text-gray-800">
+        Events for {{ selectedDay }} {{ month }} {{ year }}
+      </h3>
+
+      <!-- Existing Events -->
+      <div *ngFor="let event of getEventsForDay(selectedDay)" class="mb-2">
+        <div class="p-3 rounded-lg text-sm text-gray-700 shadow-sm" [ngClass]="event.color">
+          <p class="font-semibold">{{ event.title }}</p>
+          <p class="text-xs text-gray-600" *ngIf="event.time">
+            {{ event.time }}
+          </p>
+        </div>
+      </div>
+
+      <!-- New Event Form -->
+      <form (ngSubmit)="addEvent()" class="mt-4 flex flex-col gap-3">
+        <input
+          [(ngModel)]="newEventTitle"
+          name="title"
+          placeholder="Event title"
+          class="border border-gray-300 px-3 py-2 rounded-md text-sm focus:ring focus:ring-blue-200 outline-none"
+          required
+        />
+        <input
+          [(ngModel)]="newEventTime"
+          name="time"
+          placeholder="Time (e.g. 2:00 PM)"
+          class="border border-gray-300 px-3 py-2 rounded-md text-sm focus:ring focus:ring-blue-200 outline-none"
+        />
+        <select
+          [(ngModel)]="newEventColor"
+          name="color"
+          class="border border-gray-300 px-3 py-2 rounded-md text-sm focus:ring focus:ring-blue-200 outline-none"
+        >
+          <option value="bg-blue-200 text-blue-900">Blue</option>
+          <option value="bg-green-200 text-green-900">Green</option>
+          <option value="bg-yellow-200 text-yellow-900">Yellow</option>
+          <option value="bg-pink-200 text-pink-900">Pink</option>
+        </select>
+        <button
+          type="submit"
+          class="mt-2 self-start px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition"
+        >
+          Add Event
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

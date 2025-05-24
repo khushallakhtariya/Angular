@@ -9,6 +9,7 @@ import { Error500Component } from './components/errors/error-500/error-500.compo
 import { SettingsComponent } from './components/settings/settings.component';
 import { HelpsComponent } from './components/helps/helps.component';
 import { FileManagerComponent } from './components/file-manager/file-manager.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -63,7 +64,11 @@ const routes: Routes = [
       },
       {
         path: 'file-Manager',
-        component: FileManagerComponent
+        loadComponent: ()=> FileManagerComponent
+      },
+      {
+        path: 'calendar',
+        loadComponent: ()=> CalendarComponent
       },
 
       {

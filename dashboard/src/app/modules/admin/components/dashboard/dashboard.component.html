@@ -313,7 +313,7 @@
             <span
               [ngClass]="{
                 'opacity-0 scale-90': collapsed,
-                'opacity-100 scale-100': !collapsed
+                'opacity-100 scale-100': !collapsed 
               }"
               class="transition-all duration-300 origin-left"
               >Mail</span
@@ -334,6 +334,23 @@
               }"
               class="transition-all duration-300 origin-left"
               >File-Manager</span
+            >
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="calendar"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
+            <span class="material-symbols-outlined"> calendar_month </span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >calendar</span
             >
           </a>
         </li>
