@@ -8,7 +8,9 @@
     <!-- Collapse Button -->
     <div class="p-4 flex justify-end">
       <button (click)="toggleSidebar()" class="text-white focus:outline-none">
-        <span class="material-symbols-outlined hover:text-blue-400 transition-all duration-200 cursor-pointer">
+        <span
+          class="material-symbols-outlined hover:text-blue-400 transition-all duration-200 cursor-pointer"
+        >
           swap_horiz
         </span>
       </button>
@@ -17,7 +19,9 @@
     <!-- Scrollable Content -->
     <div class="flex-grow px-4 space-y-6 overflow-y-auto pb-24">
       <!-- Dashboard -->
-      <div class="flex flex-col items-center transition-all duration-300 ease-in-out">
+      <div
+        class="flex flex-col items-center transition-all duration-300 ease-in-out"
+      >
         <img
           src="https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Dashboard Image"
@@ -38,113 +42,200 @@
         </div>
       </div>
 
-      <h1 class="text-blue-300 cursor-pointer flex justify-center hover:text-blue-500 transition-all duration-300 ease-in-out">
+      <h1
+        class="text-blue-300 cursor-pointer flex justify-center hover:text-blue-500 transition-all duration-300 ease-in-out"
+      >
         CRAFTED
       </h1>
 
       <!-- Navigation Links -->
       <ul class="space-y-2">
         <li>
-          <a routerLink="home" routerLinkActive="bg-gray-700 text-blue-400"
-            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
+          <a
+            routerLink="home"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
             <span class="material-symbols-outlined">home</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Home</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Home</span
+            >
           </a>
         </li>
 
         <li>
-          <a routerLink="users" routerLinkActive="bg-gray-700 text-blue-400"
-            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
+          <a
+            routerLink="users"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
             <span class="material-symbols-outlined">person</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Users</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Users</span
+            >
           </a>
         </li>
 
         <li>
-          <a routerLink="profile" routerLinkActive="bg-gray-700 text-blue-400"
-            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
+          <a
+            routerLink="profile"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
             <span class="material-symbols-outlined">account_circle</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Profile</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Profile</span
+            >
           </a>
         </li>
 
         <li>
-          <a routerLink="settings" routerLinkActive="bg-gray-700 text-blue-400"
-            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
+          <a
+            routerLink="settings"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
             <span class="material-symbols-outlined">settings</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Settings</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Settings</span
+            >
           </a>
         </li>
 
         <li>
-          <a routerLink="help" routerLinkActive="bg-gray-700 text-blue-400"
-            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
+          <a
+            routerLink="help"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
             <span class="material-symbols-outlined">help</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Help</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Help</span
+            >
           </a>
         </li>
 
         <li>
-          <a routerLink="widgets" routerLinkActive="bg-gray-700 text-blue-400"
-            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
+          <a
+            routerLink="widgets"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
             <span class="material-symbols-outlined">dashboard</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">widgets</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >widgets</span
+            >
           </a>
         </li>
+        <!-- section start -->
         <li class="relative">
           <button
             (click)="customerDropdownOpen = !customerDropdownOpen"
             class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition"
-            [ngClass]="{ 'bg-gray-700 text-blue-400': customerDropdownOpen }">
+            [ngClass]="{ 'bg-gray-700 text-blue-400': customerDropdownOpen }"
+          >
             <span class="material-symbols-outlined"> person_search</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Customer</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Customer</span
+            >
             <span class="ml-auto material-symbols-outlined">
-              {{ customerDropdownOpen ? 'expand_less' : 'expand_more' }}
+              {{ customerDropdownOpen ? "expand_less" : "expand_more" }}
             </span>
           </button>
-        
-          <ul *ngIf="customerDropdownOpen"
+
+          <ul
+            *ngIf="customerDropdownOpen"
             class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
-            [ngClass]="{'opacity-0 scale-95': collapsed, 'opacity-100 scale-100': !collapsed}">
-            
+            [ngClass]="{
+              'opacity-0 scale-95': collapsed,
+              'opacity-100 scale-100': !collapsed
+            }"
+          >
             <li>
-              <a routerLink="customer/list"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-green-400">list</span>
+              <a
+                routerLink="customer/list"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-green-400"
+                  >list</span
+                >
                 <span>List</span>
               </a>
             </li>
             <li>
-              <a routerLink="customer/edit"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-yellow-400">edit</span>
+              <a
+                routerLink="customer/edit"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-yellow-400"
+                  >edit</span
+                >
                 <span>Edit</span>
               </a>
             </li>
             <li>
-              <a routerLink="customer/create"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-blue-400">create</span>
+              <a
+                routerLink="customer/create"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-blue-400"
+                  >create</span
+                >
                 <span>Create</span>
               </a>
             </li>
             <li>
-              <a routerLink="customer/details"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-blue-400">details</span>
+              <a
+                routerLink="customer/details"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-blue-400"
+                  >details</span
+                >
                 <span>Details</span>
               </a>
             </li>
           </ul>
         </li>
-        <h1 class="text-blue-300 cursor-pointer flex justify-center hover:text-blue-400 transition-all duration-300 ease-in-out">
+        <!-- section end  -->
+        <h1
+          class="text-blue-300 cursor-pointer flex justify-center hover:text-blue-400 transition-all duration-300 ease-in-out"
+        >
           APPS
         </h1>
 
@@ -153,80 +244,172 @@
           <button
             (click)="chatsDropdownOpen = !chatsDropdownOpen"
             class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition"
-            [ngClass]="{ 'bg-gray-700 text-blue-400': chatsDropdownOpen }">
+            [ngClass]="{ 'bg-gray-700 text-blue-400': chatsDropdownOpen }"
+          >
             <span class="material-symbols-outlined">chat</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Chats</span>
-            <span class="ml-auto material-symbols-outlined">{{ chatsDropdownOpen ? 'expand_less' : 'expand_more' }}</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Chats</span
+            >
+            <span class="ml-auto material-symbols-outlined">{{
+              chatsDropdownOpen ? "expand_less" : "expand_more"
+            }}</span>
           </button>
-          <ul *ngIf="chatsDropdownOpen"
+          <ul
+            *ngIf="chatsDropdownOpen"
             class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
-            [ngClass]="{'opacity-0 scale-95': collapsed, 'opacity-100 scale-100': !collapsed}">
+            [ngClass]="{
+              'opacity-0 scale-95': collapsed,
+              'opacity-100 scale-100': !collapsed
+            }"
+          >
             <li>
-              <a routerLink="chats/private"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-blue-400">business_messages</span>
+              <a
+                routerLink="chats/private"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-blue-400"
+                  >business_messages</span
+                >
                 <span>Private Chats</span>
               </a>
             </li>
             <li>
-              <a routerLink="chats/group"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-red-400">groups</span>
+              <a
+                routerLink="chats/group"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-red-400"
+                  >groups</span
+                >
                 <span>Group Chats</span>
               </a>
             </li>
             <li>
-              <a routerLink="chats/drawer"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-purple-400">sms</span>
+              <a
+                routerLink="chats/drawer"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-purple-400"
+                  >sms</span
+                >
                 <span>Drawer Chats</span>
               </a>
             </li>
           </ul>
         </li>
-
+        <!-- dropdaun complet -->
+        <li>
+          <a
+            routerLink="mail"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
+            <span class="material-symbols-outlined">mail</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Mail</span
+            >
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="file-Manager"
+            routerLinkActive="bg-gray-700 text-blue-400"
+            class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+          >
+            <span class="material-symbols-outlined"> folder_open </span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >File-Manager</span
+            >
+          </a>
+        </li>
         <!-- Error Pages Dropdown -->
         <li class="relative">
           <button
             (click)="errorDropdownOpen = !errorDropdownOpen"
             class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition"
-            [ngClass]="{ 'bg-gray-700 text-blue-400': errorDropdownOpen }">
+            [ngClass]="{ 'bg-gray-700 text-blue-400': errorDropdownOpen }"
+          >
             <span class="material-symbols-outlined">error</span>
-            <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-              class="transition-all duration-300 origin-left">Error Pages</span>
-            <span class="ml-auto material-symbols-outlined">{{ errorDropdownOpen ? 'expand_less' : 'expand_more' }}</span>
+            <span
+              [ngClass]="{
+                'opacity-0 scale-90': collapsed,
+                'opacity-100 scale-100': !collapsed
+              }"
+              class="transition-all duration-300 origin-left"
+              >Error Pages</span
+            >
+            <span class="ml-auto material-symbols-outlined">{{
+              errorDropdownOpen ? "expand_less" : "expand_more"
+            }}</span>
           </button>
-          <ul *ngIf="errorDropdownOpen"
+          <ul
+            *ngIf="errorDropdownOpen"
             class="mt-1 ml-6 space-y-1 bg-gray-800 rounded-lg p-2 shadow-lg transition-all duration-300 origin-top-left"
-            [ngClass]="{'opacity-0 scale-95': collapsed, 'opacity-100 scale-100': !collapsed}">
+            [ngClass]="{
+              'opacity-0 scale-95': collapsed,
+              'opacity-100 scale-100': !collapsed
+            }"
+          >
             <li>
-              <a routerLink="error-404"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-blue-400">error</span>
+              <a
+                routerLink="error-404"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-blue-400"
+                  >error</span
+                >
                 <span>Error 404</span>
               </a>
             </li>
             <li>
-              <a routerLink="error-500"
-                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition">
-                <span class="material-symbols-outlined text-yellow-400">warning</span>
+              <a
+                routerLink="error-500"
+                class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-400 transition"
+              >
+                <span class="material-symbols-outlined text-yellow-400"
+                  >warning</span
+                >
                 <span>Error 500</span>
               </a>
             </li>
           </ul>
         </li>
+        <!-- dropdaun complet -->
       </ul>
     </div>
 
     <!-- Logout Button (Fixed Bottom) -->
-    <div class="absolute bottom-0 left-0 w-full p-4 border-t border-gray-700 bg-gray-800">
+    <div
+      class="absolute bottom-0 left-0 w-full p-4 border-t border-gray-700 bg-gray-800"
+    >
       <button
         (click)="logout()"
-        class="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200">
+        class="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-700 hover:text-blue-400 transition-all duration-200"
+      >
         <span class="material-symbols-outlined">logout</span>
-        <span [ngClass]="{'opacity-0 scale-90': collapsed, 'opacity-100 scale-100': !collapsed}"
-          class="transition-all duration-300 origin-left">Logout</span>
+        <span
+          [ngClass]="{
+            'opacity-0 scale-90': collapsed,
+            'opacity-100 scale-100': !collapsed
+          }"
+          class="transition-all duration-300 origin-left"
+          >Logout</span
+        >
       </button>
     </div>
   </nav>

@@ -8,6 +8,7 @@ import { Error404Component } from './components/errors/error-404/error-404.compo
 import { Error500Component } from './components/errors/error-500/error-500.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HelpsComponent } from './components/helps/helps.component';
+import { FileManagerComponent } from './components/file-manager/file-manager.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,15 @@ const routes: Routes = [
         path: 'customer',
         loadChildren: () =>
           import('./components/customer/customer.module').then((m) => m.CustomerModule),
+      },
+      {
+        path:'mail',
+        loadChildren: () =>
+          import('./components/mail/mail.module').then((m) => m.MailModule)
+      },
+      {
+        path: 'file-Manager',
+        component: FileManagerComponent
       },
 
       {
