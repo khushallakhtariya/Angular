@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './sent.component.css'
 })
 export class SentComponent {
+  successMessage=''
 inboxData = [
     {
       from: 'Eileen Horton',
@@ -17,6 +18,8 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=1',
       status: 'sent',
       starred: false,
+      flag:false,
+
     },
     {
       from: 'Terrance Moreno',
@@ -26,6 +29,8 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=2',
       status: 'sent',
       starred: true,
+      flag:true,
+
     },
     {
       from: 'Jasmine Burns',
@@ -35,6 +40,8 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=3',
       status: 'seen',
       starred: false,
+      flag:false,
+
     },
     {
       from: 'Leo Vargas',
@@ -44,6 +51,8 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=4',
       status: 'sent',
       starred: true,
+      flag:true,
+
     },
     {
       from: 'Nina Reeves',
@@ -53,6 +62,8 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=5',
       status: 'seen',
       starred: false,
+      flag:false,
+
     },
     {
       from: 'Julian Schultz',
@@ -62,6 +73,8 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=6',
       status: 'seen',
       starred: true,
+      flag:true,
+
     },
     {
       from: 'Maya Patel',
@@ -71,6 +84,8 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=7',
       status: 'seen',
       starred: false,
+      flag:true,
+
     },
     {
       from: 'Carlos Jimenez',
@@ -80,13 +95,17 @@ inboxData = [
       avatar: 'https://i.pravatar.cc/40?img=8',
       status: 'sent',
       starred: false,
+      flag:false,
+
     }
   ];
 
   toggleStar(mail: any) {
     mail.starred = !mail.starred;
   }
-
+  toggleFlag(mail: any){
+    mail.flag = !mail.flag
+  }
   getStatusColor(status: string): string {
     switch(status) {
       case 'sent': return 'bg-blue-500';
@@ -103,9 +122,12 @@ inboxData = [
     }
   }
   deleteMail(mailToDelete: any) {
-    const confirmDelete = confirm('Are you sure you want to delete this mail?');
-    if (confirmDelete) {
-      this.inboxData = this.inboxData.filter(mail => mail !== mailToDelete);
-    }
-  }
+
+    this.inboxData = this.inboxData.filter(mail => mail !== mailToDelete);
+    this.successMessage = 'Mail has been successfully deleted.';
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000);
+  
+}
 }

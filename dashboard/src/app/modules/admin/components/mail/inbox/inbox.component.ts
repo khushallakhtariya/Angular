@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { routes } from '../../../../../app.routes';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-inbox',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './inbox.component.html',
   styleUrl: './inbox.component.css'
 })
 export class InboxComponent {
+  successMessage = '';
   
   inboxData = [
     {
@@ -18,6 +21,8 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=1',
       status: 'unread',
       starred: false,
+      flag:false,
+      
     },
     {
       from: 'Terrance Moreno',
@@ -27,6 +32,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=2',
       status: 'important',
       starred: true,
+      flag:true,
     },
     {
       from: 'Jasmine Burns',
@@ -36,6 +42,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=3',
       status: 'read',
       starred: false,
+      flag:false,
     },
     {
       from: 'Leo Vargas',
@@ -45,6 +52,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=4',
       status: 'important',
       starred: true,
+      flag:true,
     },
     {
       from: 'Nina Reeves',
@@ -63,6 +71,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=6',
       status: 'read',
       starred: true,
+      flag:false,
     },
     {
       from: 'Maya Patel',
@@ -72,6 +81,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=7',
       status: 'read',
       starred: false,
+      flag:true,
     },
     {
       from: 'Carlos Jimenez',
@@ -81,6 +91,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=8',
       status: 'read',
       starred: false,
+      flag:true,
     },
     {
       from: 'Tanya Rivers',
@@ -90,6 +101,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=9',
       status: 'important',
       starred: true,
+      flag:true,
     },
     {
       from: 'Dean Harrington',
@@ -99,6 +111,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=10',
       status: 'unread',
       starred: false,
+      flag:false,
     },
     {
       from: 'Amira Khan',
@@ -108,6 +121,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=11',
       status: 'read',
       starred: true,
+      flag:true,
     },
     {
       from: 'Victor Lam',
@@ -117,6 +131,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=12',
       status: 'read',
       starred: false,
+      flag:true,
     },
     {
       from: 'Emily Brooks',
@@ -126,6 +141,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=13',
       status: 'important',
       starred: true,
+      flag:false,
     },
     {
       from: 'Zachary Fox',
@@ -135,6 +151,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=14',
       status: 'read',
       starred: false,
+      flag:true,
     },
     {
       from: 'Rina Singh',
@@ -144,6 +161,7 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=15',
       status: 'read',
       starred: false,
+      flag:false,
     },
     {
       from: 'Marcus Bell',
@@ -162,6 +180,8 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=17',
       status: 'read',
       starred: false,
+      flag:false,
+    
     },
     {
       from: 'Omar Chen',
@@ -171,6 +191,8 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=18',
       status: 'important',
       starred: true,
+      flag:true,
+
     },
     {
       from: 'Clara Holt',
@@ -180,6 +202,8 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=19',
       status: 'read',
       starred: false,
+      flag:false,
+
     },
     {
       from: 'Bryce Warner',
@@ -189,11 +213,16 @@ export class InboxComponent {
       avatar: 'https://i.pravatar.cc/40?img=20',
       status: 'unread',
       starred: false,
+      flag:true,
+
     },
   ];
 
   toggleStar(mail: any) {
     mail.starred = !mail.starred;
+  }
+  toggleFlag(mail: any){
+    mail.flag = !mail.flag
   }
 
   getStatusColor(status: string): string {
@@ -214,9 +243,12 @@ export class InboxComponent {
     }
   }
   deleteMail(mailToDelete: any) {
-    const confirmDelete = confirm('Are you sure you want to delete this mail?');
-    if (confirmDelete) {
+
       this.inboxData = this.inboxData.filter(mail => mail !== mailToDelete);
-    }
+      this.successMessage = 'Mail has been successfully deleted.';
+      setTimeout(() => {
+        this.successMessage = '';
+      }, 3000);
+    
   }
 }

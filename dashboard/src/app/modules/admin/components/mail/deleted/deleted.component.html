@@ -45,9 +45,18 @@
             <div class="flex items-center justify-between">
               <span class="text-xs text-gray-500 whitespace-nowrap">{{ mail.received }}</span>
               <div class="flex items-center gap-2 text-gray-400">
-                <button class="p-1 rounded-full cursor-pointer hover:bg-gray-100 hover:text-green-600 transition-colors">
-                  <span class="material-symbols-outlined text-base">flag</span>
-                </button>
+                <button
+                (click)="toggleFlag(mail)"
+                class="p-1 rounded-full hover:bg-gray-100 hover:text-green-600 transition-colors"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  [class.text-red-400]="mail.flag"
+                  [class.fill-current]="mail.flag"
+                >
+                  {{ mail.starred ? "flag" : "flag" }}</span
+                >
+              </button>
          
               </div>
             </div>

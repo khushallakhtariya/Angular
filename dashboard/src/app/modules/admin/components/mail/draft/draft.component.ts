@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './draft.component.css'
 })
 export class DraftComponent {
+  successMessage = ''
   inboxData = [
     {
       from: 'Eileen Horton',
@@ -17,6 +18,8 @@ export class DraftComponent {
       avatar: 'https://i.pravatar.cc/40?img=1',
       status: 'draft',
       starred: false,
+      flag:true,
+
     },
     {
       from: 'Terrance Moreno',
@@ -25,7 +28,9 @@ export class DraftComponent {
       received: '9:35PM',
       avatar: 'https://i.pravatar.cc/40?img=2',
       status: 'draft',
-      starred: false,
+      starred: true,
+      flag:false,
+
     },
     {
       from: 'Jasmine Burns',
@@ -35,13 +40,17 @@ export class DraftComponent {
       avatar: 'https://i.pravatar.cc/40?img=3',
       status: 'draft',
       starred: false,
+      flag:false,
+
     }
   ];
 
   toggleStar(mail: any) {
     mail.starred = !mail.starred;
   }
-
+  toggleFlag(mail: any){
+    mail.flag = !mail.flag
+  }
   getStatusColor(status: string): string {
     switch(status) {
       case 'draft': return 'bg-yellow-400';
@@ -58,9 +67,12 @@ export class DraftComponent {
     }
   }
   deleteMail(mailToDelete: any) {
-    const confirmDelete = confirm('Are you sure you want to delete this mail?');
-    if (confirmDelete) {
-      this.inboxData = this.inboxData.filter(mail => mail !== mailToDelete);
-    }
-  }
+
+    this.inboxData = this.inboxData.filter(mail => mail !== mailToDelete);
+    this.successMessage = 'Mail has been successfully deleted.';
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000);
+  
+}
 }

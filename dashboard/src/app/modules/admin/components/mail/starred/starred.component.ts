@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './starred.component.css'
 })
 export class StarredComponent {
+  successMessage = ''
   inboxData = [
     {
       from: 'Eileen Horton',
@@ -15,8 +16,9 @@ export class StarredComponent {
       preview: 'Hi Nathan, An extremely credible source has called...',
       received: '12:06PM',
       avatar: 'https://i.pravatar.cc/40?img=1',
-      status: 'unread',
+      status: 'important',
       starred: true,
+      flag:false,
     },
     {
       from: 'Terrance Moreno',
@@ -26,6 +28,7 @@ export class StarredComponent {
       avatar: 'https://i.pravatar.cc/40?img=2',
       status: 'important',
       starred: true,
+      flag:false,
     },
     {
       from: 'Jasmine Burns',
@@ -33,8 +36,9 @@ export class StarredComponent {
       preview: 'Hey Nathan, Ive attached the latest files for review.',
       received: '2:15PM',
       avatar: 'https://i.pravatar.cc/40?img=3',
-      status: 'read',
+      status: 'important',
       starred: true,
+      flag:true,
     },
     {
       from: 'Leo Vargas',
@@ -44,6 +48,7 @@ export class StarredComponent {
       avatar: 'https://i.pravatar.cc/40?img=4',
       status: 'important',
       starred: true,
+      flag:false,
     },
     {
       from: 'Nina Reeves',
@@ -51,8 +56,9 @@ export class StarredComponent {
       preview: 'Dear Nathan, Wed love for you to speak at our event...',
       received: '7:47AM',
       avatar: 'https://i.pravatar.cc/40?img=5',
-      status: 'unread',
+      status: 'important',
       starred: true,
+      flag:false,
     },
     {
       from: 'Julian Schultz',
@@ -60,8 +66,9 @@ export class StarredComponent {
       preview: 'Hey, Are you around next week for a catch-up lunch?',
       received: '10:28AM',
       avatar: 'https://i.pravatar.cc/40?img=6',
-      status: 'read',
+      status: 'important',
       starred: true,
+      flag:true,
     },
     {
       from: 'Maya Patel',
@@ -69,8 +76,9 @@ export class StarredComponent {
       preview: 'Lets set up a time to align on Q3 objectives.',
       received: '6:55PM',
       avatar: 'https://i.pravatar.cc/40?img=7',
-      status: 'read',
+      status: 'important',
       starred: true,
+      flag:false,
     },
     {
       from: 'Carlos Jimenez',
@@ -78,8 +86,9 @@ export class StarredComponent {
       preview: 'Thanks for the update, Ive processed the payment.',
       received: '3:44PM',
       avatar: 'https://i.pravatar.cc/40?img=8',
-      status: 'read',
+      status: 'important',
       starred: true,
+      flag:false,
     },
     {
       from: 'Tanya Rivers',
@@ -89,6 +98,7 @@ export class StarredComponent {
       avatar: 'https://i.pravatar.cc/40?img=9',
       status: 'important',
       starred: true,
+      flag:true,
     },
 
   ];
@@ -96,28 +106,32 @@ export class StarredComponent {
   toggleStar(mail: any) {
     mail.starred = !mail.starred;
   }
+  toggleFlag(mail: any){
+    mail.flag = !mail.flag
+  }
 
   getStatusColor(status: string): string {
     switch(status) {
-      case 'unread': return 'bg-blue-500';
-      case 'important': return 'bg-red-500';
-      case 'read': return 'bg-gray-300';
+
+      case 'important': return 'bg-green-500';
+
       default: return 'bg-gray-300';
     }
   }
 
   getStatusText(status: string): string {
     switch(status) {
-      case 'unread': return 'Unread';
       case 'important': return 'Important';
-      case 'read': return 'Read';
       default: return 'Read';
     }
   }
   deleteMail(mailToDelete: any) {
-    const confirmDelete = confirm('Are you sure you want to delete this mail?');
-    if (confirmDelete) {
-      this.inboxData = this.inboxData.filter(mail => mail !== mailToDelete);
-    }
-  }
+
+    this.inboxData = this.inboxData.filter(mail => mail !== mailToDelete);
+    this.successMessage = 'Mail has been successfully deleted.';
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000);
+  
+}
 }

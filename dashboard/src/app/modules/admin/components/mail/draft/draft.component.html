@@ -45,9 +45,18 @@
             <div class="flex items-center justify-between">
               <span class="text-xs text-gray-500 whitespace-nowrap">{{ mail.received }}</span>
               <div class="flex items-center gap-2 text-gray-400">
-                <button class="p-1 rounded-full hover:bg-gray-100 hover:text-green-600 transition-colors">
-                  <span class="material-symbols-outlined text-base">flag</span>
-                </button>
+                <button
+                (click)="toggleFlag(mail)"
+                class="p-1 rounded-full hover:bg-gray-100 hover:text-green-600 transition-colors"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  [class.text-red-400]="mail.flag"
+                  [class.fill-current]="mail.flag"
+                >
+                  {{ mail.starred ? "flag" : "flag" }}</span
+                >
+              </button>
                 <button 
                   (click)="toggleStar(mail)"
                   class="p-1 rounded-full hover:bg-gray-100 hover:text-gray-600 transition-colors"
@@ -71,4 +80,15 @@
         </tr>
       </tbody>
     </table>
+    <div
+  *ngIf="successMessage"
+  class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white border-l-4 border-green-500 text-green-800 px-6 py-4 rounded shadow-md z-50 flex items-center gap-2 animate-fade-in-out"
+>
+  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" stroke-width="2"
+    viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M5 13l4 4L19 7" />
+  </svg>
+  <span>{{ successMessage }}</span>
+</div>
   </div>

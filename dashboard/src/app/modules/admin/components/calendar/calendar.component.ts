@@ -9,12 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './calendar.component.html',
 })
 export class CalendarComponent implements OnInit {
-isToday(_t19: number|null): any {
-throw new Error('Method not implemented.');
-}
-isCurrentMonth(_t19: number|null) {
-throw new Error('Method not implemented.');
-}
+  message: string = '';
   currentDate = new Date();
   month: string = '';
   year: number = 0;
@@ -23,6 +18,7 @@ throw new Error('Method not implemented.');
 
   selectedDay: number | null = null;
   showEventForm: boolean = false;
+  editingEvent: any = null;
 
   newEventTitle: string = '';
   newEventTime: string = '';
@@ -33,42 +29,12 @@ throw new Error('Method not implemented.');
     { date: 6, title: 'Long Event', color: 'bg-pink-200', month: 4 },
     { date: 8, title: 'Repeating Event', color: 'bg-blue-200', month: 4 },
     { date: 15, title: 'Repeating Event', color: 'bg-blue-200', month: 4 },
-    {
-      date: 23,
-      title: 'Dinner',
-      time: '1:30pm',
-      color: 'bg-green-200',
-      month: 4,
-    },
+    { date: 23, title: 'Dinner', time: '1:30pm', color: 'bg-green-200', month: 4 },
     { date: 18, title: 'Meeting', time: '4pm', color: 'bg-cyan-200', month: 4 },
-    {
-      date: 18,
-      title: 'Lunch',
-      time: '5:30pm',
-      color: 'bg-teal-200',
-      month: 4,
-    },
-    {
-      date: 18,
-      title: 'Meeting',
-      time: '8pm',
-      color: 'bg-indigo-200',
-      month: 4,
-    },
-    {
-      date: 18,
-      title: 'Happy Hour',
-      time: '11pm',
-      color: 'bg-yellow-200',
-      month: 4,
-    },
-    {
-      date: 19,
-      title: 'Birthday Party',
-      time: '12:30pm',
-      color: 'bg-purple-200',
-      month: 4,
-    },
+    { date: 18, title: 'Lunch', time: '5:30pm', color: 'bg-teal-200', month: 4 },
+    { date: 18, title: 'Meeting', time: '8pm', color: 'bg-indigo-200', month: 4 },
+    { date: 18, title: 'Happy Hour', time: '11pm', color: 'bg-yellow-200', month: 4 },
+    { date: 19, title: 'Birthday Party', time: '12:30pm', color: 'bg-purple-200', month: 4 },
   ];
 
   ngOnInit() {
@@ -81,11 +47,7 @@ throw new Error('Method not implemented.');
 
     const firstDayOfMonth = new Date(this.year, this.currentDate.getMonth(), 1);
     const startDay = firstDayOfMonth.getDay();
-    const daysInMonth = new Date(
-      this.year,
-      this.currentDate.getMonth() + 1,
-      0
-    ).getDate();
+    const daysInMonth = new Date(this.year, this.currentDate.getMonth() + 1, 0).getDate();
 
     const weeks: (number | null)[][] = [];
     let currentWeek: (number | null)[] = new Array(startDay).fill(null);
@@ -119,41 +81,71 @@ throw new Error('Method not implemented.');
   }
 
   selectDay(day: number | null) {
-    if (day) {
+    if (day !== null) {
       this.selectedDay = day;
       this.showEventForm = true;
+      this.newEventTitle = '';
+      this.newEventTime = '';
+      this.newEventColor = 'bg-blue-200';
+      this.editingEvent = null;
     }
   }
 
   getEventsForDay(day: number | null) {
     if (day == null) return [];
     const monthIndex = this.currentDate.getMonth();
-    return this.events.filter(
-      (event) => event.date === day && event.month === monthIndex
-    );
+    return this.events.filter(event => event.date === day && event.month === monthIndex);
   }
 
   addEvent() {
     if (this.selectedDay !== null) {
-      this.events.push({
-        date: this.selectedDay,
-        title: this.newEventTitle,
-        time: this.newEventTime,
-        color: this.newEventColor,
-        month: this.currentDate.getMonth(),
-      });
+      if (this.editingEvent) {
+        this.editingEvent.title = this.newEventTitle;
+        this.editingEvent.time = this.newEventTime;
+        this.editingEvent.color = this.newEventColor;
+      } else {
+        this.events.push({
+          date: this.selectedDay,
+          title: this.newEventTitle,
+          time: this.newEventTime,
+          color: this.newEventColor,
+          month: this.currentDate.getMonth(),
+        });
+      }
 
-      this.newEventTitle = '';
-      this.newEventTime = '';
-      this.newEventColor = 'bg-blue-200';
-      
+      this.resetSelection();
       this.updateCalendar();
-      this.showEventForm = false;
     }
+  }
+
+  deleteEvent(eventToDelete: any) {
+    this.events = this.events.filter(event => event !== eventToDelete);
+    this.message = 'Event deleted successfully!';
+    setTimeout(() => {
+      this.message = '';
+    }, 3000);
+  }
+  editEvent(eventToEdit: any) {
+    this.selectedDay = eventToEdit.date;
+    this.showEventForm = true;
+    this.newEventTitle = eventToEdit.title;
+    this.newEventTime = eventToEdit.time || '';
+    this.newEventColor = eventToEdit.color;
+    this.editingEvent = eventToEdit;
+  
+    this.message = 'Editing event: ' + eventToEdit.title;
+
+    setTimeout(() => {
+      this.message = '';
+    }, 3000);
   }
 
   resetSelection() {
     this.selectedDay = null;
     this.showEventForm = false;
+    this.editingEvent = null;
+    this.newEventTitle = '';
+    this.newEventTime = '';
+    this.newEventColor = 'bg-blue-200';
   }
 }

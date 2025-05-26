@@ -17,6 +17,7 @@ export class DeletedComponent {
       avatar: 'https://i.pravatar.cc/40?img=1',
       status: 'delete',
       starred: false,
+      flag:false,
     },
     {
       from: 'Terrance Moreno',
@@ -26,6 +27,7 @@ export class DeletedComponent {
       avatar: 'https://i.pravatar.cc/40?img=2',
       status: 'delete',
       starred: false,
+      flag:true,
     },
     {
       from: 'Jasmine Burns',
@@ -35,6 +37,7 @@ export class DeletedComponent {
       avatar: 'https://i.pravatar.cc/40?img=3',
       status: 'delete',
       starred: false,
+      flag:false,
     },
     {
       from: 'Leo Vargas',
@@ -44,12 +47,16 @@ export class DeletedComponent {
       avatar: 'https://i.pravatar.cc/40?img=4',
       status: 'delete',
       starred: false,
+      flag:false,
     },
    
   ];
 
   toggleStar(mail: any) {
     mail.starred = !mail.starred;
+  }
+  toggleFlag(mail: any){
+    mail.flag = !mail.flag
   }
 
   getStatusColor(status: string): string {

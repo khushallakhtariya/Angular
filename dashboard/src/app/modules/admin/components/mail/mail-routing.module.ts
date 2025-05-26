@@ -10,36 +10,36 @@ import { DeletedComponent } from './deleted/deleted.component';
 const routes: Routes = [
   {
     path: '',
-    component:MailComponent,
+    component: MailComponent,
     children: [
       { path: '', redirectTo: 'inbox', pathMatch: 'full' },
-      
+
       {
         path: 'inbox',
-        component: InboxComponent
+        component: InboxComponent,
       },
-        {
-          path:'sent',
-          component: SentComponent
-        },
-        {
-          path:'draft',
-          component: DraftComponent
-        },
-        {
-          path:'starred',
-          component: StarredComponent
-        },
-        {
-          path: 'deleted',
-          component: DeletedComponent
-        },
-    ]
-  }
+      {
+        path: 'inbox/category/sent',
+        component: SentComponent,
+      },
+      {
+        path: 'inbox/category/draft',
+        component: DraftComponent,
+      },
+      {
+        path: 'inbox/category/starred',
+        component: StarredComponent,
+      },
+      {
+        path: 'inbox/category/deleted',
+        component: DeletedComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MailRoutingModule { }
+export class MailRoutingModule {}
