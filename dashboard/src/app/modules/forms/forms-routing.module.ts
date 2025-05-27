@@ -11,6 +11,9 @@ import { AutocompleteComponent } from './components-up/autocomplete/autocomplete
 import { ButtonsComponent } from './components-up/buttons/buttons.component';
 import { ChipsComponent } from './components-up/chips/chips.component';
 import { BottomSheetComponent } from './components-up/bottom-sheet/bottom-sheet.component';
+import { pipe } from 'rxjs';
+import { PipesComponent } from './components-up/pipes/pipes.component';
+import { CPipesComponent } from './components-up/c-pipes/c-pipes.component';
 
 const routes: Routes = [
   {
@@ -58,6 +61,14 @@ const routes: Routes = [
         path: 'bottom-sheet',
         component: BottomSheetComponent
       }, 
+      { 
+        path:'pipes',
+        component: PipesComponent
+      },
+      {
+        path: 'custom-pipes',
+        component: CPipesComponent
+      },
       {
         path: '',
         redirectTo: 'reactive-form-1',

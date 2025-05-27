@@ -1,0 +1,23 @@
+<h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Percentage Pipe Demo</h2>
+
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6 space-y-4">
+  <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+    <p class="text-sm text-gray-500">Value: 0.456 → percentage</p>
+    <p class="text-lg font-medium text-blue-600">{{ 0.456 | percentage }}</p>
+  </div>
+
+  <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+    <p class="text-sm text-gray-500">Value: 0.456 → percentage:1 </p>
+    <p class="text-lg font-medium text-green-600">{{ 0.456 | percentage:1 }}</p>
+  </div>
+
+  <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+    <p class="text-sm text-gray-500">Value: 23.789 →  percentage:0 </p>
+    <p class="text-lg font-medium text-purple-600">{{ 23.789 | percentage:0 }}</p>
+  </div>
+
+  <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+    <p class="text-sm text-gray-500">Value: null → null</p>
+    <p class="text-lg font-medium text-gray-400">{{ null | percentage }}</p>
+  </div>
+</div>

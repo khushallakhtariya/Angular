@@ -31,9 +31,9 @@ export class CalendarComponent implements OnInit {
     { date: 15, title: 'Repeating Event', color: 'bg-blue-200', month: 4 },
     { date: 23, title: 'Dinner', time: '1:30pm', color: 'bg-green-200', month: 4 },
     { date: 18, title: 'Meeting', time: '4pm', color: 'bg-cyan-200', month: 4 },
-    { date: 18, title: 'Lunch', time: '5:30pm', color: 'bg-teal-200', month: 4 },
-    { date: 18, title: 'Meeting', time: '8pm', color: 'bg-indigo-200', month: 4 },
-    { date: 18, title: 'Happy Hour', time: '11pm', color: 'bg-yellow-200', month: 4 },
+    { date: 19, title: 'Lunch', time: '5:30pm', color: 'bg-teal-200', month: 5 },
+    { date: 20, title: 'Meeting', time: '8pm', color: 'bg-indigo-200', month: 4 },
+    { date: 17, title: 'Happy Hour', time: '11pm', color: 'bg-yellow-200', month: 4 },
     { date: 19, title: 'Birthday Party', time: '12:30pm', color: 'bg-purple-200', month: 4 },
   ];
 
@@ -125,12 +125,15 @@ export class CalendarComponent implements OnInit {
       this.message = '';
     }, 3000);
   }
+  onClose() {
+    this.message = ''; // Clear or hide the message
+  }
   editEvent(eventToEdit: any) {
     this.selectedDay = eventToEdit.date;
     this.showEventForm = true;
     this.newEventTitle = eventToEdit.title;
     this.newEventTime = eventToEdit.time || '';
-    this.newEventColor = eventToEdit.color;
+  this.newEventColor = eventToEdit.color || 'bg-blue-200';
     this.editingEvent = eventToEdit;
   
     this.message = 'Editing event: ' + eventToEdit.title;

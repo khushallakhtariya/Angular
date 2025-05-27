@@ -1,0 +1,72 @@
+<div class="p-6 w-full mx-auto space-y-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4 cursor-pointer hover:text-cyan-500 transition duration-300 ease-in-out">
+        Angular Pipes Examples
+      </h1>
+      
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
+      <!-- UpperCase & LowerCase -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">UpperCase & LowerCase Pipe</h2>
+        <p><strong>Original:</strong> {{ name }}</p>
+        <p><strong>UpperCase:</strong> {{ name | uppercase }}</p>
+        <p><strong>LowerCase:</strong> {{ name | lowercase }}</p>
+      </div>
+  
+      <!-- Date Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">Date Pipe</h2>
+        <p><strong>Birthday:</strong> {{ birthday | date }}</p>
+        <p><strong>Short:</strong> {{ birthday | date:'short' }}</p>
+        <p><strong>Full Date:</strong> {{ birthday | date:'fullDate' }}</p>
+      </div>
+  
+      <!-- Currency Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">Currency Pipe</h2>
+        <p><strong>Price:</strong> {{ price | currency }}</p>
+        <p><strong>INR:</strong> {{ price | currency:'INR':'symbol' }}</p>
+      </div>
+  
+      <!-- Percent Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">Percent Pipe</h2>
+        <p><strong>Value:</strong> {{ percentValue | percent }}</p>
+      </div>
+  
+      <!-- JSON Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">JSON Pipe</h2>
+        <pre class="bg-gray-100 p-2 rounded">{{ jsonData | json }}</pre>
+      </div>
+  
+      <!-- Decimal Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">Number Pipe</h2>
+        <p><strong>Default:</strong> {{ numberValue | number }}</p>
+        <p><strong>Custom Format:</strong> {{ numberValue | number:'1.2-2' }}</p>
+      </div>
+  
+      <!-- Slice Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">Slice Pipe</h2>
+        <p><strong>Original:</strong> {{ sliceText }}</p>
+        <p><strong>Sliced (0–7):</strong> {{ sliceText | slice:0:10 }}</p>
+      </div>
+  
+      <!-- TitleCase Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">TitleCase Pipe</h2>
+        <p><strong>Original:</strong> {{ name }}</p>
+        <p><strong>TitleCase:</strong> {{ name | titlecase }}</p>
+      </div>
+  
+      <!-- Async Pipe -->
+      <div class="p-4 border rounded shadow">
+        <h2 class="font-semibold mb-2">Async Pipe</h2>
+        <p><strong>Timestamp:</strong> {{ today | async }}</p>
+      </div>
+   
+    </div>
+  </div>
+  
