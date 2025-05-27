@@ -1,0 +1,22 @@
+/* component.css */
+:host {
+    display: block;
+    padding: 1rem;
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  input, button, [class*='hover:'] {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Better focus states */
+  input:focus, button:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .grid-cols-2 {
+      grid-template-columns: 1fr;
+    }
+  }
