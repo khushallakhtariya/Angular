@@ -201,7 +201,7 @@
   <!-- Rename Form Overlay -->
   <div
     *ngIf="renameFormVisible"
-    class="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+    class="fixed inset-0 backdrop:blur bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50 p-4"
   >
     <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-md">
       <h2 class="text-xl font-semibold mb-4 text-gray-800">Rename Item</h2>
@@ -236,7 +236,7 @@
   <!-- Share Modal -->
   <div
     *ngIf="showShareModal"
-    class="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+    class="fixed inset-0 backdrop:blur bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50 p-4"
   >
     <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-md relative">
       <button

@@ -1,45 +1,50 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, signal } from '@angular/core';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { FilterUsersPipe } from '../../../../pipes/filter-users.pipe';
 
 @Component({
   selector: 'app-form-group',
-  standalone: true, 
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule, RouterModule,MatPaginatorModule,FilterUsersPipe,FormsModule],
   templateUrl: './form-group.component.html',
-  styleUrls: ['./form-group.component.css']
+  styleUrls: ['./form-group.component.css'],
 })
 export class FormGroupComponent {
   userArray: any[] = [];
+  successMessage = signal<string | null>(null);
+  userToDelete = signal<number | null>(null);
 
-  userForm: FormGroup = new FormGroup({
-    id: new FormControl('0'),
-    name: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(50),
-    ]),
-    username: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(30),
-    ]),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email,
-    ]),
-  });
+  // Pagination state
+  totalUsers = 100; 
+  pageSize = 10;
+  currentPage = 0;
+  searchTerm!: string;
 
-  constructor(private http: HttpClient) {
-    this.getAllUsers();
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private http: HttpClient
+  ) {
+    this.fetchUsers();
   }
 
-  getAllUsers() {
-    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe({
-      next: (res) => {
-        console.log('Users fetched successfully:', res);
-        this.userArray = res as any[];
+  // Fetch users with pagination
+  fetchUsers() {
+    const params = new HttpParams()
+      .set('_page', (this.currentPage + 1).toString())
+      .set('_limit', this.pageSize.toString());
+
+    this.http.get<any[]>('https://jsonplaceholder.typicode.com/users', {
+      params,
+      observe: 'response',
+    }).subscribe({
+      next: (response) => {
+        this.userArray = response.body || [];
+        const total = response.headers.get('X-Total-Count');
+        if (total) this.totalUsers = +total;
       },
       error: (err) => {
         console.error('Error fetching users:', err);
@@ -48,68 +53,36 @@ export class FormGroupComponent {
     });
   }
 
-  OnsaveUser() {
-    if (this.userForm.valid) {
-      const obj = this.userForm.value;
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.currentPage = event.pageIndex;
+    this.fetchUsers();
+  }
 
-      if (obj.id === '0' || obj.id === 0) {
-        this.http.post('https://jsonplaceholder.typicode.com/users', obj).subscribe({
-          next: (res) => {
-            console.log('User saved successfully:', res);
-            alert('User saved!');
-            this.resetForm();
-            this.getAllUsers();
-          },
-          error: (err) => {
-            console.error('Error saving user:', err);
-            alert('Error saving user');
-          }
-        });
-      } else {
-        this.http.put(`https://jsonplaceholder.typicode.com/users/${obj.id}`, obj).subscribe({
-          next: (res) => {
-            console.log('User updated successfully:', res);
-            alert('User updated!');
-            this.resetForm();
-            this.getAllUsers();
-          },
-          error: (err) => {
-            console.error('Error updating user:', err);
-            alert('Error updating user');
-          }
-        });
-      }
-    } else {
-      alert('Form is invalid. Please fill in all required fields.');
+  confirmDelete(id: number) {
+    this.userToDelete.set(id);
+  }
+
+  deleteConfirmed() {
+    const id = this.userToDelete();
+    if (id !== null) {
+      this.userArray = this.userArray.filter((user) => user.id !== id);
+      this.successMessage.set('User deleted successfully!');
+      this.userToDelete.set(null);
+      setTimeout(() => this.successMessage.set(null), 3000);
     }
   }
 
-  onEdit(id: number): void {
-    this.http.get(`https://jsonplaceholder.typicode.com/users/${id}`).subscribe({
-      next: (res: any) => {
-        console.log('User fetched for edit:', res);
-        this.userForm.patchValue({
-          id: res.id,
-          name: res.name,
-          username: res.username,
-          email: res.email,
-        });
-      },
-      error: (err) => {
-        console.error('Error fetching user for edit:', err);
-        alert('Error fetching user details');
-      }
-    });
+  cancelDelete() {
+    this.userToDelete.set(null);
   }
 
-  resetForm() {
-    this.userForm.reset({
-      id: '0',
-      name: '',
-      username: '',
-      email: ''
-    });
-    this.userForm.markAsPristine();
-    this.userForm.markAsUntouched();
+  onClose() {
+    this.successMessage.set(null);
+  }
+
+  openUserInNewTab(user: any): void {
+    const url = `${window.location.origin}/forms/api-user/user-details/${user.id}`;
+    window.open(url, '_blank');
   }
 }

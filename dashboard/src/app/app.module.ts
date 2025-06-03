@@ -1,13 +1,22 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';  // Usually needed for AppModule
 import { CommonModule } from '@angular/common';
-
+import { AppComponent } from './app.component';  // Assuming you have an app component
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
-    
-  ]
+    BrowserModule,
+    AppComponent,
+  ],
+  providers: [
+    {
+      provide: ErrorHandler,
+    },
+  ],
+  // Removed bootstrap array as AppComponent is a standalone component
 })
-export class AppModule { }
+export class AppModule {}

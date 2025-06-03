@@ -14,6 +14,10 @@ import { BottomSheetComponent } from './components-up/bottom-sheet/bottom-sheet.
 import { pipe } from 'rxjs';
 import { PipesComponent } from './components-up/pipes/pipes.component';
 import { CPipesComponent } from './components-up/c-pipes/c-pipes.component';
+import { ObservableComponent } from './components-up/observable/observable.component';
+import { ErrorHComponent } from './components-up/error-h/error-h.component';
+import { ToDoListComponent } from './components-up/to-do-list/to-do-list.component';
+import { UserInformaitonComponent } from './ng-forms/form-group/user-informaiton/user-informaiton.component';
 
 const routes: Routes = [
   {
@@ -21,65 +25,76 @@ const routes: Routes = [
     component: NavDeshComponent,
     children: [
       {
-        path: 'reactive-form-1',
-        component: FormGroupComponent
+        path: 'api-user',
+        loadChildren: () =>
+          import ('./ng-forms/form-group/form-group.module').then((m)=> m.FormGroupModule)
+        
       },
-      // {
-      //   path: 'reactive-form-2',
-      //   component: FormBuilder
-      // },
       {
         path: 'reactive-form-2',
-        component: Form3Component
+        component: Form3Component,
       },
       {
         path: 'reactive-form-3',
-        component: Form4Component
+        component: Form4Component,
       },
       {
-        path:'Api-Products' ,
-        component: ProductApiComponent
+        path: 'Api-Products',
+        component: ProductApiComponent,
       },
 
       {
-       path: 'Api-user',
-       component: UserApiComponent
+        path: 'Api-user',
+        component: UserApiComponent,
       },
       {
         path: 'autocomplete',
-        component: AutocompleteComponent
+        component: AutocompleteComponent,
+      },
+      {
+        path: 'error',
+        component: ErrorHComponent,
       },
       {
         path: 'button',
-        component: ButtonsComponent
+        component: ButtonsComponent,
       },
       {
         path: 'chips',
-        component: ChipsComponent
-      }, 
+        component: ChipsComponent,
+      },
       {
         path: 'bottom-sheet',
-        component: BottomSheetComponent
-      }, 
-      { 
-        path:'pipes',
-        component: PipesComponent
+        component: BottomSheetComponent,
+      },
+      {
+        path: 'pipes',
+        component: PipesComponent,
       },
       {
         path: 'custom-pipes',
-        component: CPipesComponent
+        component: CPipesComponent,
       },
       {
+        path: 'observable',
+        component: ObservableComponent,
+      },
+      {
+        path: 'todo',
+        component: ToDoListComponent,
+      },
+
+      {
         path: '',
-        redirectTo: 'reactive-form-1',
-        pathMatch: 'full'
-      }
-    ]
-  }
+        redirectTo: 'api-user',
+        pathMatch: 'full',
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class FormsRoutingModule {}
