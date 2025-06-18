@@ -3,14 +3,8 @@
     {
       "name": "ram",
       "email": "ram@gmail.com",
-      "age": 25,
+      "age": 26,
       "id": "e892"
-    },
-    {
-      "id": "53a4",
-      "name": "lakshman",
-      "email": "lakshman@gmail.com",
-      "age": 23
     },
     {
       "name": "hahunam ji",
@@ -19,22 +13,42 @@
       "id": "508b"
     },
     {
-      "id": "b839",
-      "name": "ravan",
-      "email": "ravan@gmail.com",
-      "age": 25
-    },
-    {
       "id": "c2cd",
       "name": "khushal",
       "email": "khushal@gmail.com",
       "age": 21
     },
     {
-      "id": "6c32",
       "name": "vishal",
       "email": "vishal@gmail.com",
-      "age": 22
+      "age": 23,
+      "id": "6c32"
+    },
+    {
+      "id": "7a39",
+      "name": "sitamata",
+      "email": "sitamata@gmail.com",
+      "age": 25
+    }
+  ],
+  "students": [
+    {
+      "id": "c496",
+      "name": "khushal",
+      "email": "khushal@gmail.com",
+      "mobile": "1234567486"
+    },
+    {
+      "id": "cf85",
+      "name": "ram",
+      "email": "ram@gmail.com",
+      "mobile": "1237412346"
+    },
+    {
+      "id": "fc87",
+      "name": "sita",
+      "email": "sita@gmail.com",
+      "mobile": "1234567890"
     }
   ]
 }

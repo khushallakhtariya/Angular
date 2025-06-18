@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { StudentService } from '../../../../services/student.service';
 
 interface User {
   id: number;
@@ -12,9 +14,10 @@ interface User {
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css'],
+  providers: [StudentService],
 })
 export class StudentComponent implements OnInit {
   users: User[] = [];
@@ -25,11 +28,10 @@ export class StudentComponent implements OnInit {
   showDeleteModal = false;
   userToDelete: number | null = null;
 
-  // Edit mode variables
   editMode = false;
   editingUserId: number | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private studentService: StudentService) {
     this.newUserForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -38,10 +40,16 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const storedUsers = localStorage.getItem('users');
-    if (storedUsers) {
-      this.users = JSON.parse(storedUsers);
-    }
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.studentService.getstudents().subscribe({
+      next: (res: any) => {
+        this.users = res.users || res; 
+      },
+      error: () => this.showMessage('Failed to load users.', 'error'),
+    });
   }
 
   addUser(): void {
@@ -50,31 +58,27 @@ export class StudentComponent implements OnInit {
       return;
     }
 
-    if (this.editMode && this.editingUserId !== null) {
-      this.users = this.users.map((user) =>
-        user.id === this.editingUserId
-          ? {
-              ...user,
-              name: this.newUserForm.value.name,
-              email: this.newUserForm.value.email,
-              mobile: this.newUserForm.value.mobile,
-            }
-          : user
-      );
-      this.showMessage('User updated successfully!', 'success');
-    } else {
-      const user: User = {
-        id: this.users.length + 1,
-        name: this.newUserForm.value.name,
-        email: this.newUserForm.value.email,
-        mobile: this.newUserForm.value.mobile,
-      };
-      this.users.push(user);
-      this.showMessage('User added successfully!', 'success');
-    }
+    const formData = this.newUserForm.value;
 
-    this.saveUsers();
-    this.cancelEdit();
+    if (this.editMode && this.editingUserId !== null) {
+      this.studentService.updatestudents(this.editingUserId, formData).subscribe({
+        next: () => {
+          this.showMessage('User updated successfully!', 'success');
+          this.getUsers();
+          this.cancelEdit();
+        },
+        error: () => this.showMessage('Failed to update user.', 'error'),
+      });
+    } else {
+      this.studentService.savestudents(formData).subscribe({
+        next: () => {
+          this.showMessage('User added successfully!', 'success');
+          this.getUsers();
+          this.cancelEdit();
+        },
+        error: () => this.showMessage('Failed to add user.', 'error'),
+      });
+    }
   }
 
   editUser(user: User): void {
@@ -105,25 +109,20 @@ export class StudentComponent implements OnInit {
 
   proceedDelete(): void {
     if (this.userToDelete !== null) {
-      this.users = this.users.filter((user) => user.id !== this.userToDelete);
-      this.users = this.users.map((user, index) => ({
-        ...user,
-        id: index + 1,
-      }));
-      this.saveUsers();
-      this.showMessage('User deleted successfully!', 'success');
+      this.studentService.deletestudents(this.userToDelete).subscribe({
+        next: () => {
+          this.showMessage('User deleted successfully!', 'success');
+          this.getUsers();
+          this.cancelDelete();
+        },
+        error: () => this.showMessage('Failed to delete user.', 'error'),
+      });
     }
-    this.cancelDelete();
-  }
-
-  private saveUsers(): void {
-    localStorage.setItem('users', JSON.stringify(this.users));
   }
 
   private showMessage(msg: string, type: 'success' | 'error'): void {
     this.message = msg;
     this.messageType = type;
-
     setTimeout(() => {
       this.message = '';
       this.messageType = '';

@@ -26,7 +26,7 @@ const routes: Routes = [
         loadComponent: () => HomeComponent,
       },
       {
-        path: 'users',
+        path: 'Students',
         loadComponent: () => StudentComponent,
       },
 

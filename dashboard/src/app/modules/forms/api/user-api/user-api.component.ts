@@ -38,7 +38,6 @@ export class UserApiComponent {
 
   addOrUpdateUser(form: NgForm) {
     if (this.editMode && this.selectedUserId !== null) {
-      // Update
       this.productsService
         .updateUser(this.selectedUserId, this.userFormData)
         .subscribe(() => {
@@ -48,10 +47,11 @@ export class UserApiComponent {
           if (index !== -1) {
             this.users[index] = { ...this.users[index], ...this.userFormData };
           }
+          this.message = 'User updated successfully!';
+          setTimeout(() => (this.message = ''), 3000);
           this.resetForm(form);
         });
     } else {
-      // Add
       this.productsService
         .saveUser(this.userFormData)
         .subscribe((response: any) => {
@@ -71,7 +71,6 @@ export class UserApiComponent {
       email: user.email,
       age: user.age,
     };
-    
    
   }
 
@@ -88,5 +87,8 @@ export class UserApiComponent {
     this.editMode = false;
     this.selectedUserId = null;
     this.userFormData = { name: '', email: '', age: '' };
+  }
+  onClose() {
+    this.message = ''; 
   }
 }
