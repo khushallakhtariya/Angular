@@ -1,5 +1,5 @@
 import { Component, Inject, signal } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
@@ -9,7 +9,15 @@ import { FilterUsersPipe } from '../../../../pipes/filter-users.pipe';
 @Component({
   selector: 'app-form-group',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule, RouterModule,MatPaginatorModule,FilterUsersPipe,FormsModule],
+  imports: [
+    ReactiveFormsModule,
+    HttpClientModule,
+    CommonModule,
+    RouterModule,
+    MatPaginatorModule,
+    FilterUsersPipe,
+    FormsModule,
+  ],
   templateUrl: './form-group.component.html',
   styleUrls: ['./form-group.component.css'],
 })
@@ -19,7 +27,7 @@ export class FormGroupComponent {
   userToDelete = signal<number | null>(null);
 
   // Pagination state
-  totalUsers = 100; 
+  totalUsers = 100;
   pageSize = 10;
   currentPage = 0;
   searchTerm!: string;
@@ -37,20 +45,22 @@ export class FormGroupComponent {
       .set('_page', (this.currentPage + 1).toString())
       .set('_limit', this.pageSize.toString());
 
-    this.http.get<any[]>('https://jsonplaceholder.typicode.com/users', {
-      params,
-      observe: 'response',
-    }).subscribe({
-      next: (response) => {
-        this.userArray = response.body || [];
-        const total = response.headers.get('X-Total-Count');
-        if (total) this.totalUsers = +total;
-      },
-      error: (err) => {
-        console.error('Error fetching users:', err);
-        alert('Error fetching users');
-      }
-    });
+    this.http
+      .get<any[]>('https://jsonplaceholder.typicode.com/users', {
+        params,
+        observe: 'response',
+      })
+      .subscribe({
+        next: (response) => {
+          this.userArray = response.body || [];
+          const total = response.headers.get('X-Total-Count');
+          if (total) this.totalUsers = +total;
+        },
+        error: (err) => {
+          console.error('Error fetching users:', err);
+          alert('Error fetching users');
+        },
+      });
   }
 
   onPageChange(event: PageEvent) {

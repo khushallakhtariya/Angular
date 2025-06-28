@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentService } from '../../../../services/student.service';
 
@@ -46,7 +52,7 @@ export class StudentComponent implements OnInit {
   getUsers(): void {
     this.studentService.getstudents().subscribe({
       next: (res: any) => {
-        this.users = res.users || res; 
+        this.users = res.users || res;
       },
       error: () => this.showMessage('Failed to load users.', 'error'),
     });
@@ -61,14 +67,16 @@ export class StudentComponent implements OnInit {
     const formData = this.newUserForm.value;
 
     if (this.editMode && this.editingUserId !== null) {
-      this.studentService.updatestudents(this.editingUserId, formData).subscribe({
-        next: () => {
-          this.showMessage('User updated successfully!', 'success');
-          this.getUsers();
-          this.cancelEdit();
-        },
-        error: () => this.showMessage('Failed to update user.', 'error'),
-      });
+      this.studentService
+        .updatestudents(this.editingUserId, formData)
+        .subscribe({
+          next: () => {
+            this.showMessage('User updated successfully!', 'success');
+            this.getUsers();
+            this.cancelEdit();
+          },
+          error: () => this.showMessage('Failed to update user.', 'error'),
+        });
     } else {
       this.studentService.savestudents(formData).subscribe({
         next: () => {

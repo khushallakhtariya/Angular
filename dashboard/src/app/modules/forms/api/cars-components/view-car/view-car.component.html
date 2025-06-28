@@ -1,0 +1,89 @@
+<div *ngIf="isLoading" class="text-center py-10">
+  <span class="text-lg font-medium text-gray-600">Loading car details...</span>
+</div>
+<button
+(click)="goBack()"
+class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
+>
+<span class="material-symbols-outlined mr-1">arrow_back</span>
+Back
+</button>
+<div *ngIf="!isLoading && car" class="max-w-5xl mx-auto bg-white shadow-xl rounded-3xl overflow-hidden mt-10">
+  <!-- Top Section -->
+  <div class="md:flex">
+    <!-- Car Image -->
+    <div class="md:w-1/2 bg-gray-100">
+      <img [src]="car.carImage" alt="{{ car.brand }} {{ car.model }}" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Car Basic Info -->
+    <div class="md:w-1/2 p-8">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">
+        {{ car.brand }} {{ car.model }} <span class="text-sm text-gray-500">({{ car.year }})</span>
+      </h2>
+      <p class="text-gray-600 mb-4">Location: <span class="font-medium">{{ car.location }}</span></p>
+
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <div><strong>Color:</strong> {{ car.color }}</div>
+        <div><strong>Mileage:</strong> {{ car.mileage }} km</div>
+        <div><strong>Fuel:</strong> {{ car.fuelType }}</div>
+        <div><strong>Transmission:</strong> {{ car.transmission }}</div>
+        <div><strong>Seats:</strong> {{ car.seats }}</div>
+        <div><strong>Daily Rate:</strong> ₹{{ car.dailyRate | number }}</div>
+      </div>
+
+        <div class="mt-4 text-yellow-500 flex items-center gap-1">
+            <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+            <span [class.text-gray-300]="i >= car.moreData.rating">★</span>
+            </ng-container>
+            <span class="text-gray-600 text-sm ml-2">({{ car.moreData.rating }})</span>
+        </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="my-6" />
+
+    <!-- More Details Section -->
+    <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Features -->
+        <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Features</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li *ngFor="let feature of car.moreData.features">{{ feature }}</li>
+        </ul>
+        </div>
+
+        <!-- Documents -->
+        <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Documents</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li *ngFor="let doc of car.moreData.documents">{{ doc }}</li>
+        </ul>
+        </div>
+
+        <!-- Insurance & Availability -->
+        <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Insurance & Availability</h3>
+        <p class="text-gray-600"><strong>Insurance:</strong> {{ car.moreData.insurance }}</p>
+        <p class="text-gray-600 mt-1">
+            <strong>Status:</strong>
+            <span [class.text-green-600]="car.moreData.available" [class.text-red-500]="!car.moreData.available">
+            {{ car.moreData.available ? 'Available' : 'Not Available' }}
+            </span>
+        </p>
+        </div>
+
+        <!-- Pickup/Drop Info -->
+        <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Pickup & Drop</h3>
+        <p class="text-gray-600 mb-1"><strong>Pickup:</strong> {{ car.moreData.pickupLocation }}</p>
+        <p class="text-gray-600"><strong>Drop Options:</strong> {{ car.moreData.dropOptions.join(', ') }}</p>
+        </div>
+    </div>
+
+    <!-- Owner Info -->
+    <div class="p-8 bg-gray-50 border-t text-gray-700 text-sm">
+        <p><strong>Owner:</strong> {{ car.moreData.owner }}</p>
+    </div>
+</div>

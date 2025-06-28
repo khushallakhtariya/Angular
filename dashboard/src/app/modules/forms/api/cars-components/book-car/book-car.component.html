@@ -1,0 +1,128 @@
+<button
+(click)="goBack()"
+class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
+>
+<span class="material-symbols-outlined mr-1">arrow_back</span>
+Back
+</button>
+<div
+class="bg-gray-100 py-12 px-4 flex justify-center items-center"
+>
+  <div
+    class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl grid grid-cols-1 md:grid-cols-2 overflow-hidden"
+  >
+    <!-- Left Image -->
+    <div
+      class="hidden md:block bg-cover bg-center"
+      style="
+        background-image: url('https://img.freepik.com/free-photo/female-hands-holding-folder-car-keys_23-2148384962.jpg');
+      "
+    ></div>
+
+    <!-- Right Form Section -->
+    <div class="p-8 sm:p-10 lg:p-12">
+      <h2 class="text-4xl font-bold text-gray-800 mb-6">Book Your Car</h2>
+
+      <form class="space-y-6" (ngSubmit)="bookCar()">
+        <!-- Pickup Location -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Car Name</label>
+          <div class="relative">
+            <!-- Location Icon -->
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
+              <span class="material-symbols-outlined">
+                no_crash
+                </span>
+            </span>
+          <input
+            type="text"
+            class="w-full  pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            placeholder="Enter Car Name"
+            required
+          />
+        </div>
+        </div>
+
+        <!-- Drop Location -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">
+            Neyar Show Room
+          </label>
+          <div class="relative">
+            <!-- Location Icon -->
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
+              <span class="material-symbols-outlined">
+                add_location
+                </span>
+            </span>
+            <!-- Input -->
+            <input
+              type="text"
+              class="w-full pl-10 pr-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              placeholder="Enter Neyar Show Room Location"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Pickup Date -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2"
+            >Pickup Date</label
+          >
+          <div class="relative">
+            <!-- Location Icon -->
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
+              <span class="material-symbols-outlined">
+                calendar_add_on
+                </span>
+            </span>
+          <input
+            type="date"
+            class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            required
+          />
+        </div>
+        </div>
+
+        <!-- Drop-off Date -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2"
+            >Drop-off Date</label
+          >
+          <div class="relative">
+            <!-- Location Icon -->
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
+              <span class="material-symbols-outlined">
+                calendar_clock
+                </span>
+            </span>
+          <input
+            type="date"
+            class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            required
+          />
+        </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 rounded-xl transition duration-300 shadow-md hover:shadow-lg"
+          >
+            Book Now
+          </button>
+        </div>
+
+        <!-- Success Message -->
+        <div
+          *ngIf="message"
+          class="mt-5 text-green-600 font-semibold text-center transition duration-300"
+        >
+          {{ message }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

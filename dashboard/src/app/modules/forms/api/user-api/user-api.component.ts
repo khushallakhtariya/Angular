@@ -71,7 +71,6 @@ export class UserApiComponent {
       email: user.email,
       age: user.age,
     };
-   
   }
 
   deleteUser(id: string | number) {
@@ -89,6 +88,6 @@ export class UserApiComponent {
     this.userFormData = { name: '', email: '', age: '' };
   }
   onClose() {
-    this.message = ''; 
+    this.message = '';
   }
 }

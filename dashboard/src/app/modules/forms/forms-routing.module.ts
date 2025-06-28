@@ -14,6 +14,7 @@ import { CPipesComponent } from './components-up/c-pipes/c-pipes.component';
 import { ObservableComponent } from './components-up/observable/observable.component';
 import { ErrorHComponent } from './components-up/error-h/error-h.component';
 import { ToDoListComponent } from './components-up/to-do-list/to-do-list.component';
+import { CarsApiComponent } from './api/cars-components/cars-api/cars-api.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,9 @@ const routes: Routes = [
       {
         path: 'api-user',
         loadChildren: () =>
-          import ('./ng-forms/form-group/form-group.module').then((m)=> m.FormGroupModule)
-        
+          import('./ng-forms/form-group/form-group.module').then(
+            (m) => m.FormGroupModule
+          ),
       },
       {
         path: 'reactive-form-2',
@@ -33,6 +35,13 @@ const routes: Routes = [
       {
         path: 'reactive-form-3',
         component: Form4Component,
+      },
+      {
+        path: 'cars',
+        loadChildren: () =>
+          import('./api/cars-components/carmodules/carmodules.module').then(
+            (m) => m.CarmodulesModule
+          ),
       },
       {
         path: 'Api-Products',
@@ -82,7 +91,7 @@ const routes: Routes = [
 
       {
         path: '',
-        redirectTo: 'api-user',
+        redirectTo: 'cars',
         pathMatch: 'full',
       },
     ],

@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';  // Usually needed for AppModule
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';  // Assuming you have an app component
+import { HttpClientJsonpModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { AppComponent } from './app.component';  // Assuming you have an app com
     CommonModule,
     BrowserModule,
     AppComponent,
+    HttpClientJsonpModule
   ],
   providers: [
     {
