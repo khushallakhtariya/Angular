@@ -5,9 +5,9 @@ import { CarLoginComponent } from './cars-components/car-login/car-login.compone
 import { ViewCarComponent } from './cars-components/view-car/view-car.component';
 import { BookCarComponent } from './cars-components/book-car/book-car.component';
 import { ContactCarComponent } from './cars-components/contact-car/contact-car.component';
-import { AllCarsComponent } from './cars-components/all-cars/all-cars.component';
 import { authGuard } from '../../auth.guard';
 import { AboutCarComponent } from './cars-components/about-car/about-car.component';
+import { AllCarsComponent } from './cars-components/all-car-components/all-cars/all-cars.component';
 
 const routes: Routes = [
   {
@@ -21,7 +21,6 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: ViewCarComponent,
-
   },
   {
     path: 'view/:id/contact',
@@ -60,6 +59,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CarRoutingModule { }
+export class CarRoutingModule {}

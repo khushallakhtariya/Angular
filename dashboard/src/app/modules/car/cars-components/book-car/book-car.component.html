@@ -1,31 +1,32 @@
+<div class="container mx-auto p-5 px-4 ">
 <button
   (click)="goBack()"
-  class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
+  class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors duration-200 flex items-center focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
 >
   <span class="material-symbols-outlined mr-1">arrow_back</span>
   Back
 </button>
-
-<div class="bg-gray-100 py-12 px-4 flex justify-center items-center">
+</div>
+<div class=" py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-[calc(100vh-200px)]">
   <div
-    class="w-full max-w-full bg-white rounded-3xl shadow-2xl grid grid-cols-1 md:grid-cols-2 overflow-hidden"
+  class="w-full max-w-6xl bg-white rounded-3xl shadow-2xl grid grid-cols-1 md:grid-cols-2 overflow-hidden transition-all duration-300 hover:shadow-3xl"
   >
-    <!-- Left Image -->
-    <div
-      class="hidden md:block bg-cover bg-center"
-      style="
+  <!-- Left Image -->
+  <div
+  class="hidden md:block bg-cover bg-center h-full min-h-[500px]"
+  style="
         background-image: url('https://img.freepik.com/free-photo/female-hands-holding-folder-car-keys_23-2148384962.jpg');
       "
     ></div>
 
     <!-- Right Form Section -->
     <div class="p-8 sm:p-10 lg:p-12">
-      <h2 class="text-4xl font-bold text-gray-800 mb-6">Book Your Car</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 font-sans">Book Your Car</h2>
 
       <form class="space-y-6" (ngSubmit)="bookCar()">
         <!-- Car Name with Suggestions -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2"
+          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
             >Search Car Name</label
           >
           <div class="relative">
@@ -35,18 +36,19 @@
               <span class="material-symbols-outlined"> search </span>
             </span>
             <span
-            (click)="searchClose()"
-            class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer"
+              (click)="searchClose()"
+              class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer transition-colors"
             >close</span
-          >
+            >
             <input
               type="text"
               [(ngModel)]="searchText"
               (input)="filterCars()"
               name="carName"
-              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700 placeholder-gray-400"
               placeholder="Enter Car Name"
               required
+              autocomplete="off"
             />
             <ul
               *ngIf="filteredCars.length > 0"
@@ -55,7 +57,7 @@
               <li
                 *ngFor="let car of filteredCars"
                 (click)="selectCar(car)"
-                class="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+                class="px-4 py-2 hover:bg-blue-50 cursor-pointer transition-colors duration-150 text-gray-700"
               >
                 {{ car.brand }} {{ car.model }}
               </li>
@@ -65,7 +67,7 @@
 
         <!-- Showroom Location -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2"
+          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
             >Neyar Show Room</label
           >
           <div class="relative">
@@ -78,21 +80,22 @@
               type="text"
               [(ngModel)]="selectedLocation"
               name="showroomLocation"
-              class="w-full pl-10 pr-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700 placeholder-gray-400"
               placeholder="Enter Showroom Location"
               required
+              autocomplete="off"
             />
             <span
-            (click)="roomClose()"
-            class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer"
+              (click)="roomClose()"
+              class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer transition-colors"
             >close</span
-          >
+            >
           </div>
         </div>
 
         <!-- Pickup Date -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2"
+          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
             >Pickup Date</label
           >
           <div class="relative">
@@ -105,7 +108,7 @@
               type="date"
               [(ngModel)]="pickupDate"
               name="pickupDate"
-              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700"
               required
             />
           </div>
@@ -113,7 +116,7 @@
 
         <!-- Drop-off Date -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2"
+          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
             >Drop-off Date</label
           >
           <div class="relative">
@@ -126,7 +129,7 @@
               type="date"
               [(ngModel)]="dropDate"
               name="dropDate"
-              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700"
               required
             />
           </div>
@@ -136,7 +139,7 @@
         <div class="pt-4">
           <button
             type="submit"
-            class="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 rounded-xl transition duration-300 shadow-md hover:shadow-lg"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transform hover:-translate-y-0.5"
           >
             Book Now
           </button>
@@ -145,7 +148,7 @@
         <!-- Success Message -->
         <div
           *ngIf="message"
-          class="mt-5 text-green-600 font-semibold text-center transition duration-300"
+          class="mt-5 p-3 text-green-600 font-semibold text-center transition-all duration-300 rounded-lg bg-green-50"
         >
           {{ message }}
         </div>
