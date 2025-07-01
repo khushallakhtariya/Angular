@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { CarapiService } from '../../../../../services/carapi.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
+import { CarapiService } from '../../../../services/carapi.service';
 @Component({
   selector: 'app-view-car',
   standalone: true,

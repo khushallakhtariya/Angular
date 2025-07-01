@@ -15,7 +15,7 @@ export const authGuard: CanActivateFn = (route, state) => {
       verticalPosition: 'top',
       panelClass: ['snackbar-warning'] 
     });
-    router.navigate(['/forms/cars/login']);
+    router.navigate(['/cars/login']);
     return false;
   }
 

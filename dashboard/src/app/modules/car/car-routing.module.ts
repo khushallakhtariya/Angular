@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CarsApiComponent } from '../cars-api/cars-api.component';
-import { AllCarsComponent } from '../all-cars/all-cars.component';
-import { AboutCarComponent } from '../about-car/about-car.component';
-import { ContactCarComponent } from '../contact-car/contact-car.component';
-import { BookCarComponent } from '../book-car/book-car.component';
-import { ViewCarComponent } from '../view-car/view-car.component';
-import { CarLoginComponent } from '../car-login/car-login.component';
-import { authGuard } from '../../../../../auth.guard';
+import { CarsApiComponent } from './cars-components/cars-api/cars-api.component';
+import { CarLoginComponent } from './cars-components/car-login/car-login.component';
+import { ViewCarComponent } from './cars-components/view-car/view-car.component';
+import { BookCarComponent } from './cars-components/book-car/book-car.component';
+import { ContactCarComponent } from './cars-components/contact-car/contact-car.component';
+import { AllCarsComponent } from './cars-components/all-cars/all-cars.component';
+import { authGuard } from '../../auth.guard';
+import { AboutCarComponent } from './cars-components/about-car/about-car.component';
 
 const routes: Routes = [
   {
@@ -60,6 +60,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class CarmodulesRoutingModule {}
+export class CarRoutingModule { }

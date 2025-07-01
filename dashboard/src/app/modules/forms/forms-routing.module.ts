@@ -35,13 +35,7 @@ const routes: Routes = [
         path: 'reactive-form-3',
         component: Form4Component,
       },
-      {
-        path: 'cars',
-        loadChildren: () =>
-          import('./api/cars-components/carmodules/carmodules.module').then(
-            (m) => m.CarmodulesModule
-          ),
-      },
+
       {
         path: 'Api-Products',
         component: ProductApiComponent,
@@ -90,7 +84,7 @@ const routes: Routes = [
 
       {
         path: '',
-        redirectTo: 'cars',
+        redirectTo: 'api-user',
         pathMatch: 'full',
       },
     ],

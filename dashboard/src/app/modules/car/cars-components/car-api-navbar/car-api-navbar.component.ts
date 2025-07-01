@@ -51,7 +51,7 @@ export class CarApiNavbarComponent implements OnInit {
     localStorage.removeItem('user');
     this.isLoggedIn = false;
     this.userName = '';
-    this.router.navigate(['/forms/cars/login']);
+    this.router.navigate(['/cars']);
     this.snackBar.open('Logout successful!', 'Close', {
       duration: 3000,
       horizontalPosition: 'right',

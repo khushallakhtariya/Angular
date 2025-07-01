@@ -82,7 +82,7 @@ export class CarLoginComponent {
                 panelClass: ['snackbar-success'],
               });
 
-              this.router.navigate(['forms/cars']).then(() => {
+              this.router.navigate(['cars']).then(() => {
                 window.location.reload();
               });
             } else {

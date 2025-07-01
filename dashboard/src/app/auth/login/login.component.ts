@@ -6,33 +6,38 @@ import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
- 
+
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule]
+  imports: [FormsModule, CommonModule, RouterModule],
 })
 export class LoginComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
-  loading: boolean = false; 
+  loading: boolean = false;
   // Default credentials
   defaultEmail: string = 'admin@gmail.com';
   defaultPassword: string = 'admin123';
 
   constructor(private router: Router) {}
-
   login() {
     this.loading = true;
     this.errorMessage = '';
-  
+
     setTimeout(() => {
       if (this.email === 'admin@gmail.com' && this.password === 'admin123') {
         this.router.navigate(['/deshbord']);
-      } else if (this.email === 'student@gmail.com' && this.password === 'student123') {
+      } else if (
+        this.email === 'student@gmail.com' &&
+        this.password === 'student123'
+      ) {
         this.router.navigate(['/forms']);
+      } else if (this.email === 'car@gmail.com' && this.password === 'car123') {
+        this.router.navigate(['/cars']); 
       } else {
         this.errorMessage = 'Invalid email or password';
       }
+
       this.loading = false;
     }, 1000);
   }

@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from './auth/not-found/not-found.component';
-import { LoginComponent } from './auth/login/login.component';
 
 
 export const routes: Routes = [
@@ -17,6 +16,10 @@ export const routes: Routes = [
   {
     path: 'forms',
     loadChildren: () => import('./modules/forms/forms.module').then((m) => m.FormsModule),
+  },
+  {
+    path: 'cars',
+    loadChildren: () => import('./modules/car/car.module').then((m) => m.CarModule),
   },
 
 
