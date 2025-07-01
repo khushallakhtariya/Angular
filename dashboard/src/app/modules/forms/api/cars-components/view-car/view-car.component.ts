@@ -2,21 +2,20 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CarapiService } from '../../../../../services/carapi.service';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-view-car',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, RouterLink, RouterModule ],
   templateUrl: './view-car.component.html',
   styleUrl: './view-car.component.css',
 })
 export class ViewCarComponent {
-  // carList: any[] = []; // use carList directly
   isLoading: any;
   car: any;
 
-  constructor(private route: ActivatedRoute, private carApi: CarapiService,private location: Location) {}
+  constructor(private route: ActivatedRoute, private carApi: CarapiService, private location: Location, private router: Router) {}
 
   ngOnInit(): void {
     const carId = Number(this.route.snapshot.paramMap.get('id'));
@@ -33,5 +32,12 @@ export class ViewCarComponent {
   }
   goBack(): void {
     this.location.back();
+  }
+  bookCar(): void {
+    if (this.car && this.car.id) {
+      this.router.navigate(['forms/cars/book', this.car.id]);
+    } else {
+      console.error('Car object or ID is undefined');
+    }
   }
 }

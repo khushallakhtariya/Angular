@@ -48,22 +48,23 @@
             <span>Share</span>
           </button>
 
-          <button
+          <!-- <button
             class="flex items-center justify-center gap-2 flex-1 min-w-[100px] px-4 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition"
           >
             <span class="material-symbols-outlined">car_tag</span>
             <span>Buy</span>
-          </button>
+          </button> -->
 
-          <button
+          <a
           [routerLink]="['view', car.id]" 
+          target="_blank"
             class="flex items-center justify-center gap-2 flex-1 min-w-[100px] px-4 py-2 bg-gray-700 text-white rounded-lg cursor-pointer hover:bg-gray-800 transition"
           >
             <span class="material-symbols-outlined"
               >display_external_input</span
             >
             <span>View</span>
-          </button>
+          </a>
           <button
           [routerLink]="['book', car.id]"
             class="flex items-center justify-center gap-2 flex-1 min-w-[100px] px-4 py-2 bg-gray-700 text-white rounded-lg cursor-pointer hover:bg-gray-800 transition"

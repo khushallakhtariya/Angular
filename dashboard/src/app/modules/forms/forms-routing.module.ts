@@ -14,7 +14,6 @@ import { CPipesComponent } from './components-up/c-pipes/c-pipes.component';
 import { ObservableComponent } from './components-up/observable/observable.component';
 import { ErrorHComponent } from './components-up/error-h/error-h.component';
 import { ToDoListComponent } from './components-up/to-do-list/to-do-list.component';
-import { CarsApiComponent } from './api/cars-components/cars-api/cars-api.component';
 
 const routes: Routes = [
   {

@@ -8,9 +8,6 @@
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex space-x-8 items-center">
-        <!-- <a [routerLink]="['home']"   class="text-gray-700 hover:text-blue-600 font-medium transition"
-          >Home</a
-        > -->
         <a
           [routerLink]="['all']"
           class="text-gray-700 hover:text-blue-600 font-medium transition"
@@ -26,67 +23,34 @@
           class="text-gray-700 hover:text-blue-600 font-medium transition"
           >Contact</a
         >
-      </div>
 
+        <!-- Show when NOT logged in -->
+        <ng-container *ngIf="!isLoggedIn">
+          <button
+            [routerLink]="['login']"
+            class="flex items-center gap-1 text-gray-700 hover:text-blue-600 font-medium transition"
+          >
+            <!-- Login / Register -->
+            <span class="material-symbols-outlined"> account_circle </span>
+          </button>
+        </ng-container>
 
-      <!-- Mobile menu button -->
-      <div class="md:hidden flex items-center">
-        <button (click)="toggleMenu()" class="text-gray-700 focus:outline-none">
-          <svg
-            *ngIf="!menuOpen"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <!-- Show when logged in -->
+        <ng-container *ngIf="isLoggedIn">
+          <span class="text-gray-700 font-semibold"
+            >Welcome, {{ firstName | titlecase }}</span
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-          <svg
-            *ngIf="menuOpen"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+          <div class="relative gap-2">
+            <button
+              (click)="logout()"
+              class="flex items-center gap-1 text-red-500 hover:text-red-700 font-medium transition"
+            >
+              <span>Logout</span>
+              <span class="material-symbols-outlined">logout</span>
+            </button>
+          </div>
+        </ng-container>
       </div>
     </div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div *ngIf="menuOpen" class="md:hidden px-4 pb-4 space-y-2 bg-white shadow">
-    <!-- <a class="block text-gray-700 hover:text-blue-600 font-medium transition"
-      >Home</a
-    > -->
-    <a
-      [routerLink]="['all']"
-      class="block text-gray-700 hover:text-blue-600 font-medium transition"
-      >All Cars</a
-    >
-    <a
-      [routerLink]="['about']"
-      class="block text-gray-700 hover:text-blue-600 font-medium transition"
-      >About</a
-    >
-    <a
-      [routerLink]="['contact']"
-      class="block text-gray-700 hover:text-blue-600 font-medium transition"
-      >Contact</a
-    >
-
   </div>
 </nav>

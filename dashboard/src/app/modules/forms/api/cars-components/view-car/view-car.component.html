@@ -1,89 +1,331 @@
-<div *ngIf="isLoading" class="text-center py-10">
-  <span class="text-lg font-medium text-gray-600">Loading car details...</span>
+<div *ngIf="isLoading" class="min-h-screen flex items-center justify-center">
+  <div class="text-center py-10">
+    <div
+      class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"
+    ></div>
+    <span class="text-lg font-medium text-gray-600 block"
+      >Loading car details...</span
+    >
+  </div>
 </div>
-<button
-(click)="goBack()"
-class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
->
-<span class="material-symbols-outlined mr-1">arrow_back</span>
-Back
-</button>
-<div *ngIf="!isLoading && car" class="max-w-5xl mx-auto bg-white shadow-xl rounded-3xl overflow-hidden mt-10">
-  <!-- Top Section -->
-  <div class="md:flex">
-    <!-- Car Image -->
-    <div class="md:w-1/2 bg-gray-100">
-      <img [src]="car.carImage" alt="{{ car.brand }} {{ car.model }}" class="w-full h-full object-cover" />
-    </div>
 
-    <!-- Car Basic Info -->
-    <div class="md:w-1/2 p-8">
-      <h2 class="text-3xl font-bold text-gray-800 mb-2">
-        {{ car.brand }} {{ car.model }} <span class="text-sm text-gray-500">({{ car.year }})</span>
-      </h2>
-      <p class="text-gray-600 mb-4">Location: <span class="font-medium">{{ car.location }}</span></p>
+<div *ngIf="!isLoading && car" class="min-h-screen bg-gray-50 pb-20">
+  <!-- Back Button -->
+  <!-- <div class="container mx-auto px-4 pt-6">
+    <button
+      (click)="goBack()"
+      class="mb-6 px-5 py-2.5 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center shadow-sm hover:shadow-md"
+    >
+      <span class="material-symbols-outlined mr-2">arrow_back</span>
+      Back to Listings
+    </button>
+  </div> -->
 
-      <div class="grid grid-cols-2 gap-4 text-sm">
-        <div><strong>Color:</strong> {{ car.color }}</div>
-        <div><strong>Mileage:</strong> {{ car.mileage }} km</div>
-        <div><strong>Fuel:</strong> {{ car.fuelType }}</div>
-        <div><strong>Transmission:</strong> {{ car.transmission }}</div>
-        <div><strong>Seats:</strong> {{ car.seats }}</div>
-        <div><strong>Daily Rate:</strong> ₹{{ car.dailyRate | number }}</div>
+  <!-- Main Card -->
+  <div class="container mx-auto px-4">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <!-- Top Section -->
+      <div class="md:flex">
+        <!-- Car Image Gallery -->
+        <div class="md:w-1/2 bg-gray-100 relative">
+          <img
+            [src]="car.carImage"
+            alt="{{ car.brand }} {{ car.model }}"
+            class="w-full h-full max-h-[500px] object-cover transition-opacity duration-300"
+          />
+          <div
+            class="absolute bottom-4 right-4 bg-white/90 px-3 py-1 rounded-full shadow-sm"
+          >
+            <span class="text-sm font-medium text-gray-700"
+              >{{ car.moreData?.images?.length || 1 }} photos</span
+            >
+          </div>
+        </div>
+
+        <!-- Car Basic Info -->
+        <div class="md:w-1/2 p-8">
+          <!-- Title and Price -->
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h1 class="text-3xl font-bold text-gray-900 mb-1">
+                {{ car.brand }} {{ car.model }}
+              </h1>
+              <p class="text-gray-500">
+                {{ car.year }} • {{ car.mileage | number }} km •
+                {{ car.location }}
+              </p>
+            </div>
+            <div class="text-right">
+              <p class="text-sm text-gray-500">Daily rate from</p>
+              <p class="text-2xl font-bold text-blue-600">
+                ₹{{ car.dailyRate | number }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Rating -->
+          <div class="flex items-center mb-6">
+            <div class="flex mr-2">
+              <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                <span
+                  [class.text-yellow-400]="i < car.moreData.rating"
+                  [class.text-gray-300]="i >= car.moreData.rating"
+                  class="text-xl"
+                >
+                  ★
+                </span>
+              </ng-container>
+            </div>
+            <span class="text-gray-600 text-sm"
+              >{{ car.moreData.rating }} ({{
+                car.moreData.reviews || "No"
+              }}
+              reviews)</span
+            >
+          </div>
+
+          <!-- Key Specs -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <div class="text-gray-500 text-sm">Fuel Type</div>
+              <div class="font-medium">{{ car.fuelType }}</div>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <div class="text-gray-500 text-sm">Transmission</div>
+              <div class="font-medium">{{ car.transmission }}</div>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <div class="text-gray-500 text-sm">Seats</div>
+              <div class="font-medium">{{ car.seats }}</div>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <div class="text-gray-500 text-sm">Color</div>
+              <div class="font-medium">{{ car.color }}</div>
+            </div>
+          </div>
+
+          <!-- Availability Badge -->
+          <div class="mb-6">
+            <span
+              [class.bg-green-100]="car.moreData.available"
+              [class.text-green-800]="car.moreData.available"
+              [class.bg-red-100]="!car.moreData.available"
+              [class.text-red-800]="!car.moreData.available"
+              class="px-3 py-1.5 rounded-full text-sm font-medium"
+            >
+              {{
+                car.moreData.available
+                  ? "Available for booking"
+                  : "Currently unavailable"
+              }}
+            </span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex space-x-4">
+            <button
+              (click)="bookCar()"
+              class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center"
+              [disabled]="!car.moreData.available"
+            >
+              <span class="material-symbols-outlined mr-2">calendar_month</span>
+              Book Now
+            </button>
+            <button
+              class="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-300"
+              title="Save to favorites"
+            >
+              <span class="material-symbols-outlined text-gray-600"
+                >favorite</span
+              >
+            </button>
+          </div>
+        </div>
       </div>
 
-        <div class="mt-4 text-yellow-500 flex items-center gap-1">
-            <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
-            <span [class.text-gray-300]="i >= car.moreData.rating">★</span>
-            </ng-container>
-            <span class="text-gray-600 text-sm ml-2">({{ car.moreData.rating }})</span>
-        </div>
-        </div>
-    </div>
+      <!-- Divider -->
+      <div class="border-t border-gray-200 mx-8"></div>
 
-    <!-- Divider -->
-    <hr class="my-6" />
-
-    <!-- More Details Section -->
-    <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Details Sections -->
+      <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Features -->
         <div>
-        <h3 class="text-lg font-semibold text-gray-800 mb-2">Features</h3>
-        <ul class="list-disc list-inside text-gray-600 space-y-1">
-            <li *ngFor="let feature of car.moreData.features">{{ feature }}</li>
-        </ul>
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 flex items-center"
+          >
+            <span class="material-symbols-outlined mr-2 text-blue-500"
+              >featured_play_list</span
+            >
+            Features & Amenities
+          </h3>
+          <ul class="space-y-2">
+            <li
+              *ngFor="let feature of car.moreData.features"
+              class="flex items-start"
+            >
+              <span
+                class="material-symbols-outlined text-green-500 mr-2 text-sm"
+                >check_circle</span
+              >
+              <span class="text-gray-700">{{ feature }}</span>
+            </li>
+          </ul>
         </div>
 
+        <!-- Specifications -->
+        <div>
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 flex items-center"
+          >
+            <span class="material-symbols-outlined mr-2 text-blue-500"
+              >tune</span
+            >
+            Technical Specifications
+          </h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <p class="text-gray-500 text-sm">Engine</p>
+              <p class="font-medium">
+                {{ car.moreData.engine || "Not specified" }}
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-sm">Horsepower</p>
+              <p class="font-medium">
+                {{ car.moreData.horsepower || "Not specified" }}
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-sm">Fuel Efficiency</p>
+              <p class="font-medium">
+                {{ car.moreData.fuelEfficiency || "Not specified" }}
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-sm">Drive Type</p>
+              <p class="font-medium">
+                {{ car.moreData.driveType || "Not specified" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- More Sections -->
+      <div class="px-8 pb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Documents -->
         <div>
-        <h3 class="text-lg font-semibold text-gray-800 mb-2">Documents</h3>
-        <ul class="list-disc list-inside text-gray-600 space-y-1">
-            <li *ngFor="let doc of car.moreData.documents">{{ doc }}</li>
-        </ul>
-        </div>
-
-        <!-- Insurance & Availability -->
-        <div>
-        <h3 class="text-lg font-semibold text-gray-800 mb-2">Insurance & Availability</h3>
-        <p class="text-gray-600"><strong>Insurance:</strong> {{ car.moreData.insurance }}</p>
-        <p class="text-gray-600 mt-1">
-            <strong>Status:</strong>
-            <span [class.text-green-600]="car.moreData.available" [class.text-red-500]="!car.moreData.available">
-            {{ car.moreData.available ? 'Available' : 'Not Available' }}
-            </span>
-        </p>
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 flex items-center"
+          >
+            <span class="material-symbols-outlined mr-2 text-blue-500"
+              >description</span
+            >
+            Included Documents
+          </h3>
+          <ul class="space-y-2">
+            <li
+              *ngFor="let doc of car.moreData.documents"
+              class="flex items-start"
+            >
+              <span class="material-symbols-outlined text-blue-500 mr-2"
+                >description</span
+              >
+              <span class="text-gray-700">{{ doc }}</span>
+            </li>
+          </ul>
         </div>
 
         <!-- Pickup/Drop Info -->
         <div>
-        <h3 class="text-lg font-semibold text-gray-800 mb-2">Pickup & Drop</h3>
-        <p class="text-gray-600 mb-1"><strong>Pickup:</strong> {{ car.moreData.pickupLocation }}</p>
-        <p class="text-gray-600"><strong>Drop Options:</strong> {{ car.moreData.dropOptions.join(', ') }}</p>
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 flex items-center"
+          >
+            <span class="material-symbols-outlined mr-2 text-blue-500"
+              >pin_drop</span
+            >
+            Pickup & Return
+          </h3>
+          <div class="space-y-3">
+            <div>
+              <p class="text-gray-500 text-sm">Pickup Location</p>
+              <p class="font-medium">{{ car.moreData.pickupLocation }}</p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-sm">Return Options</p>
+              <p class="font-medium">
+                {{ car.moreData.dropOptions.join(", ") }}
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-sm">Availability Hours</p>
+              <p class="font-medium">8:00 AM - 8:00 PM daily</p>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Owner Info -->
-    <div class="p-8 bg-gray-50 border-t text-gray-700 text-sm">
-        <p><strong>Owner:</strong> {{ car.moreData.owner }}</p>
+      <!-- Insurance Info -->
+      <div class="bg-blue-50 px-8 py-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+          <span class="material-symbols-outlined mr-2 text-blue-500"
+            >shield</span
+          >
+          Insurance & Protection
+        </h3>
+        <p class="text-gray-700 mb-3">{{ car.moreData.insurance }}</p>
+        <div class="flex items-center text-sm text-blue-600 font-medium">
+          <span class="material-symbols-outlined mr-1">info</span>
+          Learn more about coverage options
+        </div>
+      </div>
+
+      <!-- Owner Info -->
+      <div class="p-8 border-t border-gray-200">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
+          About the Owner
+        </h3>
+        <div class="flex items-center">
+          <div
+            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4"
+          >
+            <span class="material-symbols-outlined text-gray-500">person</span>
+          </div>
+          <div>
+            <p class="font-medium">{{ car.moreData.owner }}</p>
+            <p class="text-gray-500 text-sm">Verified owner</p>
+          </div>
+          <button
+            [routerLink]="['contact']"
+            class="ml-auto px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-300"
+          >
+            Contact Owner
+          </button>
+        </div>
+      </div>
     </div>
+    <!-- Similar Cars Section -->
+    <!-- <div class="mt-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Similar Vehicles</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          <div class="h-48 bg-gray-200"></div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">Similar Car Model</h3>
+            <p class="text-gray-500 text-sm mb-2">Brand • Year • Location</p>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-blue-600">₹XXXX/day</span>
+              <span
+                class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded"
+                >Available</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
 </div>
+

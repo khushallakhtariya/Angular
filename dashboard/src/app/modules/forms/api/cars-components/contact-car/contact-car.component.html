@@ -1,218 +1,280 @@
-<div class="flex items-center justify-center px-4 py-4">
-  <div class="w-full rounded-2xl shadow-lg p-8 md:p-12">
-    <button
-      (click)="goBack()"
-      class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
-    >
-      <span class="material-symbols-outlined mr-1">arrow_back</span>
-      Back
-    </button>
-    <form
-      class="space-y-6"
-      #contactForm="ngForm"
-      (ngSubmit)="submitForm(contactForm)"
-    >
-      <!-- Full Name -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1"
-          >Full Name</label
-        >
-        <input
-          type="text"
-          name="fullName"
-          ngModel
-          required
-          placeholder="Your full name"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <div
-          *ngIf="
-            contactForm.submitted && contactForm.controls['fullName']?.invalid
-          "
-          class="text-red-500 text-sm"
-        >
-          Name is required
-        </div>
-      </div>
+<!-- Back Button -->
+<button
+  (click)="goBack()"
+  class="mb-2 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
+>
+  <span class="material-symbols-outlined mr-2">arrow_back</span>
+  Back
+</button>
 
-      <!-- Email -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1"
-          >Email Address</label
-        >
-        <input
-          type="email"
-          name="email"
-          ngModel
-          required
-          email
-          placeholder="you@example.com"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <div
-          *ngIf="
-            contactForm.submitted && contactForm.controls['email']?.invalid
-          "
-          class="text-red-500 text-sm"
-        >
-          Valid email required
-        </div>
-      </div>
-
-      <!-- Phone -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1"
-          >Phone Number</label
-        >
-        <input
-          type="tel"
-          name="phone"
-          ngModel
-          required
-          minlength="10"
-          maxlength="10"
-          placeholder="+91 9876543210"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <div
-          *ngIf="
-            contactForm.submitted && contactForm.controls['phone']?.invalid
-          "
-          class="text-red-500 text-sm"
-        >
-          10-digit phone number required
-        </div>
-      </div>
-
-      <!-- Subject -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1"
-          >Subject</label
-        >
-        <input
-          type="text"
-          name="subject"
-          ngModel
-          required
-          placeholder="Subject of your inquiry"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <div
-          *ngIf="
-            contactForm.submitted && contactForm.controls['subject']?.invalid
-          "
-          class="text-red-500 text-sm"
-        >
-          Subject is required
-        </div>
-      </div>
-
-      <!-- Car Type -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1"
-          >Car Type</label
-        >
-        <select
-          name="carType"
-          ngModel
-          required
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="" disabled selected>Select a car type</option>
-          <option value="Sedan">Sedan</option>
-          <option value="SUV">SUV</option>
-          <option value="Hatchback">Hatchback</option>
-          <option value="Convertible">Convertible</option>
-        </select>
-        <div
-          *ngIf="
-            contactForm.submitted && contactForm.controls['carType']?.invalid
-          "
-          class="text-red-500 text-sm"
-        >
-          Car type is required
-        </div>
-      </div>
-
-      <!-- Preferred Date -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1"
-          >Preferred Date</label
-        >
-        <input
-          type="date"
-          name="preferredDate"
-          ngModel
-          required
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <div
-          *ngIf="
-            contactForm.submitted &&
-            contactForm.controls['preferredDate']?.invalid
-          "
-          class="text-red-500 text-sm"
-        >
-          Select a date
-        </div>
-      </div>
-
-      <!-- Message -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1"
-          >Your Message</label
-        >
-        <textarea
-          name="message"
-          ngModel
-          required
-          rows="4"
-          placeholder="Tell us what you need..."
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-        ></textarea>
-        <div
-          *ngIf="
-            contactForm.submitted && contactForm.controls['message']?.invalid
-          "
-          class="text-red-500 text-sm"
-        >
-          Message is required
-        </div>
-      </div>
-
-      <!-- Agree to Terms -->
-      <div class="flex items-start space-x-2">
-        <input type="checkbox" name="terms" ngModel required class="mt-1" />
-        <label class="text-sm text-gray-700"
-          >I agree to the terms and conditions</label
-        >
-      </div>
-      <div
-        *ngIf="contactForm.submitted && contactForm.controls['terms']?.invalid"
-        class="text-red-500 text-sm"
-      >
-        You must agree to terms
-      </div>
-
-      <!-- Submit Button -->
-      <div class="text-center">
-        <button
-          type="submit"
-          class="bg-blue-600 hover:bg-blue-700 w-2xl text-white px-6 py-3 rounded-lg font-medium transition duration-200"
-        >
-          Send Message 💌
-        </button>
-      </div>
-
-      <!-- Success Message -->
-       <div class="text-center flex justify-center">
-      <div
-        *ngIf="message"
-        class="mt-4 text-green-600 bg-green-100 w-2xl px-4 py-2 rounded-lg transition duration-300"
-      >
-        {{ message }}
-      </div>
+<div class="flex items-center justify-center p-3 sm:p-6">
+  <div class="w-full max-w-full bg-white rounded-xl shadow-lg overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6 text-white">
+      <h1 class="text-2xl font-bold">Car Inquiry Form</h1>
+      <p class="mt-2 text-blue-100">
+        Fill out the form below and we'll get back to you soon
+      </p>
     </div>
-    </form>
+
+    <!-- Form -->
+    <div class="p-6 sm:p-8">
+      <form
+        #contactForm="ngForm"
+        (ngSubmit)="submitForm(contactForm)"
+        class="space-y-6"
+        novalidate
+      >
+        <!-- Car Search -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Search Car by Brand or Model <span class="text-red-500">*</span>
+          </label>
+          <div class="relative">
+            <!-- Search Icon -->
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-"
+            >
+              search
+            </span>
+
+            <span
+              (click)="searchClose()"
+              class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer"
+              >close</span
+            >
+
+            <!-- Input Field -->
+            <input
+              type="text"
+              [(ngModel)]="searchTerm"
+              name="carSearch"
+              required
+              (input)="filterCars()"
+              placeholder="Enter car brand or model"
+              class="w-full pl-10 pr-4 py-2.5 border border-gray-300 placeholder:text-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              [class.border-red-500]="contactForm.submitted && !selectedCar"
+            />
+          </div>
+          <!-- Suggestions -->
+          <ul
+            *ngIf="filteredCars.length && !selectedCar"
+            class="border border-gray-300 mt-2 rounded max-h-48 overflow-auto bg-white z-10 relative"
+          >
+            <li
+              *ngFor="let car of filteredCars"
+              (click)="selectCar(car)"
+              class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+            >
+              {{ car.brand }} {{ car.model }}
+            </li>
+          </ul>
+          <div
+            *ngIf="contactForm.submitted && !selectedCar"
+            class="text-red-500 text-xs mt-1"
+          >
+            Please select a car from the list
+          </div>
+        </div>
+
+        <!-- Selected Car Preview -->
+        <div
+          *ngIf="selectedCar"
+          class="bg-gray-50 border p-4 rounded-lg shadow-sm relative"
+        >
+          <!-- Remove Icon -->
+          <button
+            (click)="selectedCar = null"
+            class="absolute top-2 right-2 text-gray- hover:text-red-500 transition"
+            title="Remove selected car"
+          >
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+
+          <div class="flex items-center">
+            <img
+              [src]="selectedCar.carImage"
+              alt="Car"
+              class="w-24 h-16 object-cover rounded mr-4"
+            />
+            <div>
+              <p class="font-semibold">
+                {{ selectedCar.brand }} {{ selectedCar.model }}
+              </p>
+              <p class="text-sm text-gray-500">
+                ₹{{ selectedCar.dailyRate }}/day • {{ selectedCar.location }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Name -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Full Name <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Enter your full name"
+            ngModel
+            required
+            class="w-full px-4 py-2.5 border placeholder:text-gray-400 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            [class.border-red-500]="
+              contactForm.submitted && contactForm.controls['fullName'].invalid
+            "
+          />
+          <div
+            *ngIf="
+              contactForm.submitted && contactForm.controls['fullName']?.invalid
+            "
+            class="text-red-500 text-xs mt-1"
+          >
+            Please enter your full name
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Email Address <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            ngModel
+            required
+            placeholder="Enter your email address"
+            class="w-full px-4 py-2.5 border placeholder:text-gray-400 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            [class.border-red-500]="
+              contactForm.submitted && contactForm.controls['email'].invalid
+            "
+          />
+          <div
+            *ngIf="
+              contactForm.submitted && contactForm.controls['email']?.invalid
+            "
+            class="text-red-500 text-xs mt-1"
+          >
+            Enter a valid email address
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Phone Number <span class="text-red-500">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-gray-500">+91</span>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Enter your phone number"
+              ngModel
+              pattern="[0-9]{10}"
+              required
+              class="w-full pl-12 px-4 py-2.5 border placeholder:text-gray-400 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              [class.border-red-500]="
+                contactForm.submitted && contactForm.controls['phone'].invalid
+              "
+            />
+          </div>
+          <div
+            *ngIf="
+              contactForm.submitted && contactForm.controls['phone']?.invalid
+            "
+            class="text-red-500 text-xs mt-1"
+          >
+            Enter a valid 10-digit phone number
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Your Message <span class="text-red-500">*</span>
+          </label>
+          <textarea
+            name="message"
+            placeholder="Enter your message"
+            ngModel
+            required
+            rows="4"
+            class="w-full px-4 py-2.5 border placeholder:text-gray-400 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+            [class.border-red-500]="
+              contactForm.submitted && contactForm.controls['message'].invalid
+            "
+          ></textarea>
+          <div
+            *ngIf="
+              contactForm.submitted && contactForm.controls['message']?.invalid
+            "
+            class="text-red-500 text-xs mt-1"
+          >
+            Please enter your message
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="flex items-start">
+          <input
+            type="checkbox"
+            name="terms"
+            ngModel
+            required
+            class="w-4 h-4 text-blue-600 border-gray-300 rounded"
+            [class.border-red-500]="
+              contactForm.submitted && contactForm.controls['terms'].invalid
+            "
+          />
+          <label class="ml-2 text-sm text-gray-700">
+            I agree to the
+            <a href="#" class="text-blue-600 underline">terms and conditions</a>
+            <span class="text-red-500">*</span>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            <span *ngIf="!isSubmitting">Send Message</span>
+            <span *ngIf="isSubmitting" class="flex items-center justify-center">
+              <svg
+                class="animate-spin mr-2 h-5 w-5 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                />
+              </svg>
+              Processing...
+            </span>
+          </button>
+        </div>
+
+        <!-- Success Message -->
+        <div
+          *ngIf="message"
+          class="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800"
+        >
+          {{ message }}
+        </div>
+      </form>
+    </div>
   </div>
 </div>

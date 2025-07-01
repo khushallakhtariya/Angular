@@ -1,15 +1,14 @@
 <button
-(click)="goBack()"
-class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
+  (click)="goBack()"
+  class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition flex items-center"
 >
-<span class="material-symbols-outlined mr-1">arrow_back</span>
-Back
+  <span class="material-symbols-outlined mr-1">arrow_back</span>
+  Back
 </button>
-<div
-class="bg-gray-100 py-12 px-4 flex justify-center items-center"
->
+
+<div class="bg-gray-100 py-12 px-4 flex justify-center items-center">
   <div
-    class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl grid grid-cols-1 md:grid-cols-2 overflow-hidden"
+    class="w-full max-w-full bg-white rounded-3xl shadow-2xl grid grid-cols-1 md:grid-cols-2 overflow-hidden"
   >
     <!-- Left Image -->
     <div
@@ -24,44 +23,70 @@ class="bg-gray-100 py-12 px-4 flex justify-center items-center"
       <h2 class="text-4xl font-bold text-gray-800 mb-6">Book Your Car</h2>
 
       <form class="space-y-6" (ngSubmit)="bookCar()">
-        <!-- Pickup Location -->
+        <!-- Car Name with Suggestions -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2">Car Name</label>
+          <label class="block text-gray-700 font-medium mb-2"
+            >Search Car Name</label
+          >
           <div class="relative">
-            <!-- Location Icon -->
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
-              <span class="material-symbols-outlined">
-                no_crash
-                </span>
+            <span
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+            >
+              <span class="material-symbols-outlined"> search </span>
             </span>
-          <input
-            type="text"
-            class="w-full  pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            placeholder="Enter Car Name"
-            required
-          />
-        </div>
-        </div>
-
-        <!-- Drop Location -->
-        <div>
-          <label class="block text-gray-700 font-medium mb-2">
-            Neyar Show Room
-          </label>
-          <div class="relative">
-            <!-- Location Icon -->
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
-              <span class="material-symbols-outlined">
-                add_location
-                </span>
-            </span>
-            <!-- Input -->
+            <span
+            (click)="searchClose()"
+            class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer"
+            >close</span
+          >
             <input
               type="text"
-              class="w-full pl-10 pr-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-              placeholder="Enter Neyar Show Room Location"
+              [(ngModel)]="searchText"
+              (input)="filterCars()"
+              name="carName"
+              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              placeholder="Enter Car Name"
               required
             />
+            <ul
+              *ngIf="filteredCars.length > 0"
+              class="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto"
+            >
+              <li
+                *ngFor="let car of filteredCars"
+                (click)="selectCar(car)"
+                class="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+              >
+                {{ car.brand }} {{ car.model }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Showroom Location -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2"
+            >Neyar Show Room</label
+          >
+          <div class="relative">
+            <span
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+            >
+              <span class="material-symbols-outlined">add_location</span>
+            </span>
+            <input
+              type="text"
+              [(ngModel)]="selectedLocation"
+              name="showroomLocation"
+              class="w-full pl-10 pr-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              placeholder="Enter Showroom Location"
+              required
+            />
+            <span
+            (click)="roomClose()"
+            class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer"
+            >close</span
+          >
           </div>
         </div>
 
@@ -71,18 +96,19 @@ class="bg-gray-100 py-12 px-4 flex justify-center items-center"
             >Pickup Date</label
           >
           <div class="relative">
-            <!-- Location Icon -->
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
-              <span class="material-symbols-outlined">
-                calendar_add_on
-                </span>
+            <span
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+            >
+              <span class="material-symbols-outlined">calendar_add_on</span>
             </span>
-          <input
-            type="date"
-            class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            required
-          />
-        </div>
+            <input
+              type="date"
+              [(ngModel)]="pickupDate"
+              name="pickupDate"
+              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              required
+            />
+          </div>
         </div>
 
         <!-- Drop-off Date -->
@@ -91,18 +117,19 @@ class="bg-gray-100 py-12 px-4 flex justify-center items-center"
             >Drop-off Date</label
           >
           <div class="relative">
-            <!-- Location Icon -->
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none">
-              <span class="material-symbols-outlined">
-                calendar_clock
-                </span>
+            <span
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+            >
+              <span class="material-symbols-outlined">calendar_clock</span>
             </span>
-          <input
-            type="date"
-            class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            required
-          />
-        </div>
+            <input
+              type="date"
+              [(ngModel)]="dropDate"
+              name="dropDate"
+              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              required
+            />
+          </div>
         </div>
 
         <!-- Submit Button -->
