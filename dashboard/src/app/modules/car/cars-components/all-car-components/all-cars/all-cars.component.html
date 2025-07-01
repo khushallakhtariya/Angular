@@ -1,4 +1,4 @@
-<div class="container mx-auto p-2  ">
+<div class="container mx-auto p-2">
   <button
     (click)="goBack()"
     class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors duration-200 flex items-center focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
@@ -6,8 +6,8 @@
     <span class="material-symbols-outlined mr-1">arrow_back</span>
     Back
   </button>
-  </div>
-<div class="container mx-auto ">
+</div>
+<div class="container mx-auto">
   <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
     <div
       *ngFor="let car of carList"
@@ -44,6 +44,7 @@
 
         <div class="flex flex-wrap gap-3">
           <button
+            [routerLink]="['Share', car.id]"
             class="flex items-center justify-center gap-2 flex-1 min-w-[100px] px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition"
           >
             <span class="material-symbols-outlined">send</span>

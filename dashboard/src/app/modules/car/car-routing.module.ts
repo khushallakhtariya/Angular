@@ -8,6 +8,7 @@ import { ContactCarComponent } from './cars-components/contact-car/contact-car.c
 import { authGuard } from '../../auth.guard';
 import { AboutCarComponent } from './cars-components/about-car/about-car.component';
 import { AllCarsComponent } from './cars-components/all-car-components/all-cars/all-cars.component';
+import { ShareCarComponent } from './cars-components/all-car-components/share-car/share-car.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'all',
     component: AllCarsComponent,
+  },
+  {
+    path: 'all/Share/:id',
+    component: ShareCarComponent,
   },
   {
     path: 'all/view/:id',
