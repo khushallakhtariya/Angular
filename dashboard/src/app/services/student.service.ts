@@ -1,23 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
+import { Observable } from 'rxjs';
+import { studentsApiEndpoints } from '../utilities/api-constants-endpoints';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StudentService {
-  private url = 'http://localhost:3000/students';
-  
+  private url = `${environment.apiBaseUrl}${studentsApiEndpoints.students}`;
+
   constructor(private http: HttpClient) {}
 
-
-  getstudents() { 
+  getstudents(): Observable<any> {
     return this.http.get<{ users: any[] }>(this.url);
   }
   savestudents(students: any) {
     return this.http.post(this.url, students);
   }
 
-  deletestudents(id:any){
+  deletestudents(id: any) {
     return this.http.delete(`${this.url}/${id}`);
   }
   updatestudents(id: any, students: any) {

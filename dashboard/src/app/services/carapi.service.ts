@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
+import { carApiEndpoints } from '../utilities/api-constants-endpoints';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarapiService {
-  private apiUrl = 'http://localhost:3000/cars';
+  private apiUrl = `${environment.apiBaseUrl}${carApiEndpoints.cars}`;
 
   constructor(private http: HttpClient) {}
 

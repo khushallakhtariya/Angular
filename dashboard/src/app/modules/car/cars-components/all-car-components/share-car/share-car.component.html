@@ -1,1 +1,32 @@
-<p>share-car works!</p>
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-300 px-4">
+    <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-xl w-full text-center space-y-6">
+      <h1 class="text-2xl sm:text-3xl font-bold text-blue-700">Share This Car Page</h1>
+  
+      <input
+        type="text"
+        [value]="shareUrl"
+        readonly
+        class="w-full px-4 py-2 border rounded-lg text-gray-700 bg-gray-100 focus:outline-none"
+      />
+  
+      <div class="flex justify-center gap-6 mt-6">
+        <button
+          (click)="copyLink()"
+          class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow transition duration-200"
+        >
+          <span class="material-symbols-outlined text-base">content_copy</span>
+          <span>Copy Link</span>
+        </button>
+      
+        <button
+          (click)="cancelShare()"
+          class="flex items-center gap-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-6 py-2 rounded-full shadow transition duration-200"
+        >
+          <span class="material-symbols-outlined text-base">close</span>
+          <span>Cancel</span>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+  

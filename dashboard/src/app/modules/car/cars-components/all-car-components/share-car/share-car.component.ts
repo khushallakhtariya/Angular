@@ -1,29 +1,46 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CarapiService } from '../../../../../services/carapi.service';
-import { Location } from '@angular/common';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-share-car',
-  imports: [HttpClientModule,CommonModule],
+  standalone: true,
+  imports: [CommonModule, HttpClientModule, MatSnackBarModule],
   templateUrl: './share-car.component.html',
-  styleUrl: './share-car.component.css'
+  styleUrls: ['./share-car.component.css'],
 })
-export class ShareCarComponent {
-  carList: any[] = []; // use carList directly
+export class ShareCarComponent implements OnInit{
+  carList: any[] = [];
+  shareUrl: string = window.location.href;
 
-  constructor(private carApi: CarapiService, private location: Location) {}
+  constructor(
+    private carApi: CarapiService,
+    private location: Location,
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
-    this.carApi.getCars().subscribe(
-      (res) => {
-        this.carList = res; 
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+  ngOnInit() {
+    const carId = this.route.snapshot.paramMap.get('id');
+    this.shareUrl = `${window.location.origin}/cars/all/view/${carId}`; 
   }
 
+  copyLink() {
+    const carId = this.route.snapshot.paramMap.get('id');
+    const fullLink = `${window.location.origin}/cars/all/view/${carId}`;
+    navigator.clipboard.writeText(fullLink).then(() => {
+      this.snackBar.open('Share link copied to clipboard!', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+    });
+  }
+
+  cancelShare() {
+    this.location.back();
+  }
 }

@@ -7,8 +7,6 @@ import { BookCarComponent } from './cars-components/book-car/book-car.component'
 import { ContactCarComponent } from './cars-components/contact-car/contact-car.component';
 import { authGuard } from '../../auth.guard';
 import { AboutCarComponent } from './cars-components/about-car/about-car.component';
-import { AllCarsComponent } from './cars-components/all-car-components/all-cars/all-cars.component';
-import { ShareCarComponent } from './cars-components/all-car-components/share-car/share-car.component';
 
 const routes: Routes = [
   {
@@ -24,6 +22,10 @@ const routes: Routes = [
     component: ViewCarComponent,
   },
   {
+    path: 'contact',
+    component: ContactCarComponent,
+  },
+  {
     path: 'view/:id/contact',
     component: ContactCarComponent,
   },
@@ -32,33 +34,39 @@ const routes: Routes = [
     component: BookCarComponent,
   },
   {
-    path: 'all',
-    component: AllCarsComponent,
-  },
-  {
-    path: 'all/Share/:id',
-    component: ShareCarComponent,
-  },
-  {
-    path: 'all/view/:id',
-    component: ViewCarComponent,
-  },
-  {
-    path: 'all/book/:id',
+    path: 'book/car',
     component: BookCarComponent,
   },
+  {
+    path: 'about/book',
+    component: BookCarComponent,
+  },
+  {
+    path: 'view/book/:id',
+    component: BookCarComponent,
+  },
+  {
+    path: 'all',
+    loadChildren: () =>
+      import(
+        './cars-components/all-car-components/all-car-module/all-car-module-routing.module'
+      ).then((m) => m.AllCarModuleRoutingModule),
+    canActivate: [authGuard],
+  },
+
   {
     path: 'about',
     component: AboutCarComponent,
     canActivate: [authGuard],
   },
   {
-    path: 'contact',
-    component: ContactCarComponent,
-  },
-  {
-    path: 'book/car',
-    component: BookCarComponent,
+    path: 'buy',
+    loadChildren: () =>
+      import(
+        './cars-components/buy-car-components/buycar-modules/buycar-modules.module'
+      ).then((m) => m.BuycarModulesModule),
+    canActivate: [authGuard],
+
   },
 ];
 

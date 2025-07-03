@@ -4,11 +4,12 @@ import { Location } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CarapiService } from '../../../../services/carapi.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book-car',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, MatSnackBarModule],
   templateUrl: './book-car.component.html',
   styleUrl: './book-car.component.css',
 })
@@ -22,7 +23,7 @@ export class BookCarComponent {
   pickupDate: string = '';
   dropDate: string = '';
 
-  constructor(private location: Location, private carApi: CarapiService) {}
+  constructor(private location: Location, private carApi: CarapiService,private snackBar: MatSnackBar,) {}
 
   ngOnInit(): void {
     this.carApi.getCars().subscribe(
@@ -54,10 +55,13 @@ export class BookCarComponent {
   }
 
   bookCar(): void {
-    this.message = 'Car booked successfully! Thank you!';
-    setTimeout(() => {
-      this.message = '';
-    }, 3000);
+    this.snackBar.open('Car booked successfully!', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+      panelClass: ['snackbar-success'],
+      
+    });
   }
   searchClose() {
     this.searchText = '';

@@ -35,7 +35,7 @@ export class ViewCarComponent {
   }
   bookCar(): void {
     if (this.car && this.car.id) {
-      this.router.navigate(['forms/cars/book', this.car.id]);
+      this.router.navigate(['cars/view/book', this.car.id]);
     } else {
       console.error('Car object or ID is undefined');
     }

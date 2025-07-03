@@ -1,0 +1,363 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+  <div class="container mx-auto px-4 py-6">
+    <button
+      (click)="goBack()"
+      class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 transition-all duration-200 border border-gray-200 shadow-sm hover:shadow-md"
+    >
+      <span class="material-symbols-outlined">arrow_back</span>
+      <span class="font-medium">Back</span>
+    </button>
+  </div>
+  <div class="max-w-[1200px] mx-auto bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-2xl" *ngIf="!isLoading">
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 animate-fade-in">
+      <div class="flex items-start">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-red-700">{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Car Detail & Stepper -->
+    <ng-container *ngIf="car">
+      <!-- Stepper UI -->
+      <div class="px-6 pt-8 pb-2 bg-indigo-50">
+        <div class="relative">
+          <div class="absolute top-1/2 left-0 right-0 h-1 bg-indigo-100 transform -translate-y-1/2"></div>
+          <div class="absolute top-1/2 left-0 h-1 bg-indigo-600 transform -translate-y-1/2 transition-all duration-500 ease-in-out" 
+               [style.width]="(step - 1) * 33.33 + '%'"></div>
+          
+          <div class="relative flex justify-between">
+            <div *ngFor="let stepNum of [1,2,3,4]" class="flex flex-col items-center z-10">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 mb-2 transition-all duration-300"
+                   [class.bg-indigo-600]="step >= stepNum"
+                   [class.border-indigo-600]="step >= stepNum"
+                   [class.border-gray-300]="step < stepNum"
+                   [class.text-white]="step >= stepNum"
+                   [class.text-gray-400]="step < stepNum">
+                <span class="font-medium">{{stepNum}}</span>
+              </div>
+              <span class="text-xs font-medium tracking-wide transition-all duration-300"
+                    [class.text-indigo-600]="step >= stepNum"
+                    [class.text-gray-500]="step < stepNum">
+                {{ getStepLabel(stepNum) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 1: Buyer Info -->
+      <div *ngIf="step === 1" class="px-6 py-8 animate-fade-in">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Buyer Information</h2>
+        <div class="space-y-5">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <input
+              id="name"
+              type="text"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+              placeholder="John Doe"
+              [(ngModel)]="formData.name"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+              placeholder="john@example.com"
+              [(ngModel)]="formData.email"
+            />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <input
+              id="phone"
+              type="tel"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+              placeholder="+91 9876543210"
+              [(ngModel)]="formData.phone"
+            />
+          </div>
+          <div class="pt-4">
+            <button
+              (click)="nextStep()"
+              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 transform hover:scale-[1.01] shadow-md hover:shadow-lg"
+              [disabled]="!formData.name || !formData.email || !formData.phone"
+              [class.opacity-50]="!formData.name || !formData.email || !formData.phone"
+              [class.cursor-not-allowed]="!formData.name || !formData.email || !formData.phone">
+              Continue to Car Details
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Car Info -->
+      <div *ngIf="step === 2" class="px-6 py-8 animate-fade-in">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Car Details</h2>
+        <div class="relative rounded-xl overflow-hidden mb-6 h-64 bg-gray-200">
+          <img
+            [src]="car.imageUrl"
+            alt="{{ car.model }}"
+            class="w-full h-full object-cover transition duration-500 hover:scale-105"
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+            <h3 class="text-xl font-bold text-white">{{ car.brand }} {{ car.model }}</h3>
+            <p class="text-indigo-300 font-medium">{{ car.year }} • {{ car.mileage }} km</p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1v-1h.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-2a1 1 0 00-.293-.707l-3-3A1 1 0 0016 7h-1V5a1 1 0 00-1-1H3z" />
+              </svg>
+              Overview
+            </h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="font-medium text-gray-600">Brand:</span>
+                <span class="font-medium">{{ car.brand }}</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="font-medium text-gray-600">Model:</span>
+                <span class="font-medium">{{ car.model }}</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="font-medium text-gray-600">Year:</span>
+                <span class="font-medium">{{ car.year }}</span>
+              </li>
+              <li class="flex justify-between py-2">
+                <span class="font-medium text-gray-600">Price:</span>
+                <span class="text-indigo-600 font-bold">₹{{ car.price | number }}</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+              </svg>
+              Specifications
+            </h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="font-medium text-gray-600">Fuel Type:</span>
+                <span class="font-medium">{{ car.fuelType }}</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="font-medium text-gray-600">Mileage:</span>
+                <span class="font-medium">{{ car.mileage }} km</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="font-medium text-gray-600">Transmission:</span>
+                <span class="font-medium">{{ car.transmission }}</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="font-medium text-gray-600">Engine:</span>
+                <span class="font-medium">{{ car.engine }}</span>
+              </li>
+              <li class="flex justify-between py-2">
+                <span class="font-medium text-gray-600">Seating:</span>
+                <span class="font-medium">{{ car.seatingCapacity }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
+          <button
+            (click)="prevStep()"
+            class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition duration-200 flex items-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Back
+          </button>
+          <button
+            (click)="nextStep()"
+            class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition duration-200 transform hover:scale-[1.01] shadow-md hover:shadow-lg flex items-center"
+          >
+            Continue to Payment
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Address & Payment -->
+      <div *ngIf="step === 3" class="px-6 py-8 animate-fade-in">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Address & Payment</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+              Delivery Address
+            </h3>
+            <textarea
+              id="address"
+              rows="3"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+              placeholder="Enter your full address with ZIP code"
+              [(ngModel)]="formData.address"
+            ></textarea>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+              </svg>
+              Payment Method
+            </h3>
+            <div class="grid grid-cols-2 gap-4 mt-3">
+              <button 
+                *ngFor="let method of paymentMethods"
+                class="p-3 border rounded-lg transition duration-200 flex items-center justify-center"
+                [class.border-indigo-500]="formData.paymentMethod === method.value"
+                [class.bg-indigo-50]="formData.paymentMethod === method.value"
+                [class.border-gray-300]="formData.paymentMethod !== method.value"
+                (click)="formData.paymentMethod = method.value">
+                <span class="font-medium">{{ method.label }}</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
+            <button
+              (click)="prevStep()"
+              class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition duration-200 flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+              </svg>
+              Back
+            </button>
+            <button
+              (click)="nextStep()"
+              class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition duration-200 transform hover:scale-[1.01] shadow-md hover:shadow-lg"
+              [disabled]="!formData.address || !formData.paymentMethod"
+              [class.opacity-50]="!formData.address || !formData.paymentMethod"
+              [class.cursor-not-allowed]="!formData.address || !formData.paymentMethod">
+              Review Order
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Review -->
+      <div *ngIf="step === 4" class="px-6 py-8 animate-fade-in">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Review Your Order</h2>
+        
+        <div class="bg-gray-50 rounded-xl p-6 mb-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+            Buyer Information
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700 mb-6">
+            <div class="space-y-2">
+              <p><span class="font-medium text-gray-600">Name:</span> {{ formData.name }}</p>
+              <p><span class="font-medium text-gray-600">Email:</span> {{ formData.email }}</p>
+            </div>
+            <div class="space-y-2">
+              <p><span class="font-medium text-gray-600">Phone:</span> {{ formData.phone }}</p>
+              <p><span class="font-medium text-gray-600">Address:</span> {{ formData.address }}</p>
+            </div>
+          </div>
+          
+          <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+              <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+            </svg>
+            Payment Details
+          </h3>
+          <div class="text-gray-700 mb-6">
+            <p><span class="font-medium text-gray-600">Method:</span> 
+              <span class="capitalize">{{ formData.paymentMethod }}</span>
+            </p>
+          </div>
+          
+          <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+              <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1v-1h.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-2a1 1 0 00-.293-.707l-3-3A1 1 0 0016 7h-1V5a1 1 0 00-1-1H3z" />
+            </svg>
+            Car Details
+          </h3>
+          <div class="flex items-start bg-white p-4 rounded-lg border border-gray-200">
+            <div class="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden mr-4 flex-shrink-0">
+              <img [src]="car.imageUrl" alt="{{ car.model }}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1">
+              <p class="font-medium text-gray-800">{{ car.brand }} {{ car.model }} ({{ car.year }})</p>
+              <p class="text-indigo-600 font-bold text-lg mt-1">₹{{ car.price | number }}</p>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">{{ car.fuelType }}</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">{{ car.transmission }}</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">{{ car.mileage }} km</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-indigo-50 rounded-xl p-4 mb-6 border border-indigo-100">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-indigo-800">Important Information</h3>
+              <div class="mt-2 text-sm text-indigo-700">
+                <p>Please review all details carefully before confirming your purchase. A sales representative will contact you within 24 hours to complete the transaction.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
+          <button
+            (click)="prevStep()"
+            class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition duration-200 flex items-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Back
+          </button>
+          <button
+            (click)="submitForm(car)"
+            class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition duration-200 transform hover:scale-[1.01] shadow-md hover:shadow-lg flex items-center"
+          >
+            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Confirm Purchase
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

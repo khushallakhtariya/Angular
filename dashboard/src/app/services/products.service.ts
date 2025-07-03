@@ -1,12 +1,14 @@
 // products.service.ts
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
+import { userApiEndpoints } from '../utilities/api-constants-endpoints';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private userUrl = 'http://localhost:3000/user';
+  private userUrl = `${environment.apiBaseUrl}${userApiEndpoints.user}`;
 
   constructor(private http: HttpClient) {}
 
