@@ -1,55 +1,67 @@
-<div class="container mx-auto p-5 px-4 ">
-<button
-  (click)="goBack()"
-  class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors duration-200 flex items-center focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
->
-  <span class="material-symbols-outlined mr-1">arrow_back</span>
-  Back
-</button>
-</div>
-<div class=" py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-[calc(100vh-200px)]">
-  <div
-  class="w-full max-w-6xl bg-white rounded-3xl shadow-2xl grid grid-cols-1 md:grid-cols-2 overflow-hidden transition-all duration-300 hover:shadow-3xl"
+<div class="container mx-auto p-5 px-4">
+  <button
+    (click)="goBack()"
+    class="mb-4 px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors duration-200 flex items-center focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
   >
-  <!-- Left Image -->
+    <span class="material-symbols-outlined mr-1">arrow_back</span>
+    Back
+  </button>
+</div>
+
+<div
+  class="py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-[calc(100vh-200px)]"
+>
   <div
-  class="hidden md:block bg-cover bg-center h-full min-h-[500px]"
-  style="
+    class="w-full max-w-6xl bg-white rounded-3xl shadow-2xl grid grid-cols-1 md:grid-cols-2 overflow-hidden transition-all duration-300 hover:shadow-3xl"
+  >
+    <!-- Left Image -->
+    <div
+      class="hidden md:block bg-cover bg-center h-full min-h-[500px]"
+      style="
         background-image: url('https://img.freepik.com/free-photo/female-hands-holding-folder-car-keys_23-2148384962.jpg');
       "
     ></div>
 
-    <!-- Right Form Section -->
+    <!-- Right Form -->
     <div class="p-8 sm:p-10 lg:p-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 font-sans">Book Your Car</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 font-sans">
+        Book Your Car
+      </h2>
 
-      <form class="space-y-6" (ngSubmit)="bookCar()">
-        <!-- Car Name with Suggestions -->
+      <form #carForm="ngForm" (ngSubmit)="bookCar(carForm)" class="space-y-6">
+        <!-- Car Name -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
+          <label class="block text-gray-700 font-medium mb-2"
             >Search Car Name</label
           >
           <div class="relative">
             <span
-              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl"
             >
-              <span class="material-symbols-outlined"> search </span>
+              <span class="material-symbols-outlined">search</span>
             </span>
             <span
               (click)="searchClose()"
-              class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer transition-colors"
-            >close</span
+              class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer"
+              >close</span
             >
             <input
               type="text"
+              name="carName"
               [(ngModel)]="searchText"
               (input)="filterCars()"
-              name="carName"
-              class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700 placeholder-gray-400"
-              placeholder="Enter Car Name"
               required
+              #carName="ngModel"
+              placeholder="Enter Car Name"
+              class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
               autocomplete="off"
             />
+            <div
+              *ngIf="carName.invalid && carName.touched"
+              class="text-red-600 text-sm mt-1"
+            >
+              Car name is required.
+            </div>
             <ul
               *ngIf="filteredCars.length > 0"
               class="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto"
@@ -57,7 +69,7 @@
               <li
                 *ngFor="let car of filteredCars"
                 (click)="selectCar(car)"
-                class="px-4 py-2 hover:bg-blue-50 cursor-pointer transition-colors duration-150 text-gray-700"
+                class="px-4 py-2 hover:bg-blue-50 cursor-pointer"
               >
                 {{ car.brand }} {{ car.model }}
               </li>
@@ -67,90 +79,104 @@
 
         <!-- Showroom Location -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
-            >Neyar Show Room</label
+          <label class="block text-gray-700 font-medium mb-2"
+            >Showroom Location</label
           >
           <div class="relative">
             <span
-              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl"
             >
               <span class="material-symbols-outlined">add_location</span>
             </span>
-            <input
-              type="text"
-              [(ngModel)]="selectedLocation"
-              name="showroomLocation"
-              class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700 placeholder-gray-400"
-              placeholder="Enter Showroom Location"
-              required
-              autocomplete="off"
-            />
             <span
               (click)="roomClose()"
-              class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer transition-colors"
-            >close</span
+              class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 cursor-pointer"
+              >close</span
             >
+            <input
+              type="text"
+              name="showroomLocation"
+              [(ngModel)]="selectedLocation"
+              required
+              #showroomLocation="ngModel"
+              placeholder="Enter Showroom Location"
+              class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
+              autocomplete="off"
+            />
+            <div
+              *ngIf="showroomLocation.invalid && showroomLocation.touched"
+              class="text-red-600 text-sm mt-1"
+            >
+              Location is required.
+            </div>
           </div>
         </div>
 
         <!-- Pickup Date -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
+          <label class="block text-gray-700 font-medium mb-2"
             >Pickup Date</label
           >
           <div class="relative">
             <span
-              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl"
             >
               <span class="material-symbols-outlined">calendar_add_on</span>
             </span>
             <input
               type="date"
-              [(ngModel)]="pickupDate"
               name="pickupDate"
-              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700"
+              [(ngModel)]="pickupDate"
               required
+              #pickupDateField="ngModel"
+              class="w-full pl-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
             />
+            <div
+              *ngIf="pickupDateField.invalid && pickupDateField.touched"
+              class="text-red-600 text-sm mt-1"
+            >
+              Pickup date is required.
+            </div>
           </div>
         </div>
 
         <!-- Drop-off Date -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
+          <label class="block text-gray-700 font-medium mb-2"
             >Drop-off Date</label
           >
           <div class="relative">
             <span
-              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl pointer-events-none"
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-xl"
             >
               <span class="material-symbols-outlined">calendar_clock</span>
             </span>
             <input
               type="date"
-              [(ngModel)]="dropDate"
               name="dropDate"
-              class="w-full pl-10 px-5 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700"
+              [(ngModel)]="dropDate"
               required
+              #dropDateField="ngModel"
+              class="w-full pl-10 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
             />
+            <div
+              *ngIf="dropDateField.invalid && dropDateField.touched"
+              class="text-red-600 text-sm mt-1"
+            >
+              Drop-off date is required.
+            </div>
           </div>
         </div>
 
-        <!-- Submit Button -->
+        <!-- Submit -->
         <div class="pt-4">
           <button
             type="submit"
-            class="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transform hover:-translate-y-0.5"
+            [disabled]="carForm.invalid"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-xl transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Book Now
           </button>
-        </div>
-
-        <!-- Success Message -->
-        <div
-          *ngIf="message"
-          class="mt-5 p-3 text-green-600 font-semibold text-center transition-all duration-300 rounded-lg bg-green-50"
-        >
-          {{ message }}
         </div>
       </form>
     </div>

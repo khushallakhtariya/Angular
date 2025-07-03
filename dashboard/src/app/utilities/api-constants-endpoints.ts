@@ -13,3 +13,7 @@ export const userApiEndpoints = {
 export const buycarApiEndpoints = {
   buyCars: '/buyCars',
 };
+
+export const newcarApiEndpoints = {
+  newCars: '/newcars',
+};

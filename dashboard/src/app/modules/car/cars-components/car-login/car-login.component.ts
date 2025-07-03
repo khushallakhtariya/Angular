@@ -80,11 +80,14 @@ export class CarLoginComponent {
               this.snackBar.open('Login successful!', 'Close', {
                 duration: 3000,
                 panelClass: ['snackbar-success'],
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
               });
-
-              this.router.navigate(['cars']).then(() => {
-                window.location.reload();
-              });
+              setTimeout(() => {
+                this.router.navigate(['cars']).then(() => {
+                  window.location.reload();
+                });
+              }, 2000);
             } else {
               this.error = 'Invalid email or password!';
             }

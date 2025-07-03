@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CarapiService } from '../../../../services/carapi.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -13,7 +13,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   templateUrl: './book-car.component.html',
   styleUrl: './book-car.component.css',
 })
-export class BookCarComponent {
+export class BookCarComponent implements OnInit {
   message: string | undefined;
   carList: any[] = [];
   filteredCars: any[] = [];
@@ -23,7 +23,11 @@ export class BookCarComponent {
   pickupDate: string = '';
   dropDate: string = '';
 
-  constructor(private location: Location, private carApi: CarapiService,private snackBar: MatSnackBar,) {}
+  constructor(
+    private location: Location,
+    private carApi: CarapiService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.carApi.getCars().subscribe(
@@ -38,11 +42,11 @@ export class BookCarComponent {
 
   filterCars(): void {
     const query = this.searchText.toLowerCase();
-    if (query.length === 0) {
+    if (!query) {
       this.filteredCars = [];
       return;
     }
-    this.filteredCars = this.carList.filter((car) =>  
+    this.filteredCars = this.carList.filter((car) =>
       `${car.brand} ${car.model}`.toLowerCase().includes(query)
     );
   }
@@ -54,23 +58,38 @@ export class BookCarComponent {
     this.filteredCars = [];
   }
 
-  bookCar(): void {
+  searchClose(): void {
+    this.searchText = '';
+    this.filteredCars = [];
+  }
+
+  roomClose(): void {
+    this.selectedLocation = '';
+  }
+
+  bookCar(form: NgForm): void {
+    if (form.invalid) {
+      this.snackBar.open('Please fill in all required fields correctly.', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right',
+        panelClass: ['snackbar-error'],
+      });
+      return;
+    }
+
+    
     this.snackBar.open('Car booked successfully!', 'Close', {
       duration: 3000,
       verticalPosition: 'top',
       horizontalPosition: 'right',
       panelClass: ['snackbar-success'],
-      
     });
+
+    form.resetForm();
+    this.selectedCar = null;
   }
-  searchClose() {
-    this.searchText = '';
-    this.filteredCars = [];
-  }
-  roomClose() {
-    this.selectedLocation = '';
-    this.filteredCars = [];
-  }
+
   goBack(): void {
     this.location.back();
   }

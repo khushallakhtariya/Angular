@@ -7,6 +7,7 @@ import { BookCarComponent } from './cars-components/book-car/book-car.component'
 import { ContactCarComponent } from './cars-components/contact-car/contact-car.component';
 import { authGuard } from '../../auth.guard';
 import { AboutCarComponent } from './cars-components/about-car/about-car.component';
+import { NewCarPageComponent } from './cars-components/new-car-page/new-car-page.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,10 @@ const routes: Routes = [
       ).then((m) => m.AllCarModuleRoutingModule),
     canActivate: [authGuard],
   },
-
+  {
+    path: 'newcars',
+    component: NewCarPageComponent,
+  },
   {
     path: 'about',
     component: AboutCarComponent,
@@ -66,7 +70,6 @@ const routes: Routes = [
         './cars-components/buy-car-components/buycar-modules/buycar-modules.module'
       ).then((m) => m.BuycarModulesModule),
     canActivate: [authGuard],
-
   },
 ];
 
