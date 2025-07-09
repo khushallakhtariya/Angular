@@ -679,229 +679,1285 @@
       "imageUrl": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Renault/Kiger/12464/1749636600018/front-left-side-47.jpg?tr=w-664"
     }
   ],
+
   "newcars": [
     {
       "id": 1,
       "brand": "Toyota",
       "model": "Corolla",
+      "variant": "Corolla Altis G",
       "year": 2023,
       "price": 18000,
+      "onRoadPrice": 2050000,
+      "currency": "INR",
       "fuel": "Petrol",
+      "fuelType": "BS6 Petrol",
       "mileage": 15,
-      "transmission": "Automatic",
+      "officialMileage": 17.1,
+      "realWorldMileage": {
+        "city": 13.5,
+        "highway": 18.2
+      },
+      "transmission": "CVT Automatic",
+      "driveType": "FWD",
       "seatingCapacity": 5,
       "color": "White",
-      "features": ["ABS", "Airbags", "Bluetooth", "Cruise Control"],
+      "bodyType": "Sedan",
+      "doors": 4,
+      "fuelTankCapacity": 55,
+      "bootSpace": 470,
+      "groundClearance": 133,
+      "kerbWeight": 1270,
+      "grossWeight": 1700,
+      "dimensions": {
+        "length": 4625,
+        "width": 1780,
+        "height": 1460,
+        "wheelbase": 2700
+      },
+      "suspension": {
+        "front": "MacPherson Strut",
+        "rear": "Torsion Beam"
+      },
+      "brakes": {
+        "front": "Ventilated Disc",
+        "rear": "Solid Disc"
+      },
+      "tyres": {
+        "type": "Tubeless Radial",
+        "size": "195/65 R15",
+        "spare": "Steel Wheel"
+      },
+      "features": [
+        "ABS with EBD",
+        "Dual Front Airbags",
+        "Cruise Control",
+        "Rear Parking Camera",
+        "Push Button Start",
+        "Automatic Climate Control",
+        "7-inch Touchscreen",
+        "Android Auto / Apple CarPlay",
+        "Rear AC Vents",
+        "Tilt & Telescopic Steering",
+        "Keyless Entry"
+      ],
+      "infotainment": {
+        "screenSize": "7 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": true,
+        "USB": true,
+        "AndroidAuto": true,
+        "AppleCarPlay": true,
+        "speakers": 6
+      },
+      "instrumentCluster": {
+        "type": "Analog + MID",
+        "displaySize": "4.2 inch",
+        "tachometer": true,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 2,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": true,
+        "tractionControl": false,
+        "hillAssist": false,
+        "rearCamera": true,
+        "parkingSensors": "Rear Only",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 4,
+          "ASEAN NCAP": 5
+        }
+      },
+      "engine": {
+        "type": "1.8L I4 Dual VVT-i",
+        "displacement": 1798,
+        "cylinders": 4,
+        "valves": 16,
+        "maxPower": "138 hp @ 6400 rpm",
+        "torque": "173 Nm @ 4000 rpm",
+        "topSpeed": 190,
+        "acceleration": "0-100 kmph in 10.2s",
+        "emissionStandard": "BS6"
+      },
+      "ownership": {
+        "warranty": "3 years / 100,000 km",
+        "extendedWarranty": "Up to 5 years available",
+        "roadsideAssistance": "3 years",
+        "freeService": "3 services / 30,000 km"
+      },
+      "ratings": {
+        "userRating": 4.5,
+        "expertRating": 4.2,
+        "comfort": 4.6,
+        "performance": 4.3,
+        "features": 4.1,
+        "safety": 4.4
+      },
+      "reviews": [
+        {
+          "user": "Rahul Mehta",
+          "rating": 5,
+          "comment": "Superb car for family and long drives. Smooth gearbox and premium feel."
+        },
+        {
+          "user": "Aditi Sharma",
+          "rating": 4,
+          "comment": "Mileage could be better in traffic but otherwise a very reliable sedan."
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 45000,
+        "maintenance": {
+          "firstYear": 7500,
+          "secondYear": 9500,
+          "thirdYear": 11000
+        }
+      },
+      "availability": true,
       "location": "Mumbai",
-      "image": "https://source.unsplash.com/featured/?toyota,corolla",
-      "description": "Reliable and efficient sedan perfect for city driving with advanced safety features.",
-      "engine": "1.8L I4",
-      "torque": "173 Nm",
-      "horsepower": 138,
-      "topSpeed": 190,
-      "acceleration": "10.2s",
-      "warranty": "3 years / 100,000 km",
-      "rating": 4.5,
-      "available": true,
+      "dealer": {
+        "id": "DLR-MUM-001",
+        "name": "Toyota Millennium Auto",
+        "contact": "+91-9876543210",
+        "email": "sales@millenniumauto.toyota.in",
+        "address": "Saki Naka, Andheri East, Mumbai, Maharashtra"
+      },
+      "image": "https://imgd.aeplcdn.com/370x208/cw/cars/discontinued/toyota/corolla-altis-2008-2011.jpg?q=80",
+      "gallery": [
+        "https://imgd.aeplcdn.com/664x374/cw/ec/38668/Toyota-Corolla-Altis-Exterior-122230.jpg?wm=0&q=80",
+        "https://imgd.aeplcdn.com/664x374/cw/ec/38668/Toyota-Corolla-Altis-Exterior-122231.jpg?wm=0&q=80",
+        "https://imgd.aeplcdn.com/664x374/cw/ec/38668/Toyota-Corolla-Altis-Interior-122232.jpg?wm=0&q=80"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=abcd1234",
       "views": 340,
-      "dealer": "DLR-MUM-001"
+      "bookings": 12,
+      "wishlistCount": 29,
+      "description": "Reliable and efficient sedan perfect for city driving with advanced safety features, a comfortable ride, and Toyota's legendary build quality."
     },
     {
       "id": 2,
       "brand": "Honda",
       "model": "Civic",
+      "variant": "Civic V MT",
       "year": 2023,
       "price": 20000,
+      "onRoadPrice": 2250000,
+      "currency": "INR",
       "fuel": "Petrol",
+      "fuelType": "BS6 Petrol",
       "mileage": 16,
-      "transmission": "Manual",
+      "officialMileage": 18.2,
+      "realWorldMileage": {
+        "city": 14.0,
+        "highway": 19.5
+      },
+      "transmission": "6-speed Manual",
+      "driveType": "FWD",
       "seatingCapacity": 5,
       "color": "Black",
-      "features": ["Sunroof", "Rear Camera", "Touchscreen", "Lane Assist"],
+      "bodyType": "Sedan",
+      "doors": 4,
+      "fuelTankCapacity": 47,
+      "bootSpace": 430,
+      "groundClearance": 135,
+      "kerbWeight": 1300,
+      "grossWeight": 1750,
+      "dimensions": {
+        "length": 4656,
+        "width": 1799,
+        "height": 1416,
+        "wheelbase": 2700
+      },
+      "suspension": {
+        "front": "MacPherson Strut",
+        "rear": "Multi-Link"
+      },
+      "brakes": {
+        "front": "Ventilated Disc",
+        "rear": "Solid Disc"
+      },
+      "tyres": {
+        "type": "Tubeless Radial",
+        "size": "215/55 R16",
+        "spare": "Steel Wheel"
+      },
+      "features": [
+        "Sunroof",
+        "Rear Camera",
+        "Touchscreen",
+        "ABS with EBD",
+        "Dual Front Airbags",
+        "Cruise Control",
+        "Push Button Start",
+        "Automatic Climate Control",
+        "Apple CarPlay / Android Auto",
+        "LED DRLs",
+        "Keyless Entry"
+      ],
+      "infotainment": {
+        "screenSize": "7 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": true,
+        "USB": true,
+        "AndroidAuto": true,
+        "AppleCarPlay": true,
+        "speakers": 8
+      },
+      "instrumentCluster": {
+        "type": "Digital + Analog",
+        "displaySize": "7 inch",
+        "tachometer": true,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 2,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": true,
+        "tractionControl": true,
+        "hillAssist": false,
+        "rearCamera": true,
+        "parkingSensors": "Rear Only",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 4,
+          "ASEAN NCAP": 5
+        }
+      },
+      "engine": {
+        "type": "2.0L I4 DOHC i-VTEC",
+        "displacement": 1996,
+        "cylinders": 4,
+        "valves": 16,
+        "maxPower": "158 hp @ 6500 rpm",
+        "torque": "187 Nm @ 4200 rpm",
+        "topSpeed": 200,
+        "acceleration": "0-100 kmph in 9.6s",
+        "emissionStandard": "BS6"
+      },
+      "ownership": {
+        "warranty": "3 years / 90,000 km",
+        "extendedWarranty": "Up to 5 years available",
+        "roadsideAssistance": "3 years",
+        "freeService": "3 services / 30,000 km"
+      },
+      "ratings": {
+        "userRating": 4.3,
+        "expertRating": 4.0,
+        "comfort": 4.5,
+        "performance": 4.4,
+        "features": 4.2,
+        "safety": 4.3
+      },
+      "reviews": [
+        {
+          "user": "Aman Verma",
+          "rating": 5,
+          "comment": "Stylish and fun to drive. Love the manual transmission and power delivery."
+        },
+        {
+          "user": "Sneha Kapoor",
+          "rating": 4,
+          "comment": "Good performance and features. Rear seat comfort could be better."
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 47000,
+        "maintenance": {
+          "firstYear": 8000,
+          "secondYear": 10000,
+          "thirdYear": 12000
+        }
+      },
+      "availability": true,
       "location": "Delhi",
-      "image": "https://source.unsplash.com/featured/?honda,civic",
-      "description": "Sporty design with powerful performance and modern interiors.",
-      "engine": "2.0L I4",
-      "torque": "187 Nm",
-      "horsepower": 158,
-      "topSpeed": 200,
-      "acceleration": "9.6s",
-      "warranty": "3 years / 90,000 km",
-      "rating": 4.3,
-      "available": true,
+      "dealer": {
+        "id": "DLR-DEL-002",
+        "name": "Honda Delight Wheels",
+        "contact": "+91-9876501234",
+        "email": "sales@delighthonda.in",
+        "address": "Patel Nagar, New Delhi, Delhi"
+      },
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Honda/Civic/7740/1585801296746/front-left-side-47.jpg?tr=w-664",
+      "gallery": [
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Honda/Civic/7740/1585801296580/exterior-image-1.jpg",
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Honda/Civic/7740/1585801296783/exterior-image-2.jpg",
+        "https://stimg.cardekho.com/images/carinteriorimages/664x374/Honda/Civic/7740/1585801296932/interior-image-1.jpg"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=honda-civic-review",
       "views": 280,
-      "dealer": "DLR-DEL-002"
+      "bookings": 10,
+      "wishlistCount": 22,
+      "description": "Sporty design with powerful performance, modern interiors, and Honda’s driving dynamics."
     },
     {
       "id": 3,
       "brand": "Hyundai",
       "model": "Elantra",
+      "variant": "Elantra SX Diesel AT",
       "year": 2023,
       "price": 19500,
+      "onRoadPrice": 2200000,
+      "currency": "INR",
       "fuel": "Diesel",
+      "fuelType": "BS6 Diesel",
       "mileage": 17,
-      "transmission": "Automatic",
+      "officialMileage": 18.5,
+      "realWorldMileage": {
+        "city": 15.2,
+        "highway": 19.3
+      },
+      "transmission": "6-speed Automatic",
+      "driveType": "FWD",
       "seatingCapacity": 5,
       "color": "Blue",
-      "features": ["Keyless Entry", "Navigation", "Heated Seats"],
+      "bodyType": "Sedan",
+      "doors": 4,
+      "fuelTankCapacity": 45,
+      "bootSpace": 458,
+      "groundClearance": 165,
+      "kerbWeight": 1350,
+      "grossWeight": 1810,
+      "dimensions": {
+        "length": 4660,
+        "width": 1825,
+        "height": 1450,
+        "wheelbase": 2700
+      },
+      "suspension": {
+        "front": "MacPherson Strut with Coil Spring",
+        "rear": "Coupled Torsion Beam Axle"
+      },
+      "brakes": {
+        "front": "Ventilated Disc",
+        "rear": "Solid Disc"
+      },
+      "tyres": {
+        "type": "Tubeless Radial",
+        "size": "205/60 R16",
+        "spare": "Steel Wheel"
+      },
+      "features": [
+        "Keyless Entry",
+        "Navigation",
+        "Heated Seats",
+        "Dual Zone Climate Control",
+        "Cruise Control",
+        "Push Button Start",
+        "Sunroof",
+        "8-inch Touchscreen",
+        "Android Auto / Apple CarPlay",
+        "Wireless Phone Charger",
+        "Rear Parking Sensors",
+        "LED Projector Headlamps"
+      ],
+      "infotainment": {
+        "screenSize": "8 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": true,
+        "USB": true,
+        "AndroidAuto": true,
+        "AppleCarPlay": true,
+        "speakers": 8
+      },
+      "instrumentCluster": {
+        "type": "Digital + Analog",
+        "displaySize": "4.2 inch",
+        "tachometer": true,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 6,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": true,
+        "tractionControl": true,
+        "hillAssist": true,
+        "rearCamera": true,
+        "parkingSensors": "Rear Only",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 4,
+          "ASEAN NCAP": 5
+        }
+      },
+      "engine": {
+        "type": "1.6L CRDi Turbocharged Diesel",
+        "displacement": 1582,
+        "cylinders": 4,
+        "valves": 16,
+        "maxPower": "126 hp @ 4000 rpm",
+        "torque": "260 Nm @ 1900-2750 rpm",
+        "topSpeed": 195,
+        "acceleration": "0-100 kmph in 10.8s",
+        "emissionStandard": "BS6"
+      },
+      "ownership": {
+        "warranty": "4 years / 120,000 km",
+        "extendedWarranty": "Up to 7 years available",
+        "roadsideAssistance": "4 years",
+        "freeService": "3 services / 30,000 km"
+      },
+      "ratings": {
+        "userRating": 4.4,
+        "expertRating": 4.1,
+        "comfort": 4.5,
+        "performance": 4.2,
+        "features": 4.3,
+        "safety": 4.4
+      },
+      "reviews": [
+        {
+          "user": "Nikhil Rao",
+          "rating": 5,
+          "comment": "Refined engine and loaded with features. Looks very premium inside and out."
+        },
+        {
+          "user": "Priya Menon",
+          "rating": 4,
+          "comment": "Smooth ride quality and plenty of space. A great family sedan."
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 48000,
+        "maintenance": {
+          "firstYear": 8500,
+          "secondYear": 11000,
+          "thirdYear": 12500
+        }
+      },
+      "availability": true,
       "location": "Bangalore",
-      "image": "https://source.unsplash.com/featured/?hyundai,elantra",
-      "description": "Futuristic styling with premium comfort and performance.",
-      "engine": "1.6L CRDi",
-      "torque": "260 Nm",
-      "horsepower": 126,
-      "topSpeed": 195,
-      "acceleration": "10.8s",
-      "warranty": "4 years / 120,000 km",
-      "rating": 4.4,
-      "available": true,
+      "dealer": {
+        "id": "DLR-BLR-003",
+        "name": "Hyundai Blue Square Motors",
+        "contact": "+91-9886654321",
+        "email": "sales@bluesquarehyundai.in",
+        "address": "Koramangala, Bangalore, Karnataka"
+      },
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Hyundai/Elantra/7888/1636975889286/front-left-side-47.jpg?imwidth=340&impolicy=resize",
+      "gallery": [
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Hyundai/Elantra/7888/1636975889111/exterior-image-1.jpg",
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Hyundai/Elantra/7888/1636975889345/exterior-image-2.jpg",
+        "https://stimg.cardekho.com/images/carinteriorimages/664x374/Hyundai/Elantra/7888/1636975889578/interior-image-1.jpg"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=hyundai-elantra-review",
       "views": 215,
-      "dealer": "DLR-BLR-003"
+      "bookings": 9,
+      "wishlistCount": 18,
+      "description": "Futuristic styling with premium comfort and performance. The Hyundai Elantra offers excellent diesel efficiency, a tech-rich cabin, and outstanding value in the executive sedan segment."
     },
     {
       "id": 4,
       "brand": "Ford",
       "model": "Focus",
+      "variant": "Focus Titanium MT",
       "year": 2023,
       "price": 18500,
+      "onRoadPrice": 2150000,
+      "currency": "INR",
       "fuel": "Petrol",
+      "fuelType": "BS6 Petrol",
       "mileage": 14,
-      "transmission": "Manual",
+      "officialMileage": 15.8,
+      "realWorldMileage": {
+        "city": 12.5,
+        "highway": 16.5
+      },
+      "transmission": "6-speed Manual",
+      "driveType": "FWD",
       "seatingCapacity": 5,
       "color": "Red",
-      "features": ["Voice Control", "Remote Start", "Apple CarPlay"],
+      "bodyType": "Hatchback",
+      "doors": 5,
+      "fuelTankCapacity": 55,
+      "bootSpace": 276,
+      "groundClearance": 153,
+      "kerbWeight": 1340,
+      "grossWeight": 1820,
+      "dimensions": {
+        "length": 4368,
+        "width": 1823,
+        "height": 1489,
+        "wheelbase": 2700
+      },
+      "suspension": {
+        "front": "Independent MacPherson Strut",
+        "rear": "Independent Control Blade"
+      },
+      "brakes": {
+        "front": "Ventilated Disc",
+        "rear": "Disc"
+      },
+      "tyres": {
+        "type": "Tubeless Radial",
+        "size": "215/50 R17",
+        "spare": "Steel Wheel"
+      },
+      "features": [
+        "Voice Control",
+        "Remote Start",
+        "Apple CarPlay",
+        "Push Button Start",
+        "Cruise Control",
+        "Automatic Headlamps",
+        "Rain Sensing Wipers",
+        "7-inch Touchscreen",
+        "Android Auto",
+        "Rear Parking Sensors",
+        "Keyless Entry"
+      ],
+      "infotainment": {
+        "screenSize": "7 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": true,
+        "USB": true,
+        "AndroidAuto": true,
+        "AppleCarPlay": true,
+        "speakers": 6
+      },
+      "instrumentCluster": {
+        "type": "Analog + Digital MID",
+        "displaySize": "4.2 inch",
+        "tachometer": true,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 6,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": true,
+        "tractionControl": true,
+        "hillAssist": true,
+        "rearCamera": true,
+        "parkingSensors": "Rear Only",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 5,
+          "ASEAN NCAP": 5
+        }
+      },
+      "engine": {
+        "type": "1.5L EcoBoost Turbocharged Petrol",
+        "displacement": 1496,
+        "cylinders": 3,
+        "valves": 12,
+        "maxPower": "150 hp @ 6000 rpm",
+        "torque": "240 Nm @ 1600-4500 rpm",
+        "topSpeed": 210,
+        "acceleration": "0-100 kmph in 9.2s",
+        "emissionStandard": "BS6"
+      },
+      "ownership": {
+        "warranty": "3 years / 100,000 km",
+        "extendedWarranty": "Up to 6 years available",
+        "roadsideAssistance": "3 years",
+        "freeService": "3 services / 30,000 km"
+      },
+      "ratings": {
+        "userRating": 4.2,
+        "expertRating": 4.0,
+        "comfort": 4.1,
+        "performance": 4.5,
+        "features": 4.2,
+        "safety": 4.4
+      },
+      "reviews": [
+        {
+          "user": "Ravi Krishnan",
+          "rating": 5,
+          "comment": "Incredible driving dynamics and turbo power. Great fun behind the wheel!"
+        },
+        {
+          "user": "Anjali Nair",
+          "rating": 4,
+          "comment": "Love the smart features and compact feel. Could use more boot space."
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 46000,
+        "maintenance": {
+          "firstYear": 7200,
+          "secondYear": 9800,
+          "thirdYear": 11500
+        }
+      },
+      "availability": true,
       "location": "Chennai",
-      "image": "https://source.unsplash.com/featured/?ford,focus",
-      "description": "Compact and powerful hatchback with intelligent features.",
-      "engine": "1.5L EcoBoost",
-      "torque": "240 Nm",
-      "horsepower": 150,
-      "topSpeed": 210,
-      "acceleration": "9.2s",
-      "warranty": "3 years / 100,000 km",
-      "rating": 4.2,
-      "available": true,
+      "dealer": {
+        "id": "DLR-CHE-004",
+        "name": "Ford Metro Motors",
+        "contact": "+91-9845054321",
+        "email": "sales@metromotorsford.in",
+        "address": "Anna Salai, Chennai, Tamil Nadu"
+      },
+      "image": "https://stimg.cardekho.com/car-images/carexteriorimages/large/Ford/Ford-Focus/front-left-side-047.jpg?tr=w-664",
+      "gallery": [
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Ford/Focus/173687/front-left-side-047.jpg",
+        "https://stimg.cardekho.com/images/carinteriorimages/664x374/Ford/Focus/173687/interior-image-1.jpg",
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Ford/Focus/173687/rear-left-view.jpg"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=ford-focus-review",
       "views": 198,
-      "dealer": "DLR-CHE-004"
+      "bookings": 7,
+      "wishlistCount": 15,
+      "description": "Compact and powerful hatchback with intelligent features, engaging handling, and Ford’s legendary driving DNA. Ideal for both daily commutes and weekend getaways."
     },
     {
       "id": 5,
       "brand": "BMW",
       "model": "3 Series",
+      "variant": "330d M Sport",
       "year": 2024,
       "price": 40000,
+      "onRoadPrice": 4900000,
+      "currency": "INR",
       "fuel": "Diesel",
+      "fuelType": "BS6 Diesel",
       "mileage": 12,
-      "transmission": "Automatic",
+      "officialMileage": 14.5,
+      "realWorldMileage": {
+        "city": 10.2,
+        "highway": 15.0
+      },
+      "transmission": "8-speed Automatic",
+      "driveType": "RWD",
       "seatingCapacity": 5,
       "color": "Silver",
-      "features": ["Ambient Lighting", "360 Camera", "Drive Modes"],
+      "bodyType": "Sedan",
+      "doors": 4,
+      "fuelTankCapacity": 59,
+      "bootSpace": 480,
+      "groundClearance": 140,
+      "kerbWeight": 1640,
+      "grossWeight": 2150,
+      "dimensions": {
+        "length": 4709,
+        "width": 1827,
+        "height": 1442,
+        "wheelbase": 2851
+      },
+      "suspension": {
+        "front": "Double Joint Spring Strut",
+        "rear": "Five-link Axle"
+      },
+      "brakes": {
+        "front": "Ventilated Disc",
+        "rear": "Ventilated Disc"
+      },
+      "tyres": {
+        "type": "Run-flat Tyres",
+        "size": "225/45 R18 (Front), 255/40 R18 (Rear)",
+        "spare": "Not Available (Run-flat)"
+      },
+      "features": [
+        "Ambient Lighting",
+        "360 Camera",
+        "Drive Modes",
+        "M Sport Package",
+        "Adaptive LED Headlights",
+        "Gesture Control",
+        "Wireless Charging",
+        "3-Zone Climate Control",
+        "Harman Kardon Sound System",
+        "12.3-inch Digital Instrument Cluster",
+        "BMW iDrive Touch Controller"
+      ],
+      "infotainment": {
+        "screenSize": "14.9 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": true,
+        "USB": true,
+        "AndroidAuto": true,
+        "AppleCarPlay": true,
+        "speakers": 16
+      },
+      "instrumentCluster": {
+        "type": "Fully Digital",
+        "displaySize": "12.3 inch",
+        "tachometer": true,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 6,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": true,
+        "tractionControl": true,
+        "hillAssist": true,
+        "rearCamera": true,
+        "parkingSensors": "Front and Rear",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 5,
+          "ASEAN NCAP": 5
+        }
+      },
+      "engine": {
+        "type": "2.0L TwinPower Turbo Diesel",
+        "displacement": 1995,
+        "cylinders": 4,
+        "valves": 16,
+        "maxPower": "190 hp @ 4000 rpm",
+        "torque": "400 Nm @ 1750-2500 rpm",
+        "topSpeed": 235,
+        "acceleration": "0-100 kmph in 6.8s",
+        "emissionStandard": "BS6 Phase 2"
+      },
+      "ownership": {
+        "warranty": "5 years / 200,000 km",
+        "extendedWarranty": "Up to 6 years available",
+        "roadsideAssistance": "5 years",
+        "freeService": "3 services / 40,000 km"
+      },
+      "ratings": {
+        "userRating": 4.7,
+        "expertRating": 4.6,
+        "comfort": 4.8,
+        "performance": 4.9,
+        "features": 4.7,
+        "safety": 4.9
+      },
+      "reviews": [
+        {
+          "user": "Karan Deshmukh",
+          "rating": 5,
+          "comment": "The best driving sedan in its class. Insanely fast and premium in every way."
+        },
+        {
+          "user": "Simran Patel",
+          "rating": 4,
+          "comment": "Loved the tech and comfort. Rear seat could use more cushioning though."
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 90000,
+        "maintenance": {
+          "firstYear": 15000,
+          "secondYear": 18000,
+          "thirdYear": 22000
+        }
+      },
+      "availability": true,
       "location": "Pune",
-      "image": "https://source.unsplash.com/featured/?bmw,3series",
-      "description": "Luxury sedan with exceptional driving dynamics and features.",
-      "engine": "2.0L Turbo",
-      "torque": "400 Nm",
-      "horsepower": 190,
-      "topSpeed": 235,
-      "acceleration": "6.8s",
-      "warranty": "5 years / 200,000 km",
-      "rating": 4.7,
-      "available": true,
+      "dealer": {
+        "id": "DLR-PUN-005",
+        "name": "BMW Bavarian Motors",
+        "contact": "+91-9823456789",
+        "email": "sales@bmwpunemotors.in",
+        "address": "Wakadewadi, Pune, Maharashtra"
+      },
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/BMW/3-Series/10574/1689667781970/front-left-side-47.jpg?tr=w-664",
+      "gallery": [
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/BMW/3-Series/10574/1689667781720/front-view.jpg",
+        "https://stimg.cardekho.com/images/carinteriorimages/664x374/BMW/3-Series/10574/1689667781431/dashboard.jpg",
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/BMW/3-Series/10574/1689667781249/rear-view.jpg"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=bmw-330d-review",
       "views": 500,
-      "dealer": "DLR-PUN-005"
+      "bookings": 15,
+      "wishlistCount": 35,
+      "description": "Luxury sedan with exceptional driving dynamics and features. The BMW 3 Series 330d M Sport delivers thrilling performance with a refined interior and cutting-edge tech."
     },
     {
       "id": 6,
       "brand": "Audi",
       "model": "A4",
+      "variant": "A4 45 TFSI Premium",
       "year": 2024,
       "price": 42000,
+      "onRoadPrice": 5200000,
+      "currency": "INR",
       "fuel": "Petrol",
+      "fuelType": "BS6 Phase 2 Petrol",
       "mileage": 13,
-      "transmission": "Automatic",
+      "officialMileage": 13.9,
+      "realWorldMileage": {
+        "city": 11.5,
+        "highway": 15.2
+      },
+      "transmission": "7-speed S Tronic Automatic",
+      "driveType": "FWD",
       "seatingCapacity": 5,
       "color": "Gray",
-      "features": ["Virtual Cockpit", "LED Lights", "Park Assist"],
+      "bodyType": "Sedan",
+      "doors": 4,
+      "fuelTankCapacity": 54,
+      "bootSpace": 460,
+      "groundClearance": 142,
+      "kerbWeight": 1500,
+      "grossWeight": 2020,
+      "dimensions": {
+        "length": 4762,
+        "width": 1847,
+        "height": 1427,
+        "wheelbase": 2819
+      },
+      "suspension": {
+        "front": "Five-link Front Suspension",
+        "rear": "Five-link Rear Suspension"
+      },
+      "brakes": {
+        "front": "Ventilated Disc",
+        "rear": "Solid Disc"
+      },
+      "tyres": {
+        "type": "Tubeless Radial",
+        "size": "225/50 R17",
+        "spare": "Space Saver"
+      },
+      "features": [
+        "Virtual Cockpit",
+        "LED Lights",
+        "Park Assist",
+        "3-Zone Climate Control",
+        "Wireless Charging",
+        "Ambient Lighting",
+        "Panoramic Sunroof",
+        "Leather Upholstery",
+        "MMI Navigation Plus",
+        "Voice Command",
+        "Keyless Entry"
+      ],
+      "infotainment": {
+        "screenSize": "10.1 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": true,
+        "USB": true,
+        "AndroidAuto": true,
+        "AppleCarPlay": true,
+        "speakers": 10
+      },
+      "instrumentCluster": {
+        "type": "Audi Virtual Cockpit",
+        "displaySize": "12.3 inch",
+        "tachometer": true,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 6,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": true,
+        "tractionControl": true,
+        "hillAssist": true,
+        "rearCamera": true,
+        "parkingSensors": "Front and Rear",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 5,
+          "ASEAN NCAP": 5
+        }
+      },
+      "engine": {
+        "type": "2.0L TFSI Inline-4 Turbocharged",
+        "displacement": 1984,
+        "cylinders": 4,
+        "valves": 16,
+        "maxPower": "188 hp @ 4200-6000 rpm",
+        "torque": "320 Nm @ 1450-4200 rpm",
+        "topSpeed": 210,
+        "acceleration": "0-100 kmph in 7.1s",
+        "emissionStandard": "BS6 Phase 2"
+      },
+      "ownership": {
+        "warranty": "4 years / 150,000 km",
+        "extendedWarranty": "Up to 6 years available",
+        "roadsideAssistance": "4 years",
+        "freeService": "3 services / 45,000 km"
+      },
+      "ratings": {
+        "userRating": 4.6,
+        "expertRating": 4.5,
+        "comfort": 4.7,
+        "performance": 4.5,
+        "features": 4.6,
+        "safety": 4.8
+      },
+      "reviews": [
+        {
+          "user": "Aditya Reddy",
+          "rating": 5,
+          "comment": "Audi quality and virtual cockpit is next-level. Very smooth and refined drive."
+        },
+        {
+          "user": "Meera Jain",
+          "rating": 4,
+          "comment": "Excellent cabin feel and features, though fuel economy could be slightly better."
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 95000,
+        "maintenance": {
+          "firstYear": 16000,
+          "secondYear": 19000,
+          "thirdYear": 23000
+        }
+      },
+      "availability": true,
       "location": "Hyderabad",
-      "image": "https://source.unsplash.com/featured/?audi,a4",
-      "description": "Elegant executive sedan with high-tech features.",
-      "engine": "2.0L TFSI",
-      "torque": "320 Nm",
-      "horsepower": 188,
-      "topSpeed": 210,
-      "acceleration": "7.1s",
-      "warranty": "4 years / 150,000 km",
-      "rating": 4.6,
-      "available": true,
+      "dealer": {
+        "id": "DLR-HYD-006",
+        "name": "Audi Hyderabad",
+        "contact": "+91-9949488888",
+        "email": "sales@audihyderabad.in",
+        "address": "Banjara Hills, Hyderabad, Telangana"
+      },
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Audi/A4/10548/1732257078935/front-left-side-47.jpg?tr=w-664",
+      "gallery": [
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Audi/A4/10548/1732257078701/front-view.jpg",
+        "https://stimg.cardekho.com/images/carinteriorimages/664x374/Audi/A4/10548/1732257078503/dashboard.jpg",
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Audi/A4/10548/1732257078450/rear-view.jpg"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=audi-a4-review",
       "views": 460,
-      "dealer": "DLR-HYD-006"
+      "bookings": 13,
+      "wishlistCount": 28,
+      "description": "Elegant executive sedan with high-tech features. The Audi A4 blends refined luxury with cutting-edge technology and a responsive TFSI engine for a premium driving experience."
     },
     {
       "id": 7,
       "brand": "Tesla",
       "model": "Model 3",
+      "variant": "Model 3 Long Range",
       "year": 2024,
       "price": 50000,
+      "onRoadPrice": 6000000,
+      "currency": "INR",
       "fuel": "Electric",
+      "fuelType": "Battery Electric Vehicle (BEV)",
       "mileage": 0,
-      "transmission": "Automatic",
+      "officialMileage": null,
+      "realWorldMileage": {
+        "city": null,
+        "highway": null
+      },
+      "officialRangeKm": 560,
+      "transmission": "Single-speed Automatic",
+      "driveType": "AWD",
       "seatingCapacity": 5,
       "color": "Black",
-      "features": ["Autopilot", "Glass Roof", "Fast Charging"],
+      "bodyType": "Sedan",
+      "doors": 4,
+      "fuelTankCapacity": null,
+      "bootSpace": 542,
+      "groundClearance": 145,
+      "kerbWeight": 1760,
+      "grossWeight": 2250,
+      "dimensions": {
+        "length": 4694,
+        "width": 1850,
+        "height": 1443,
+        "wheelbase": 2875
+      },
+      "suspension": {
+        "front": "Independent Double Wishbone",
+        "rear": "Independent Multi-Link"
+      },
+      "brakes": {
+        "front": "Ventilated Disc",
+        "rear": "Ventilated Disc"
+      },
+      "tyres": {
+        "type": "Alloy Wheels with Low Rolling Resistance",
+        "size": "235/45 R18",
+        "spare": "Tire Repair Kit"
+      },
+      "features": [
+        "Autopilot",
+        "Glass Roof",
+        "Fast Charging",
+        "Over-the-Air Updates",
+        "14-speaker Premium Audio",
+        "Wireless Phone Charging",
+        "Heated Seats (All)",
+        "Navigation with Real-time Traffic",
+        "Tesla Mobile App Integration",
+        "Voice Commands",
+        "All-glass Panoramic Roof"
+      ],
+      "infotainment": {
+        "screenSize": "15 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": true,
+        "USB": true,
+        "AndroidAuto": false,
+        "AppleCarPlay": false,
+        "speakers": 14
+      },
+      "instrumentCluster": {
+        "type": "Integrated on Central Screen",
+        "displaySize": "15 inch",
+        "tachometer": false,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 8,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": true,
+        "tractionControl": true,
+        "hillAssist": true,
+        "rearCamera": true,
+        "parkingSensors": "Front and Rear",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 5,
+          "ASEAN NCAP": 5
+        }
+      },
+      "engine": {
+        "type": "Dual Electric Motor (Front & Rear)",
+        "displacement": null,
+        "cylinders": null,
+        "valves": null,
+        "maxPower": "283 hp",
+        "torque": "420 Nm",
+        "topSpeed": 225,
+        "acceleration": "0-100 kmph in 5.6s",
+        "emissionStandard": "Zero Emission"
+      },
+      "ownership": {
+        "warranty": "8 years / 160,000 km",
+        "extendedWarranty": "Not Applicable",
+        "roadsideAssistance": "8 years",
+        "freeService": "Over-the-air service updates"
+      },
+      "ratings": {
+        "userRating": 4.9,
+        "expertRating": 4.8,
+        "comfort": 4.9,
+        "performance": 4.8,
+        "features": 4.9,
+        "safety": 5.0
+      },
+      "reviews": [
+        {
+          "user": "Pranav Mehta",
+          "rating": 5,
+          "comment": "The future is here! Autopilot is a game changer and the drive is unbelievably smooth."
+        },
+        {
+          "user": "Neha Shah",
+          "rating": 4.8,
+          "comment": "Silent, fast, and smart. Could use better Android Auto support though."
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 88000,
+        "maintenance": {
+          "firstYear": 3000,
+          "secondYear": 3000,
+          "thirdYear": 3000
+        }
+      },
+      "availability": true,
       "location": "Ahmedabad",
-      "image": "https://source.unsplash.com/featured/?tesla,model3",
-      "description": "Futuristic electric car with cutting-edge autopilot features.",
-      "engine": "Dual Electric Motor",
-      "torque": "420 Nm",
-      "horsepower": 283,
-      "topSpeed": 225,
-      "acceleration": "5.6s",
-      "warranty": "8 years / 160,000 km",
-      "rating": 4.9,
-      "available": true,
+      "dealer": {
+        "id": "DLR-AHM-007",
+        "name": "Tesla Gujarat Center",
+        "contact": "+91-9876501234",
+        "email": "sales@teslagujarat.in",
+        "address": "SG Highway, Ahmedabad, Gujarat"
+      },
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Tesla/Model-3/5251/1693556345148/front-left-side-47.jpg?tr=w-664",
+      "gallery": [
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Tesla/Model-3/5251/front-view.jpg",
+        "https://stimg.cardekho.com/images/carinteriorimages/664x374/Tesla/Model-3/5251/interior-dashboard.jpg",
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Tesla/Model-3/5251/rear-view.jpg"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=tesla-model-3-india",
       "views": 720,
-      "dealer": "DLR-AHM-007"
+      "bookings": 25,
+      "wishlistCount": 45,
+      "description": "Futuristic electric car with cutting-edge autopilot features. The Tesla Model 3 Long Range delivers silent acceleration, a premium minimalist cabin, and an unmatched tech experience for modern drivers."
     },
     {
       "id": 8,
       "brand": "Kia",
       "model": "Seltos",
+      "variant": "Seltos HTK Plus MT",
       "year": 2023,
       "price": 19000,
+      "onRoadPrice": 2200000,
+      "currency": "INR",
       "fuel": "Petrol",
+      "fuelType": "BS6 Petrol",
       "mileage": 18,
-      "transmission": "Manual",
+      "officialMileage": 17.2,
+      "realWorldMileage": {
+        "city": 15.0,
+        "highway": 19.0
+      },
+      "transmission": "6-speed Manual",
+      "driveType": "FWD",
       "seatingCapacity": 5,
       "color": "Orange",
-      "features": ["Hill Assist", "Rear AC", "Wireless Android Auto"],
+      "bodyType": "SUV",
+      "doors": 5,
+      "fuelTankCapacity": 50,
+      "bootSpace": 433,
+      "groundClearance": 190,
+      "kerbWeight": 1215,
+      "grossWeight": 1680,
+      "dimensions": {
+        "length": 4315,
+        "width": 1800,
+        "height": 1645,
+        "wheelbase": 2610
+      },
+      "suspension": {
+        "front": "McPherson Strut with Coil Spring",
+        "rear": "Coupled Torsion Beam Axle"
+      },
+      "brakes": {
+        "front": "Disc",
+        "rear": "Drum"
+      },
+      "tyres": {
+        "type": "Tubeless Radial",
+        "size": "205/65 R16",
+        "spare": "Steel Wheel"
+      },
+      "features": [
+        "Hill Assist",
+        "Rear AC",
+        "Wireless Android Auto",
+        "8-inch Touchscreen",
+        "Steering Mounted Controls",
+        "Electric ORVMs",
+        "Rear Parking Sensors",
+        "Follow Me Home Headlamps"
+      ],
+      "infotainment": {
+        "screenSize": "8 inch",
+        "touchscreen": true,
+        "bluetooth": true,
+        "navigation": false,
+        "USB": true,
+        "AndroidAuto": true,
+        "AppleCarPlay": true,
+        "speakers": 6
+      },
+      "instrumentCluster": {
+        "type": "Analog + MID",
+        "displaySize": "3.5 inch",
+        "tachometer": true,
+        "digitalClock": true
+      },
+      "safety": {
+        "airbags": 2,
+        "ABS": true,
+        "EBD": true,
+        "brakeAssist": false,
+        "tractionControl": false,
+        "hillAssist": true,
+        "rearCamera": false,
+        "parkingSensors": "Rear Only",
+        "ISOFIX": true,
+        "safetyRating": {
+          "globalNCAP": 3,
+          "ASEAN NCAP": 4
+        }
+      },
+      "engine": {
+        "type": "1.5L Smartstream Petrol",
+        "displacement": 1497,
+        "cylinders": 4,
+        "valves": 16,
+        "maxPower": "115 hp @ 6300 rpm",
+        "torque": "144 Nm @ 4500 rpm",
+        "topSpeed": 180,
+        "acceleration": "0-100 kmph in 11.0s",
+        "emissionStandard": "BS6 Phase 2"
+      },
+      "ownership": {
+        "warranty": "4 years / 100,000 km",
+        "extendedWarranty": "Up to 5 years available",
+        "roadsideAssistance": "3 years",
+        "freeService": "3 services / 30,000 km"
+      },
+      "ratings": {
+        "userRating": 4.3,
+        "expertRating": 4.2,
+        "comfort": 4.4,
+        "performance": 4.0,
+        "features": 4.5,
+        "safety": 3.8
+      },
+      "reviews": [
+        {
+          "user": "Ramesh Patel",
+          "rating": 4,
+          "comment": "Great value SUV with all essential features. Drives well in the city."
+        },
+        {
+          "user": "Sneha Desai",
+          "rating": 4.5,
+          "comment": "Comfortable ride and stylish design. Love the infotainment options!"
+        }
+      ],
+      "ownershipCost": {
+        "insurance": 42000,
+        "maintenance": {
+          "firstYear": 5000,
+          "secondYear": 7000,
+          "thirdYear": 8500
+        }
+      },
+      "availability": true,
       "location": "Surat",
-      "image": "https://source.unsplash.com/featured/?kia,seltos",
-      "description": "Bold SUV with class-leading features and comfort.",
-      "engine": "1.5L Smartstream",
-      "torque": "144 Nm",
-      "horsepower": 115,
-      "topSpeed": 180,
-      "acceleration": "11.0s",
-      "warranty": "4 years / 100,000 km",
-      "rating": 4.3,
-      "available": true,
+      "dealer": {
+        "id": "DLR-SRT-008",
+        "name": "Kia Signature Motors",
+        "contact": "+91-9898989898",
+        "email": "sales@kiasurat.in",
+        "address": "Piplod, Surat, Gujarat"
+      },
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Kia/Seltos-2023/8709/1688465684023/front-left-side-47.jpg?tr=w-664",
+      "gallery": [
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Kia/Seltos-2023/8709/front-view.jpg",
+        "https://stimg.cardekho.com/images/carinteriorimages/664x374/Kia/Seltos-2023/8709/dashboard.jpg",
+        "https://stimg.cardekho.com/images/carexteriorimages/664x374/Kia/Seltos-2023/8709/rear-view.jpg"
+      ],
+      "videoReview": "https://www.youtube.com/watch?v=kia-seltos-2023-review",
       "views": 330,
-      "dealer": "DLR-SRT-008"
+      "bookings": 10,
+      "wishlistCount": 22,
+      "description": "Bold SUV with class-leading features and comfort. The Kia Seltos HTK Plus MT stands out with stylish design, advanced connectivity, and urban-friendly performance."
     },
     {
       "id": 9,
       "brand": "Mercedes-Benz",
       "model": "C-Class",
       "year": 2024,
+      "variant": "C 200 Avantgarde",
       "price": 48000,
+      "onRoadPrice": 6000000,
       "fuel": "Petrol",
       "mileage": 11,
+      "officialMileage": 12.5,
       "transmission": "Automatic",
       "seatingCapacity": 5,
       "color": "White",
+      "bodyType": "Sedan",
+      "fuelTankCapacity": 66,
+      "bootSpace": 455,
+      "dimensions": "4760 x 1810 x 1440",
+      "groundClearance": 147,
       "features": ["MBUX System", "Ambient Lights", "Wireless Charging"],
       "location": "Kolkata",
-      "image": "https://source.unsplash.com/featured/?mercedes,cclass",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mercedes-Benz/C-Class/10858/Mercedes-Benz-C-Class-C-200/1720160050225/front-left-side-47.jpg?tr=w-664",
       "description": "Luxury and technology combined in this premium sedan.",
       "engine": "2.0L Turbo",
       "torque": "370 Nm",
@@ -919,15 +1975,23 @@
       "brand": "Volkswagen",
       "model": "Virtus",
       "year": 2023,
+      "variant": "Virtus Comfortline MT",
       "price": 17000,
+      "onRoadPrice": 2000000,
       "fuel": "Petrol",
       "mileage": 18,
+      "officialMileage": 18.6,
       "transmission": "Manual",
       "seatingCapacity": 5,
       "color": "Blue",
+      "bodyType": "Sedan",
+      "fuelTankCapacity": 45,
+      "bootSpace": 521,
+      "dimensions": "4541 x 1751 x 1489",
+      "groundClearance": 188,
       "features": ["ESC", "Touchscreen", "Connected Car Tech"],
       "location": "Jaipur",
-      "image": "https://source.unsplash.com/featured/?volkswagen,virtus",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Volkswagen/Virtus/10617/1739939470391/front-left-side-47.jpg?tr=w-664",
       "description": "Stylish mid-size sedan with German engineering.",
       "engine": "1.0L TSI",
       "torque": "178 Nm",
@@ -945,15 +2009,23 @@
       "brand": "Skoda",
       "model": "Slavia",
       "year": 2023,
+      "variant": "Slavia Ambition MT",
       "price": 18000,
+      "onRoadPrice": 2150000,
       "fuel": "Petrol",
       "mileage": 17,
+      "officialMileage": 18.2,
       "transmission": "Manual",
       "seatingCapacity": 5,
       "color": "Red",
+      "bodyType": "Sedan",
+      "fuelTankCapacity": 50,
+      "bootSpace": 521,
+      "dimensions": "4499 x 1752 x 1482",
+      "groundClearance": 163,
       "features": ["Sunroof", "TPMS", "Rear AC Vents"],
       "location": "Nagpur",
-      "image": "https://source.unsplash.com/featured/?skoda,slavia",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Skoda/Slavia/11810/1749703834030/front-left-side-47.jpg?tr=w-664",
       "description": "Comfortable family sedan with powerful features.",
       "engine": "1.0L TSI",
       "torque": "178 Nm",
@@ -971,15 +2043,23 @@
       "brand": "MG",
       "model": "Astor",
       "year": 2023,
+      "variant": "Astor Sharp CVT",
       "price": 22000,
+      "onRoadPrice": 2500000,
       "fuel": "Petrol",
       "mileage": 15,
+      "officialMileage": 17.1,
       "transmission": "Automatic",
       "seatingCapacity": 5,
       "color": "Gray",
+      "bodyType": "SUV",
+      "fuelTankCapacity": 45,
+      "bootSpace": 366,
+      "dimensions": "4323 x 1809 x 1647",
+      "groundClearance": 168,
       "features": ["AI Assistant", "ADAS", "Panoramic Sunroof"],
       "location": "Indore",
-      "image": "https://source.unsplash.com/featured/?mg,astor",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/MG/Astor/11413/1719383205969/front-left-side-47.jpg?tr=w-664",
       "description": "SUV packed with tech, comfort and premium features.",
       "engine": "1.5L VTi",
       "torque": "144 Nm",
@@ -997,15 +2077,23 @@
       "brand": "Tata",
       "model": "Harrier",
       "year": 2024,
+      "variant": "Harrier XZ Manual",
       "price": 25000,
+      "onRoadPrice": 2800000,
       "fuel": "Diesel",
       "mileage": 16,
+      "officialMileage": 16.0,
       "transmission": "Manual",
       "seatingCapacity": 5,
       "color": "Dark Blue",
+      "bodyType": "SUV",
+      "fuelTankCapacity": 50,
+      "bootSpace": 425,
+      "dimensions": "4598 x 1894 x 1706",
+      "groundClearance": 205,
       "features": ["Terrain Modes", "ESP", "Panoramic Sunroof"],
       "location": "Bhopal",
-      "image": "https://source.unsplash.com/featured/?tata,harrier",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Tata/Harrier-EV/9564/1749033646022/front-left-side-47.jpg?tr=w-664",
       "description": "Robust SUV with modern design and safety.",
       "engine": "2.0L Kryotec",
       "torque": "350 Nm",
@@ -1023,15 +2111,23 @@
       "brand": "Mahindra",
       "model": "XUV700",
       "year": 2024,
+      "variant": "XUV700 AX7 L Diesel AWD",
       "price": 27000,
+      "onRoadPrice": 3100000,
       "fuel": "Petrol",
       "mileage": 14,
+      "officialMileage": 16.0,
       "transmission": "Automatic",
       "seatingCapacity": 7,
       "color": "Silver",
+      "bodyType": "SUV",
+      "fuelTankCapacity": 50,
+      "bootSpace": 467,
+      "dimensions": "4695 x 1890 x 1755",
+      "groundClearance": 192,
       "features": ["ADAS", "Dual Screens", "Alloy Wheels"],
       "location": "Patna",
-      "image": "https://source.unsplash.com/featured/?mahindra,xuv700",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mahindra/XUV700/11736/1749631327264/front-left-side-47.jpg?tr=w-664",
       "description": "Advanced tech SUV with powerful engine and comfort.",
       "engine": "2.0L Turbo",
       "torque": "380 Nm",
@@ -1049,15 +2145,23 @@
       "brand": "Renault",
       "model": "Kiger",
       "year": 2023,
+      "variant": "Kiger RXL MT",
       "price": 14000,
+      "onRoadPrice": 1650000,
       "fuel": "Petrol",
       "mileage": 19,
+      "officialMileage": 20.97,
       "transmission": "Manual",
       "seatingCapacity": 5,
       "color": "Green",
+      "bodyType": "SUV",
+      "fuelTankCapacity": 40,
+      "bootSpace": 405,
+      "dimensions": "3991 x 1750 x 1600",
+      "groundClearance": 205,
       "features": ["Multi-Sense Modes", "LED DRLs", "Push Button Start"],
       "location": "Lucknow",
-      "image": "https://source.unsplash.com/featured/?renault,kiger",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Renault/Kiger/12464/1749636600018/front-left-side-47.jpg?tr=w-664",
       "description": "Compact SUV with bold looks and smart features.",
       "engine": "1.0L Turbo",
       "torque": "160 Nm",
@@ -1075,15 +2179,23 @@
       "brand": "Nissan",
       "model": "Magnite",
       "year": 2023,
+      "variant": "Magnite XV MT",
       "price": 13500,
+      "onRoadPrice": 1550000,
       "fuel": "Petrol",
       "mileage": 20,
+      "officialMileage": 20.3,
       "transmission": "Manual",
       "seatingCapacity": 5,
       "color": "Blue",
+      "bodyType": "SUV",
+      "fuelTankCapacity": 40,
+      "bootSpace": 336,
+      "dimensions": "3994 x 1758 x 1572",
+      "groundClearance": 205,
       "features": ["360 Camera", "TPMS", "Wireless CarPlay"],
       "location": "Chandigarh",
-      "image": "https://source.unsplash.com/featured/?nissan,magnite",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Nissan/Magnite/11793/1728101150388/front-left-side-47.jpg?tr=w-664",
       "description": "Affordable compact SUV with premium features.",
       "engine": "1.0L Turbo",
       "torque": "160 Nm",
@@ -1101,15 +2213,23 @@
       "brand": "Jeep",
       "model": "Compass",
       "year": 2024,
+      "variant": "Compass 4x4 AT",
       "price": 32000,
+      "onRoadPrice": 3800000,
       "fuel": "Diesel",
       "mileage": 15,
+      "officialMileage": 16.7,
       "transmission": "Automatic",
       "seatingCapacity": 5,
       "color": "Green",
+      "bodyType": "SUV",
+      "fuelTankCapacity": 60,
+      "bootSpace": 438,
+      "dimensions": "4405 x 1819 x 1646",
+      "groundClearance": 205,
       "features": ["4x4 Drive", "Touchscreen", "Off-Road Assist"],
       "location": "Goa",
-      "image": "https://source.unsplash.com/featured/?jeep,compass",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Jeep/Compass/12456/1742274156288/front-left-side-47.jpg?tr=w-664",
       "description": "Rugged yet refined SUV built for adventures.",
       "engine": "2.0L Multijet",
       "torque": "350 Nm",
@@ -1127,15 +2247,23 @@
       "brand": "Volvo",
       "model": "XC40 Recharge",
       "year": 2024,
+      "variant": "XC40 Pure Electric",
       "price": 60000,
+      "onRoadPrice": 7300000,
       "fuel": "Electric",
       "mileage": 0,
+      "officialRangeKm": 418,
       "transmission": "Automatic",
       "seatingCapacity": 5,
       "color": "White",
+      "bodyType": "SUV",
+      "fuelTankCapacity": null,
+      "bootSpace": 413,
+      "dimensions": "4425 x 1873 x 1652",
+      "groundClearance": 208,
       "features": ["Pilot Assist", "Google Assistant", "Panoramic Roof"],
       "location": "Kochi",
-      "image": "https://source.unsplash.com/featured/?volvo,xc40",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Volvo/XC40-Recharge/11561/1709877320574/front-left-side-47.jpg?tr=w-664",
       "description": "Premium electric SUV with Scandinavian design.",
       "engine": "Twin Electric Motor",
       "torque": "660 Nm",
@@ -1153,15 +2281,23 @@
       "brand": "Maruti Suzuki",
       "model": "Baleno",
       "year": 2023,
+      "variant": "Baleno Sigma MT",
       "price": 12000,
+      "onRoadPrice": 1450000,
       "fuel": "Petrol",
       "mileage": 22,
+      "officialMileage": 23.0,
       "transmission": "Manual",
       "seatingCapacity": 5,
       "color": "Red",
+      "bodyType": "Hatchback",
+      "fuelTankCapacity": 37,
+      "bootSpace": 339,
+      "dimensions": "3995 x 1745 x 1500",
+      "groundClearance": 170,
       "features": ["SmartPlay Studio", "Reverse Camera", "LED Projectors"],
       "location": "Vadodara",
-      "image": "https://source.unsplash.com/featured/?maruti,baleno",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Maruti/Baleno/10497/1697697558001/front-left-side-47.jpg?impolicy=resize&imwidth=480",
       "description": "Popular hatchback known for mileage and value.",
       "engine": "1.2L Dualjet",
       "torque": "113 Nm",
@@ -1179,15 +2315,23 @@
       "brand": "Porsche",
       "model": "Taycan",
       "year": 2024,
+      "variant": "Taycan 4S",
       "price": 95000,
+      "onRoadPrice": 11500000,
       "fuel": "Electric",
       "mileage": 0,
+      "officialRangeKm": 463,
       "transmission": "Automatic",
       "seatingCapacity": 4,
       "color": "Silver",
+      "bodyType": "Sedan",
+      "fuelTankCapacity": null,
+      "bootSpace": 420,
+      "dimensions": "4975 x 1966 x 1381",
+      "groundClearance": 130,
       "features": ["Sport Chrono", "Electric Sport Sound", "BOSE Audio"],
       "location": "Delhi",
-      "image": "https://source.unsplash.com/featured/?porsche,taycan",
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Porsche/Taycan-2024/11515/1707404051019/front-left-side-47.jpg?tr=w-664",
       "description": "High-performance electric sports sedan.",
       "engine": "Dual Electric Motor",
       "torque": "640 Nm",

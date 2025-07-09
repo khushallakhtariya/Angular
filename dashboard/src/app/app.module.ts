@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';  // Usually needed fo
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';  // Assuming you have an app component
 import { HttpClientJsonpModule } from '@angular/common/http';
+import { ContectNewCarComponent } from './modules/car/cars-components/newCar-components/contect-new-car/contect-new-car.component';
 
 
 @NgModule({
   declarations: [
+    
   ],
   imports: [
     CommonModule,

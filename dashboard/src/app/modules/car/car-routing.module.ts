@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarsApiComponent } from './cars-components/cars-api/cars-api.component';
 import { CarLoginComponent } from './cars-components/car-login/car-login.component';
@@ -7,7 +7,8 @@ import { BookCarComponent } from './cars-components/book-car/book-car.component'
 import { ContactCarComponent } from './cars-components/contact-car/contact-car.component';
 import { authGuard } from '../../auth.guard';
 import { AboutCarComponent } from './cars-components/about-car/about-car.component';
-import { NewCarPageComponent } from './cars-components/new-car-page/new-car-page.component';
+import { NewCarPageComponent } from './cars-components/newCar-components/new-car-page/new-car-page.component';
+import { ContectNewCarComponent } from './cars-components/newCar-components/contect-new-car/contect-new-car.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
     component: ContactCarComponent,
   },
   {
-    path: 'book/:id',
+    path: 'book/:brand',
     component: BookCarComponent,
   },
   {
@@ -56,7 +57,11 @@ const routes: Routes = [
   },
   {
     path: 'newcars',
-    component: NewCarPageComponent,
+    loadChildren: () =>
+      import(
+        './cars-components/newCar-components/newcar-module/newcar-module-routing.module'
+      ).then((m) => m.NewcarModuleRoutingModule),
+    canActivate: [authGuard],
   },
   {
     path: 'about',

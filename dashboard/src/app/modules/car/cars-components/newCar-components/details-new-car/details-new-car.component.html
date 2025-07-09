@@ -1,0 +1,154 @@
+<div class="p-6 max-w-7xl mx-auto" *ngIf="!loading && cars.length">
+    <div *ngFor="let car of cars" class="space-y-10">
+  
+      <!-- Car Header -->
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <img [src]="car.image" alt="{{ car.model }}" class="w-full md:w-80 rounded-lg shadow-lg" />
+        <div class="space-y-2">
+          <h1 class="text-3xl font-semibold text-gray-800">{{ car.brand }} {{ car.model }}</h1>
+          <p class="text-gray-600 text-lg">{{ car.variant }} - {{ car.year }}</p>
+          <p class="text-xl font-bold text-blue-700">₹{{ car.onRoadPrice | number }} <span class="text-sm text-gray-500">(On-Road Price - {{ car.location }})</span></p>
+          <p class="text-sm text-gray-500">Ex-showroom Price: ₹{{ car.price | number }}</p>
+          <span class="inline-block bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Available</span>
+        </div>
+      </div>
+  
+      <!-- Gallery -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <img *ngFor="let img of car.gallery" [src]="img" class="w-full h-48 object-cover rounded-md shadow" />
+      </div>
+  
+      <!-- Overview Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Specifications -->
+        <div class="bg-white shadow rounded-lg p-5 space-y-3">
+          <h2 class="text-xl font-semibold border-b pb-2">Key Specifications</h2>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li><strong>Fuel Type:</strong> {{ car.fuelType }}</li>
+            <li><strong>Mileage:</strong> {{ car.officialMileage }} kmpl (Official), {{ car.realWorldMileage.city }} (City), {{ car.realWorldMileage.highway }} (Highway)</li>
+            <li><strong>Transmission:</strong> {{ car.transmission }}</li>
+            <li><strong>Drive Type:</strong> {{ car.driveType }}</li>
+            <li><strong>Seating Capacity:</strong> {{ car.seatingCapacity }}</li>
+            <li><strong>Fuel Tank:</strong> {{ car.fuelTankCapacity }}L</li>
+            <li><strong>Boot Space:</strong> {{ car.bootSpace }}L</li>
+          </ul>
+        </div>
+  
+        <!-- Engine & Performance -->
+        <div class="bg-white shadow rounded-lg p-5 space-y-3">
+          <h2 class="text-xl font-semibold border-b pb-2">Engine & Performance</h2>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li><strong>Engine:</strong> {{ car.engine.type }} ({{ car.engine.displacement }}cc)</li>
+            <li><strong>Max Power:</strong> {{ car.engine.maxPower }}</li>
+            <li><strong>Torque:</strong> {{ car.engine.torque }}</li>
+            <li><strong>Top Speed:</strong> {{ car.engine.topSpeed }} km/h</li>
+            <li><strong>0-100 Acceleration:</strong> {{ car.engine.acceleration }}</li>
+            <li><strong>Emission Standard:</strong> {{ car.engine.emissionStandard }}</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Features Section -->
+      <div class="bg-white shadow rounded-lg p-5">
+        <h2 class="text-xl font-semibold border-b pb-2 mb-3">Features</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-sm text-gray-700">
+          <span *ngFor="let feature of car.features" class="bg-gray-100 rounded px-2 py-1">{{ feature }}</span>
+        </div>
+      </div>
+  
+      <!-- Infotainment & Cluster -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white shadow rounded-lg p-5">
+          <h2 class="text-lg font-semibold mb-2">Infotainment</h2>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li><strong>Screen:</strong> {{ car.infotainment.screenSize }}</li>
+            <li><strong>Bluetooth:</strong> {{ car.infotainment.bluetooth ? 'Yes' : 'No' }}</li>
+            <li><strong>Navigation:</strong> {{ car.infotainment.navigation ? 'Yes' : 'No' }}</li>
+            <li><strong>Android Auto:</strong> {{ car.infotainment.AndroidAuto ? 'Yes' : 'No' }}</li>
+            <li><strong>Apple CarPlay:</strong> {{ car.infotainment.AppleCarPlay ? 'Yes' : 'No' }}</li>
+            <li><strong>Speakers:</strong> {{ car.infotainment.speakers }}</li>
+          </ul>
+        </div>
+        <div class="bg-white shadow rounded-lg p-5">
+          <h2 class="text-lg font-semibold mb-2">Instrument Cluster</h2>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li><strong>Type:</strong> {{ car.instrumentCluster.type }}</li>
+            <li><strong>Display Size:</strong> {{ car.instrumentCluster.displaySize }}</li>
+            <li><strong>Tachometer:</strong> {{ car.instrumentCluster.tachometer ? 'Yes' : 'No' }}</li>
+            <li><strong>Digital Clock:</strong> {{ car.instrumentCluster.digitalClock ? 'Yes' : 'No' }}</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Safety Section -->
+      <div class="bg-white shadow rounded-lg p-5">
+        <h2 class="text-xl font-semibold border-b pb-2 mb-3">Safety</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm text-gray-700">
+          <p><strong>Airbags:</strong> {{ car.safety.airbags }}</p>
+          <p><strong>ABS / EBD:</strong> {{ car.safety.ABS ? 'Yes' : 'No' }} / {{ car.safety.EBD ? 'Yes' : 'No' }}</p>
+          <p><strong>Traction Control:</strong> {{ car.safety.tractionControl ? 'Yes' : 'No' }}</p>
+          <p><strong>Hill Assist:</strong> {{ car.safety.hillAssist ? 'Yes' : 'No' }}</p>
+          <p><strong>Rear Camera:</strong> {{ car.safety.rearCamera ? 'Yes' : 'No' }}</p>
+          <p><strong>ISOFIX:</strong> {{ car.safety.ISOFIX ? 'Yes' : 'No' }}</p>
+          <p><strong>Global NCAP:</strong> {{ car.safety.safetyRating.globalNCAP }}★</p>
+          <p><strong>ASEAN NCAP:</strong> {{ car.safety.safetyRating.ASEANNCAP }}★</p>
+        </div>
+      </div>
+  
+      <!-- Dealer Info -->
+      <div class="bg-blue-50 p-5 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-3">Dealer Information</h2>
+        <p class="text-gray-700"><strong>{{ car.dealer.name }}</strong></p>
+        <p class="text-sm text-gray-600">{{ car.dealer.address }}</p>
+        <p class="text-sm"><strong>Contact:</strong> {{ car.dealer.contact }}</p>
+        <p class="text-sm"><strong>Email:</strong> {{ car.dealer.email }}</p>
+      </div>
+  
+      <!-- Ratings and Reviews -->
+      <div class="bg-white shadow rounded-lg p-5">
+        <h2 class="text-xl font-semibold border-b pb-2 mb-4">Ratings & Reviews</h2>
+        <div class="flex gap-8 mb-4">
+          <div>
+            <p class="text-sm text-gray-500">User Rating</p>
+            <p class="text-2xl font-bold text-yellow-500">{{ car.ratings.userRating }} ★</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Expert Rating</p>
+            <p class="text-2xl font-bold text-yellow-500">{{ car.ratings.expertRating }} ★</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div *ngFor="let review of car.reviews" class="border-t pt-2">
+            <p class="font-semibold">{{ review.user }}</p>
+            <p class="text-yellow-500">{{ review.rating }} ★</p>
+            <p class="text-sm text-gray-700">{{ review.comment }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Video Review -->
+      <div class="mt-10">
+        <h2 class="text-xl font-semibold mb-2">Video Review</h2>
+        <iframe
+          *ngIf="car.videoReview"
+          width="100%"
+          height="400"
+          class="rounded-md shadow"
+          [src]="'https://www.youtube.com/embed/' + car.videoReview.split('v=')[1]"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex justify-center items-center min-h-[300px]">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  
+  <!-- Error State -->
+  <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 p-4 rounded-md max-w-xl mx-auto mt-10">
+    {{ error }}
+  </div>
+  

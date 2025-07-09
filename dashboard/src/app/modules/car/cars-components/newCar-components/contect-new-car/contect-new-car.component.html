@@ -1,0 +1,91 @@
+<div class="max-w-[1300px] mx-auto p-6">
+    <!-- Loading -->
+    <div *ngIf="loading" class="flex justify-center my-20">
+      <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  
+    <!-- Error -->
+    <div *ngIf="error" class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded mb-6">
+      {{ error }}
+    </div>
+  
+    <!-- Car Info + Contact Form -->
+    <div *ngIf="!loading && car" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      <!-- Car Summary -->
+      <div class="space-y-4">
+        <img [src]="car.image" [alt]="car.model" class="w-full h-80 md:h-96 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300" />
+        <h2 class="text-3xl font-bold text-gray-900">{{ car.brand }} {{ car.model }}</h2>
+        <p class="text-lg text-gray-600">{{ car.variant }}</p>
+        <div class="inline-block bg-green-100 text-green-800 text-xl font-semibold px-4 py-2 rounded-lg">
+          {{ car.onRoadPrice | currency:'INR':'symbol':'1.0-0':'en-IN' }}
+        </div>
+        <ul class="space-y-3 text-base">
+          <li class="flex"><span class="w-32 text-gray-600">Fuel:</span> <span class="text-gray-800 font-medium">{{ car.fuel }}</span></li>
+          <li class="flex"><span class="w-32 text-gray-600">Mileage:</span> <span class="text-gray-800 font-medium">{{ car.officialMileage }} km/l</span></li>
+          <li class="flex"><span class="w-32 text-gray-600">Transmission:</span> <span class="text-gray-800 font-medium">{{ car.transmission }}</span></li>
+          <li class="flex"><span class="w-32 text-gray-600">Seats:</span> <span class="text-gray-800 font-medium">{{ car.seatingCapacity }}</span></li>
+          <li class="flex"><span class="w-32 text-gray-600">Location:</span> <span class="text-gray-800 font-medium">{{ car.location }}</span></li>
+        </ul>
+      </div>
+  
+      <!-- Contact Form -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Agent</h3>
+  
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-5">
+          <!-- Name -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-800">Your Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Enter your name"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+              [ngClass]="{ 'border-red-500 focus:ring-red-500': submitted && contactForm.controls['name'].invalid }"
+            />
+            <p *ngIf="submitted && contactForm.controls['name'].invalid" class="text-red-600 text-sm mt-1">
+              Name is required
+            </p>
+          </div>
+  
+          <!-- Phone -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-800">Phone Number</label>
+            <input
+              type="tel"
+              formControlName="phone"
+              placeholder="10-digit phone number"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+              [ngClass]="{ 'border-red-500 focus:ring-red-500': submitted && contactForm.controls['phone'].invalid }"
+            />
+            <p *ngIf="submitted && contactForm.controls['phone'].invalid" class="text-red-600 text-sm mt-1">
+              Enter valid Indian phone number
+            </p>
+          </div>
+  
+          <!-- Message -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-800">Message (optional)</label>
+            <textarea
+              formControlName="message"
+              rows="4"
+              placeholder="Any specific requirements?"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+            ></textarea>
+          </div>
+  
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-[1.01] active:scale-[0.99]"
+          >
+            Send Request
+          </button>
+        </form>
+  
+        <div *ngIf="successMessage" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg font-medium text-center animate-fade-in">
+          {{ successMessage }}
+        </div>
+      </div>
+    </div>
+</div>
